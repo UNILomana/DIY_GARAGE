@@ -1,0 +1,59 @@
+#card {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    display: none;
+    width: 30%;
+    max-width: 300px;
+}
+
+html {
+    width: 100%;
+}
+
+#card-body {
+    position: fixed;
+}
+
+#register-card-body {
+    margin-top: 100px;
+    width: 50%;
+    background-color: rgb(204, 216, 34);
+}
+
+#booking-card-body {
+    margin-top: 100px;
+    width: 50%;
+    background-color: rgb(160, 7, 7);
+}
+
+#register-icon {
+    width: 20px;
+    font-size: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.container {
+    width: auto;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.container .col-sm-4 {
+    text-align: center;
+}
+
+.carousel-inner img {
+    margin: auto;
+}
+
+li {
+    margin-right: 10px;
+    color: red;
+}
+
+a,
+u {
+    text-decoration: none;
+}
