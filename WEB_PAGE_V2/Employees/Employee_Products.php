@@ -77,17 +77,20 @@ $result = mysqli_query($link, "select * from products");
             </tr>
             <?php
             while ($erregistroa = mysqli_fetch_array($result)) {
+                $argazki_helbidea = $erregistroa["Product_picture"];
                 printf(
                     "<tr>
                                 <td>&nbsp;%s&nbsp;</td>
                                 <td>&nbsp;%s&nbsp;</td>
                                 <td>&nbsp;%s&nbsp;</td>
                                 <td>&nbsp;%s&nbsp;</td>
+                                <td><img src='$argazki_helbidea' width='50' height='50'></td>
                                 <td>
                                     <a href='./PHP_Employees.php?produktua=%s'> 
                                         <img src='..//Images/icon.png' width=30px>
                                     </a>
                                 </td>
+
                             </tr>",
                     $erregistroa["Product_Id"],
                     $erregistroa["Name"],
@@ -102,11 +105,12 @@ $result = mysqli_query($link, "select * from products");
         <button id='addProduct' class="btn btn-outline-warning" type="button">Add Product</button>
         
         <div id='productuberria' style="display: none">
-            <form id="newproduct" name="newproduct" method="POST" action="PHP_Employees.php">
+            <form id="newproduct" name="newproduct" method="POST" action="PHP_Employees.php" enctype="multipart/form-data">
                 <h1>New Product</h1>
                 <input type="text" name="product_name" placeholder="Name" min="1" required /> </br>
                 <input type="text" pattern="[+-]?([0-9]*[.])?[0-9]+" name="product_price" placeholder="Unit price" min="1" required /> </br>
                 <input type="text" pattern="[0-9]+" name="product_stock" placeholder="Stock" min="1" required /> </br>
+                <input class="col-sm-8" type="file" accept="image/png, image/jpeg" name="argazkia" required></br>
                 <input type="submit" id="newproduct" value="ADD" name="newproduct"/>
             </form>
         </div>
