@@ -1,3 +1,15 @@
+<?php 
+//control
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+    
+}else {
+    echo "<html> <marquee><h1>You don't have permission to load this page<h1></marquee><html>";
+    die();
+}
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,11 +22,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
 
 <!--Datos de perfil para Usuario-->
 <?php
-session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
@@ -109,8 +121,19 @@ $surname = $_SESSION["Surname"];
                 <h1>New Booking</h1>
 
                 <div class="form-group">
-                    <input type="date" name="data" required></br>
-                    <input type="time" name="ordua" min="09:00" max="18:00" step="3600" required></br>
+                    <input type="date" name="data" min="<?php echo date("Y-m-d"); ?>" required></br>
+                    <!--NOT PAST DATES
+                    <input type="time" name="ordua" min="09:00" max="18:00" step="3600" required></br>-->
+                    <select name="ordua">
+                        <option value="9:00">9:00</option>
+                        <option value="10:00">10:00</option>
+                        <option value="11:00">11:00</option>
+                        <option value="12:00">12:00</option>
+                        <option value="13:00">13:00</option>
+                        <option value="14:00">14:00</option>
+                        <option value="15:00">15:00</option>
+                        <option value="16:00">16:00</option>
+                    </select>
                     <!--Hay errores aqui porque no se puede elegir solo las horas-->
                     <div class="form-group">
                         <label>Select vehicle:</label> *
@@ -132,12 +155,14 @@ $surname = $_SESSION["Surname"];
                     <input type="number" name="use_hours" placeholder="Hours" min='1' max='8' required></br>
 
                 </div>
+                <p id='status_button' class='button' action="./Bookings.php"> ghdf</p>
+                <!--Shows if saved-->
                 <input type="submit" id="newbookings" value="book" name="insert_book" />
                 <a href="./MyBookings.php"><input type="button" value="MyBookings"></a>
 
             </form>
         </div>
-    </div>
+            </div>
 
 </body>
 
@@ -154,5 +179,8 @@ $surname = $_SESSION["Surname"];
         $('#cancel').click(function() {
             $('#card').hide();
         })
+
+
+
     })
 </script>
