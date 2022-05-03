@@ -1,7 +1,7 @@
 import employers_menu
 print('MENU')
 print('================')
-print('a) Employers Management')
+print('a) Employees Management')
 print('b) Products Management')
 print('c) Bookings Management')
 print('d) Users Management')
