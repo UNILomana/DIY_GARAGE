@@ -111,6 +111,7 @@
             $dni_error = "Sorry... ID card already taken";
             echo "<script> document.getElementById('status_button').innerHTML = '$dni_error' </script>";
         } else {
+            
             $query = mysqli_query($link, "insert into users values ('$dni','$name','$surname','$TLF', '$email', '$password', '')");
 
             echo "<script> document.getElementById('status_button').innerHTML = 'Saved!' </script>";

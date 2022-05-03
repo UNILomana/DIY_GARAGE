@@ -1,3 +1,16 @@
+<?php 
+//Control de sesion iniciada
+//Discomment the next line not showing the errors. No se mostrara ningun error
+//error_reporting(error_reporting() & ~E_NOTICE);
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
+    
+	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
+	die();
+}
+?>
 <html>
 
 <head>
@@ -13,7 +26,7 @@
 
 <!--Datos de perfil para Usuario-->
 <?php
-session_start();
+//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email= $_SESSION["Email"];
