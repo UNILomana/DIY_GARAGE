@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -59,6 +60,11 @@ public class Controller implements ActionListener {
         view.jButtonBOOKINGS.addActionListener(listener);
         view.jButtonBackBookings.addActionListener(listener);
         view.jButtonSaveFact.addActionListener(listener);
+        view.jButtonSaveBookings.addActionListener(listener);
+        view.jButtonGraphicsGeneral.addActionListener(listener);
+        view.jButtonGraphicView.addActionListener(listener);
+        view.jButtonBackView.addActionListener(listener);
+        view.jButtonAnotherGraphic.addActionListener(listener);
     }
 
     @Override
@@ -79,7 +85,7 @@ public class Controller implements ActionListener {
             case "BOOKINGS":
                 System.out.println("Users botoia sakatu duzu");
                 view.jDialogBookings.setVisible(true);
-                view.jDialogBookings.setSize(600, 400);
+                view.jDialogBookings.setSize(700, 450);
                 view.jTableBookings.setModel(new BookingsTable(model.readBookings()));
                 view.setVisible(false);
                 break;
@@ -150,25 +156,25 @@ public class Controller implements ActionListener {
                     System.out.println("Bookings Facturacion Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.bookingsJan() + model.bookingsFeb() + model.bookingsMarch() + model.bookingsApr() + model.bookingsMay() + model.bookingsJune()
-                            + model.bookingsJuly() + model.bookingsAug() + model.bookingsSep() + model.bookingsOct() + model.bookingsNov() + model.bookingsDec() + model.bookingsTotal());
+                    view.jTextAreaFacturation.setText(model.bookingsMonth(1) + model.bookingsMonth(2) + model.bookingsMonth(3) + model.bookingsMonth(4) + model.bookingsMonth(5) + model.bookingsMonth(6)
+                            + model.bookingsMonth(7) + model.bookingsMonth(8) + model.bookingsMonth(9) + model.bookingsMonth(10)+ model.bookingsMonth(11) + model.bookingsMonth(12) + model.bookingsTotal());
                     
                 }
                 if (view.jComboBoxFacturation.getSelectedIndex() == 1) {
                     System.out.println("Purchase Facturation Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.purchaseJan() + model.purchaseFeb() + model.purchaseMarch() + model.purchaseApr() + model.purchaseMay() + model.purchaseJune()
-                            + model.purchaseJuly() + model.purchaseAug() + model.purchaseSep() + model.purchaseOct() + model.purchaseNov() + model.purchaseDec() + model.purchaseTotal());
+                    view.jTextAreaFacturation.setText(model.purchaseMonth(1) + model.purchaseMonth(2)  + model.purchaseMonth(3) + model.purchaseMonth(4)  + model.purchaseMonth(5)  + model.purchaseMonth(6) 
+                            + model.purchaseMonth(7)  + model.purchaseMonth(8)  + model.purchaseMonth(9)  + model.purchaseMonth(10)  + model.purchaseMonth(11)  + model.purchaseMonth(12)  + model.purchaseTotal());
                     
                 }
                 if (view.jComboBoxFacturation.getSelectedIndex() == 2) {
                     System.out.println("Total Facturation Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.factJan() + model.factFeb() + model.factMar() + model.factApr() + model.factMay()
-                            + model.factJun() + model.factJul() + model.factAug() + model.factSep() + model.factOct() + model.factNov() + model.factDec()
-                            + model.totalFact());
+                    view.jTextAreaFacturation.setText(model.factMonth(1) + model.factMonth(2) + model.factMonth(3) + model.factMonth(4) + model.factMonth(5)
+                            + model.factMonth(6) + model.factMonth(7) + model.factMonth(8) + model.factMonth(9) + model.factMonth(10) + model.factMonth(11) + model.factMonth(12)
+                            + model.totalFact(2022));
                     
                 }
                 break;
@@ -216,6 +222,37 @@ public class Controller implements ActionListener {
                  if (view.jComboBoxFacturation.getSelectedIndex() == 2) {
                     model.TotalFactToFile(view.jTextAreaFacturation.getText());
                 }
+                 break;
+                 
+            case "SAVE_Bookings":
+                System.out.println("Save botoia sakatu duzu");
+                model.bookingsToFile();
+                break;
+                
+            case "GRAPHICS":
+                
+                System.out.println("Graphics botoia sakatu duzu");
+                view.jDialogGraphicsGeneral.setVisible(true);
+                view.jDialogGraphicsGeneral.setSize(600, 450);
+                view.setVisible(false);
+                break;
+                
+            case "Graphic":
+                System.out.println("Graphic ikusteko botoia sakatu duzu");
+                break;
+                
+            case "GraphicPieChart":
+                System.out.println("Pie Chart botoia sakatu duzu");
+                break;
+            
+            case "Another":
+                System.out.println("Another botoia sakatu duzu");
+                break;
+            case "BACKVIEW":
+                System.out.println("Back botoia sakatu duzu");
+                view.setVisible(true);
+                view.jDialogGraphicsGeneral.setVisible(false);
+                break;
         }
     }
 }

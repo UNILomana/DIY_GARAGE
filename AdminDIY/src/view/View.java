@@ -5,8 +5,17 @@
  */
 package view;
 
+import java.awt.Color;
 import model.Model;
 import model.UsersTable;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.chart.plot.PiePlot3D;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  *
@@ -19,6 +28,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
+
     }
 
     /**
@@ -68,6 +78,12 @@ public class View extends javax.swing.JFrame {
         jScrollPane6 = new javax.swing.JScrollPane();
         jTableBookings = new javax.swing.JTable();
         jLabelBookings = new javax.swing.JLabel();
+        jButtonSaveBookings = new javax.swing.JButton();
+        jDialogGraphicsGeneral = new javax.swing.JDialog();
+        jButtonGraphicView = new javax.swing.JButton();
+        jButtonPieChart = new javax.swing.JButton();
+        jButtonBackView = new javax.swing.JButton();
+        jButtonAnotherGraphic = new javax.swing.JButton();
         jLabelTextoPrincipal = new javax.swing.JLabel();
         jButtonUsers = new javax.swing.JButton();
         jButtonProducts = new javax.swing.JButton();
@@ -75,6 +91,7 @@ public class View extends javax.swing.JFrame {
         jButtonPurchases = new javax.swing.JButton();
         jButtonBiling = new javax.swing.JButton();
         jButtonBOOKINGS = new javax.swing.JButton();
+        jButtonGraphicsGeneral = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("USERS");
@@ -342,31 +359,108 @@ public class View extends javax.swing.JFrame {
         jLabelBookings.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabelBookings.setText("BOOKINGS");
 
+        jButtonSaveBookings.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonSaveBookings.setText("SAVE");
+        jButtonSaveBookings.setToolTipText("");
+        jButtonSaveBookings.setActionCommand("SAVE_Bookings");
+
         javax.swing.GroupLayout jDialogBookingsLayout = new javax.swing.GroupLayout(jDialogBookings.getContentPane());
         jDialogBookings.getContentPane().setLayout(jDialogBookingsLayout);
         jDialogBookingsLayout.setHorizontalGroup(
             jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogBookingsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonBackBookings)
-                .addGap(24, 24, 24))
             .addGroup(jDialogBookingsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelBookings, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogBookingsLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButtonSaveBookings)
+                    .addComponent(jButtonBackBookings))
+                .addGap(24, 24, 24))
         );
         jDialogBookingsLayout.setVerticalGroup(
             jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogBookingsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(39, Short.MAX_VALUE)
                 .addComponent(jLabelBookings)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButtonSaveBookings)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButtonBackBookings)
                 .addGap(18, 18, 18))
+        );
+
+        jButtonGraphicView.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonGraphicView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BarChart.jpg"))); // NOI18N
+        jButtonGraphicView.setText("Graphic Bookings & Purchases");
+        jButtonGraphicView.setToolTipText("");
+        jButtonGraphicView.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGraphicViewActionPerformed(evt);
+            }
+        });
+
+        jButtonPieChart.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonPieChart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/piechart.jpg"))); // NOI18N
+        jButtonPieChart.setText("Graphic Pie Chart");
+        jButtonPieChart.setActionCommand("GraphicPieChart");
+        jButtonPieChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPieChartActionPerformed(evt);
+            }
+        });
+
+        jButtonBackView.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonBackView.setText("BACK");
+        jButtonBackView.setActionCommand("BACKVIEW");
+
+        jButtonAnotherGraphic.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonAnotherGraphic.setText("Another");
+        jButtonAnotherGraphic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnotherGraphicActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jDialogGraphicsGeneralLayout = new javax.swing.GroupLayout(jDialogGraphicsGeneral.getContentPane());
+        jDialogGraphicsGeneral.getContentPane().setLayout(jDialogGraphicsGeneralLayout);
+        jDialogGraphicsGeneralLayout.setHorizontalGroup(
+            jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                        .addComponent(jButtonAnotherGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBackView)
+                        .addGap(25, 25, 25))
+                    .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                        .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonGraphicView)
+                            .addComponent(jButtonPieChart))
+                        .addContainerGap(135, Short.MAX_VALUE))))
+        );
+        jDialogGraphicsGeneralLayout.setVerticalGroup(
+            jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                .addGap(87, 87, 87)
+                .addComponent(jButtonGraphicView)
+                .addGap(34, 34, 34)
+                .addComponent(jButtonPieChart)
+                .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButtonBackView)
+                        .addGap(34, 34, 34))
+                    .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAnotherGraphic)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -412,12 +506,22 @@ public class View extends javax.swing.JFrame {
             }
         });
 
+        jButtonGraphicsGeneral.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonGraphicsGeneral.setText("GRAPHICS");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonExit))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelTextoPrincipal)
+                        .addGap(132, 132, 132))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -429,15 +533,12 @@ public class View extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonBiling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonExit))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabelTextoPrincipal)
-                        .addGap(132, 132, 132)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButtonGraphicsGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(145, 145, 145))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -455,7 +556,9 @@ public class View extends javax.swing.JFrame {
                             .addComponent(jButtonPurchases)
                             .addComponent(jButtonBiling)))
                     .addComponent(jButtonBOOKINGS, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButtonGraphicsGeneral)
+                .addGap(14, 14, 14)
                 .addComponent(jButtonExit)
                 .addContainerGap())
         );
@@ -486,8 +589,98 @@ public class View extends javax.swing.JFrame {
     private void jButtonBOOKINGSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBOOKINGSActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBOOKINGSActionPerformed
-    
-   public static View viewaSortuBistaratu() {
+
+    private void jButtonGraphicViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraphicViewActionPerformed
+        // TODO add your handling code here:
+        double cantidad1 = Model.bookingsFacturation();
+        double cantidad2 = Model.purchaseFacturation();
+
+        try {
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            ds.addValue(cantidad1, "Bookings Facturation", "");
+            ds.addValue(cantidad2, "Purchase Facturation", "");
+
+            JFreeChart jf;
+            jf = ChartFactory.createBarChart3D("Facturation", "Comparison between Bookings Facturation and Purchase Facturation", "EARNED MONEY", ds, PlotOrientation.HORIZONTAL, true, true, true);
+            ChartFrame f = new ChartFrame("Graphic", jf);
+            f.setSize(1000, 600);
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonGraphicViewActionPerformed
+
+    private void jButtonPieChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPieChartActionPerformed
+        // TODO add your handling code here:
+        DefaultPieDataset pieDataset = new DefaultPieDataset();
+        pieDataset.setValue("January", Model.bookingsMonthD(1));
+        pieDataset.setValue("February", Model.bookingsMonthD(2));
+        pieDataset.setValue("March", Model.bookingsMonthD(3));
+        pieDataset.setValue("April", Model.bookingsMonthD(4));
+        pieDataset.setValue("May", Model.bookingsMonthD(5));
+        pieDataset.setValue("June", Model.bookingsMonthD(6));
+        pieDataset.setValue("July", Model.bookingsMonthD(7));
+        pieDataset.setValue("August", Model.bookingsMonthD(8));
+        pieDataset.setValue("September", Model.bookingsMonthD(9));
+        pieDataset.setValue("October", Model.bookingsMonthD(10));
+        pieDataset.setValue("November", Model.bookingsMonthD(11));
+        pieDataset.setValue("December", Model.bookingsMonthD(12));
+        JFreeChart piechart = ChartFactory.createPieChart("Pie Chart", pieDataset, true, true, true);
+        PiePlot P = (PiePlot) piechart.getPlot();
+//        P.setForegroundAlpha(TOP_ALIGNMENT);
+        ChartFrame frame = new ChartFrame("Pie Chart", piechart);
+        frame.setVisible(true);
+        frame.setSize(750, 530);
+        this.setVisible(false);
+
+    }//GEN-LAST:event_jButtonPieChartActionPerformed
+
+    private void jButtonAnotherGraphicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnotherGraphicActionPerformed
+        // TODO add your handling code here:
+        double cantidad1 = Model.bookingsMonthD(1);
+        double cantidad2 = Model.bookingsMonthD(2);
+        double cantidad3 = Model.bookingsMonthD(3);
+        double cantidad4 = Model.bookingsMonthD(4);
+        double cantidad5 = Model.bookingsMonthD(5);
+        double cantidad6 = Model.bookingsMonthD(6);
+        double cantidad7 = Model.bookingsMonthD(7);
+        double cantidad8 = Model.bookingsMonthD(8);
+        double cantidad9 = Model.bookingsMonthD(9);
+        double cantidad10 = Model.bookingsMonthD(10);
+        double cantidad11 = Model.bookingsMonthD(11);
+        double cantidad12 = Model.bookingsMonthD(12);
+
+        try {
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            ds.addValue(cantidad1, "January", "");
+            ds.addValue(cantidad2, "February", "");
+            ds.addValue(cantidad3, "March", "");
+            ds.addValue(cantidad4, "April", "");
+            ds.addValue(cantidad5, "May", "");
+            ds.addValue(cantidad6, "June", "");
+            ds.addValue(cantidad7, "July", "");
+            ds.addValue(cantidad8, "August", "");
+            ds.addValue(cantidad9, "September", "");
+            ds.addValue(cantidad10, "October", "");
+            ds.addValue(cantidad11, "November", "");
+            ds.addValue(cantidad12, "December", "");
+            
+
+            JFreeChart jf;
+            jf = ChartFactory.createBarChart3D("Bookings", "Comparison between Bookings per Month", "EARNED MONEY", ds, PlotOrientation.VERTICAL, true, true, true);
+            ChartFrame f = new ChartFrame("Graphic", jf);
+            f.setSize(1000, 600);
+            f.setLocationRelativeTo(null);
+            f.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        this.setVisible(false);
+    }//GEN-LAST:event_jButtonAnotherGraphicActionPerformed
+
+    public static View viewaSortuBistaratu() {
         View v = new View();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -532,6 +725,7 @@ public class View extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButtonAnotherGraphic;
     public javax.swing.JButton jButtonBACKFACTURATION;
     public javax.swing.JButton jButtonBACKUSER;
     public javax.swing.JButton jButtonBESTUSERP;
@@ -540,12 +734,17 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JButton jButtonBackProducts;
     public javax.swing.JButton jButtonBackPurchases;
     public javax.swing.JButton jButtonBackUsers;
+    public javax.swing.JButton jButtonBackView;
     public javax.swing.JButton jButtonBestUser;
     public javax.swing.JButton jButtonBiling;
     public javax.swing.JButton jButtonExit;
+    public javax.swing.JButton jButtonGraphicView;
+    public javax.swing.JButton jButtonGraphicsGeneral;
     public javax.swing.JButton jButtonOK;
+    public javax.swing.JButton jButtonPieChart;
     public javax.swing.JButton jButtonProducts;
     public javax.swing.JButton jButtonPurchases;
+    public javax.swing.JButton jButtonSaveBookings;
     public javax.swing.JButton jButtonSaveFact;
     public javax.swing.JButton jButtonSaveProducts;
     public javax.swing.JButton jButtonSaveUsers;
@@ -554,6 +753,7 @@ public class View extends javax.swing.JFrame {
     public javax.swing.JDialog jDialogBESTUSER;
     public javax.swing.JDialog jDialogBiling;
     public javax.swing.JDialog jDialogBookings;
+    public javax.swing.JDialog jDialogGraphicsGeneral;
     public javax.swing.JDialog jDialogProducts;
     public javax.swing.JDialog jDialogPurchases;
     public javax.swing.JDialog jDialogUsers;

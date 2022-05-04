@@ -16,7 +16,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.Month;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Locale;
 import javax.swing.JOptionPane;
 import view.View;
 
@@ -31,7 +34,7 @@ public class Model {
      *
      * @return Connection
      */
-    public Connection connect() {
+    public static Connection connect() {
         Connection conn = null;
         try {
             String url = "jdbc:mysql://localhost:3306/db_garage";
@@ -173,68 +176,24 @@ public class Model {
         }
     }
 
-//    public double bookingsFacturation() {
-//        String taula = "bookings";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                double count = rs.getDouble("Price");
-//                total = total + count;
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return total;
-//    }
-//    public String bookingsFacturationAnnual() {
-//        String taula = "bookings";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//        String cadena = "";
-//
-//        int currentYear = LocalDate.now().getYear();
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                if (currentYear == rs.getDate("Date").toLocalDate().getYear()) {
-//                    double count = rs.getDouble("Price");
-//                    total = total + count;
-//
-//                }
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return cadena = " " + String.valueOf(currentYear) + " DIY FACTURATION   \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-//    }
-//    public double bookingsFacturationAnnualD() {
-//        String taula = "bookings";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//
-//        int currentYear = LocalDate.now().getYear();
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                if (currentYear == rs.getDate("Date").toLocalDate().getYear()) {
-//                    double count = rs.getDouble("Price");
-//                    total = total + count;
-//
-//                }
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return total;
-//    }
+    public static double bookingsFacturation() {
+        String taula = "bookings";
+        String sql = "SELECT * FROM " + taula;
+        double total = 0;
+
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                double count = rs.getDouble("Price");
+                total = total + count;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return total;
+    }
+
     public ArrayList<Purchases> readPurchase() {
         ArrayList<Purchases> compras = new ArrayList<>();
         String taula = "purchase";
@@ -310,66 +269,24 @@ public class Model {
         }
     }
 
-//    public double purchaseFacturation() {
-//        String taula = "purchase";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                double count = rs.getDouble("Total_Price");
-//                total = total + count;
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return total;
-//    }
-//
-//    public String purchaseFacturationAnnual() {
-//        String taula = "purchase";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//        String cadena = "";
-//        int currentYear = LocalDate.now().getYear();
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                if (currentYear == rs.getDate("Date").toLocalDate().getYear()) {
-//                    double count = rs.getDouble("Total_Price");
-//                    total = total + count;
-//                }
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return cadena = " " + String.valueOf(currentYear) + " DIY FACTURATION   \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-//    }
-//
-//    public double purchaseFacturationAnnualD() {
-//        String taula = "purchase";
-//        String sql = "SELECT * FROM " + taula;
-//        double total = 0;
-//        int currentYear = LocalDate.now().getYear();
-//
-//        try (Connection conn = connect();
-//                Statement stmt = conn.createStatement();
-//                ResultSet rs = stmt.executeQuery(sql)) {
-//            while (rs.next()) {
-//                if (currentYear == rs.getDate("Date").toLocalDate().getYear()) {
-//                    double count = rs.getDouble("Total_Price");
-//                    total = total + count;
-//                }
-//            }
-//        } catch (Exception ex) {
-//            JOptionPane.showMessageDialog(null, ex.getMessage());
-//        }
-//        return total;
-//    }
+    public static double purchaseFacturation() {
+        String taula = "purchase";
+        String sql = "SELECT * FROM " + taula;
+        double total = 0;
+
+        try (Connection conn = connect();
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                double count = rs.getDouble("Total_Price");
+                total = total + count;
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        return total;
+    }
+
     public ArrayList<Products> readProducts() {
         ArrayList<Products> producto = new ArrayList<>();
         String taula = "products";
@@ -541,7 +458,31 @@ public class Model {
             }
         }
     }
+    
+    public void bookingsToFile() {
+        ArrayList<Bookings> listabookings = readBookings();
+        PrintWriter outputStream = null;
 
+        try {
+            outputStream = new PrintWriter(new FileWriter("ArchivoBookings.csv"));
+            String l;
+            for (Bookings res : listabookings) {
+
+                outputStream.println(res.getBookingId() + " , " + res.getUserId() + " , " + res.getCabinId() + " , " + res.getDate() + " , " + res.getHour());
+            }
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally {
+
+            if (outputStream != null) {
+                outputStream.close();
+                System.out.println("Datuak gorde dira " + " ArchivoBookings.csv " + " fitxategian.");
+            }
+        }
+    }
+    
     public void bookingsFactToFile(String archivo) {
         
         PrintWriter outputStream = null;
@@ -613,6 +554,7 @@ public class Model {
             }
         }
     }
+    
     public String bestUserB() {
         String taula = "bookings";
         double bestUser = 0;
@@ -672,465 +614,11 @@ public class Model {
 
         return best;
     }
-
-    public String bookingsJan() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-01-01' AND '2022-01-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JANUARY BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseJan() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-01-01' AND '2022-01-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JANUARY PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsFeb() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-02-01' AND '2022-02-28') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " FEBRUARY BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseFeb() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-02-01' AND '2022-02-28') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " FEBRUARY PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsMarch() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-03-01' AND '2022-03-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " MARCH BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseMarch() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-03-01' AND '2022-03-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " MARCH PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsApr() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-04-01' AND '2022-04-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " APRIL BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseApr() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-04-01' AND '2022-04-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " APRIL BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsMay() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-05-01' AND '2022-05-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " MAY BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseMay() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-05-01' AND '2022-05-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " MAY PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsJune() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-06-01' AND '2022-06-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JUNE BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseJune() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-06-01' AND '2022-06-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JUNE PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsJuly() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-07-01' AND '2022-07-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JULY BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseJuly() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-07-01' AND '2022-07-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JULY PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsAug() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-08-01' AND '2022-08-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " AUGUST BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseAug() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-08-01' AND '2022-08-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " AUGUST PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsSep() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-09-01' AND '2022-09-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " SEPTEMBER BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseSep() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-09-01' AND '2022-09-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " SEPTEMBER PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsOct() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-10-01' AND '2022-10-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " OCTOBER BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseOct() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-10-01' AND '2022-10-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " OCTOBER PURCHASES \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsNov() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-11-01' AND '2022-11-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " NOVEMBER BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseNov() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-11-01' AND '2022-11-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " NOVEMBER PURCHASES \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String bookingsDec() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-12-01' AND '2022-12-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " DECEMBER BOOKINGS \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String purchaseDec() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-12-01' AND '2022-12-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " DECEMBER PURCHASE \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
+        
     public String bookingsTotal() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-01-01' AND '2022-12-31') AS 'Facturation_Month'";
+        int year = LocalDate.now().getYear();
+        
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -1149,7 +637,9 @@ public class Model {
     }
 
     public String purchaseTotal() {
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-01-01' AND '2022-12-31') AS 'Facturation_Month'";
+        int year = LocalDate.now().getYear();
+        
+        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -1166,10 +656,13 @@ public class Model {
         return cadena = " TOTAL PURCHASE FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
 
     }
-
-    public String factJan() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-01-01' AND '2022-01-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-01-01' AND '2022-01-31') AS 'Facturation_Month'";
+    
+    public String bookingsMonth(int month){
+        int year = LocalDate.now().getYear();
+        Month hilabetea = Month.of(month);
+        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
+        
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -1183,13 +676,16 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " JANUARY FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+        return cadena = " " + mes + " Bookings \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
 
     }
-
-    public String factFeb() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-02-01' AND '2022-02-28') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-02-01' AND '2022-02-28') AS 'Facturation_Month'";
+    
+    public String purchaseMonth(int month){
+        int year = LocalDate.now().getYear();
+        Month hilabetea = Month.of(month);
+        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
+        
+        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -1203,13 +699,13 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " FEBRUARY FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
+        return cadena = " " + mes + " Purchases  \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
     }
-
-    public String factMar() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-03-01' AND '2022-03-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-03-01' AND '2022-03-31') AS 'Facturation_Month'";
+    
+    public static Double bookingsMonthD(int month){
+        int year = LocalDate.now().getYear();
+        
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -1223,206 +719,52 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " MARCH FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
+        return total;
     }
-
-    public String factApr() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-04-01' AND '2022-04-30') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-04-01' AND '2022-04-30') AS 'Facturation_Month'";
+    
+    public String factMonth(int month){
+        int year = LocalDate.now().getYear();
+        Month hilabetea = Month.of(month);
+        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
+               
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') + "
+                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'"; 
+        
         double total = 0;
         String cadena = "";
-
+       
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
+                     total = rs.getDouble("Facturation_Month");
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " APRIL FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
+        
+        return cadena = " " + mes + " Facturation \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
     }
-
-    public String factMay() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-05-01' AND '2022-05-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-05-01' AND '2022-05-31') AS 'Facturation_Month'";
+    
+    public String totalFact(int year) {
+        
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-01-31') + "
+                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Annual'"; 
+        
         double total = 0;
         String cadena = "";
-
+       
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
+                     total = rs.getDouble("Facturation_Annual");
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " MAY FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factJun() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-06-01' AND '2022-06-30') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-06-01' AND '2022-06-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JUNE FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factJul() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-07-01' AND '2022-07-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-07-01' AND '2022-07-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " JULY FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factAug() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-08-01' AND '2022-08-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-08-01' AND '2022-08-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " AUGUST FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factSep() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-09-01' AND '2022-09-30') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-09-01' AND '2022-09-30') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " SEPTEMBER FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factOct() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-10-01' AND '2022-10-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-10-01' AND '2022-10-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " OCTOBER FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-    }
-
-    public String factNov() {
-        String sql = "SELECT (SELECT  SUM(Price) FROM bookings WHERE Date BETWEEN '2022-11-01' AND '2022-11-30' ) + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-11-01' AND '2022-11-30' ) AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " NOVEMBER FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String factDec() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-12-01' AND '2022-12-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-12-01' AND '2022-12-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " DECEMBER FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
-
-    }
-
-    public String totalFact() {
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '2022-01-01' AND '2022-12-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '2022-01-01' AND '2022-12-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " TOTAL FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
+        
+        return cadena= " TOTAL FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
 
     }
 
