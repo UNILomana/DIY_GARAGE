@@ -28,7 +28,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 </head>
 
 <?php
-session_start();
+//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];

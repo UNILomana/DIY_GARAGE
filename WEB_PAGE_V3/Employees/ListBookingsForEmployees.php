@@ -11,7 +11,6 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 	die();
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -27,14 +26,14 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
+
 <?php
-session_start();
+//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
 $name = $_SESSION["Name"];
 $surname = $_SESSION["Surname"];
-$result = mysqli_query($link, "select * from cabins");
 ?>
 
 <body>
@@ -51,7 +50,7 @@ $result = mysqli_query($link, "select * from cabins");
                 <ul class="navbar-nav me-auto">
                     <li class="mr-5"> <a href="./employees_web.php">Home</a></li>
                     <li class="mr-5"><a href='./Employee_Products.php'>Products managment</a></li>
-                    <li class="mr-5"> <a href='./ListBookingsForEmployees.php'>List of Bookings</a></li>
+                    <li class="mr-5"><a href='./GarageAvailability.php'>Garage Availability</a></li>
                 </ul>
                 <button id='MyProfile' class="btn btn-outline-warning" type="button">MyProfile</button>
             </div>
@@ -76,96 +75,115 @@ $result = mysqli_query($link, "select * from cabins");
         </div>
     </div>
 
-    <!--Main Body-->
+    <!--Main body-->
     <div class="container mt-5">
-        <!--Select-a-->
-        <H1>Garajeko estatusa</H1>
+        <H1>Booking list for employees</H1>
+        <form method="post">
+            <input type="submit" name="todayList" value="Gaurkoa" />
+            <input type="submit" name="totalList" value="Historikoa" />
+        </form>
         <table>
             <tr>
+                <th scope="col">&nbsp;Booking_Id</th>
+                <th scope="col">&nbsp;User_Id</th>
                 <th scope="col">&nbsp;Cabin_Id</th>
-                <th scope="col">&nbsp;Type</th>
-                <th scope="col">&nbsp;Disponibility</th>
+                <th scope="col">&nbsp;Date</th>
+                <th scope="col">&nbsp;Hour</th>
+                <th scope="col">&nbsp;Type of vehicle</th>
+                <th scope="col">&nbsp;Employee Help</th>
             </tr>
             <?php
+            /*Botoia sakatu ezkero bata edo bestea agertzen da. Funtzioetan gordeta daude*/
+            if (array_key_exists('todayList', $_POST)) {
+                gaurkoLista();
+            } else if (array_key_exists('totalList', $_POST)) {
+                totalList();
+            } else {
+                gaurkoLista(); //directamente gaurko lista agertzeko
+            }
 
-            while ($erregistroa = mysqli_fetch_array($result)) {
-                if ($erregistroa["Disponibility"] == '1') {
-                    printf(
-                        "<tr>
+            function gaurkoLista()
+            {
+                $link = connectDataBase();
+                $result = mysqli_query($link, "select * from bookings");
+                $gaur = date("Y-m-d"); //date erabiliz urtea-hilabetea-eguna gordetzen dira 
+                echo  'Gaurko data= ', $gaur;
+                while ($erregistroa = mysqli_fetch_array($result)) {
+                    if ($erregistroa["Date"] == $gaur) { //DB-ko Date eremua berdina bada $gaur-ekin imprimatzen dira
+                        printf(
+                            "<tr>
                                     <td>&nbsp;%s&nbsp;</td>
                                     <td>&nbsp;%s&nbsp;</td>
-                                    <td>&nbsp;Yes&nbsp;</td>
-                                   
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
                                 </tr>",
-                        $erregistroa["Cabin_Id"],
-                        $erregistroa["Type"],
-                    );
+                            $erregistroa["Booking_Id"],
+                            $erregistroa["User_Id"],
+                            $erregistroa["Cabin_Id"],
+                            $erregistroa["Date"],
+                            $erregistroa["Hour"],
+                            $erregistroa["Vehicle_Type"],
+                            $erregistroa["Employee_Help"],
+                        );
+                    }
                 }
+                mysqli_free_result($result);
+                mysqli_close($link);
             }
-            mysqli_free_result($result);
-            mysqli_close($link);
-            ?>
-        </table>
+            function totalList()
+            {
 
-        <h1>Visual status</h1>
-        <table>
-            <tr>
-                <th scope="col">&nbsp;Cabin_Id</th>
-                <th scope="col">&nbsp;Disponibility</th>
-            </tr>
-            <?php
-            //include("connect_db.php"); //Kontuz len deklaratua dago
-            $link = connectDataBase();
-            $result = mysqli_query($link, "select * from cabins");
+                $link = connectDataBase();
+                $result = mysqli_query($link, "select * from bookings");
 
-            /*Kontuz imagenen src-arekin*/
-            while ($erregistroa = mysqli_fetch_array($result)) {
-                if ($erregistroa["Disponibility"] == '1') {
+                while ($erregistroa = mysqli_fetch_array($result)) {
+
                     printf(
                         "<tr>
-                        <td>&nbsp;%s&nbsp;</td>
-                        <td>
-                            <img src='../Images/Available.png' width=30px>    
-                        </td>
-                    </tr>",
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                    <td>&nbsp;%s&nbsp;</td>
+                                </tr>",
+                        $erregistroa["Booking_Id"],
+                        $erregistroa["User_Id"],
                         $erregistroa["Cabin_Id"],
-                    );
-                } else if ($erregistroa["Disponibility"] == '0') {
-                    printf(
-                        "<tr>
-                            <td>&nbsp;%s&nbsp;</td>
-                            <td>
-                                <img src='../Images/Forbidden.png' width=30px>     
-                            </td>
-                        </tr>",
-                        $erregistroa["Cabin_Id"],
+                        $erregistroa["Date"],
+                        $erregistroa["Hour"],
+                        $erregistroa["Vehicle_Type"],
+                        $erregistroa["Employee_Help"],
                     );
                 }
+                mysqli_free_result($result);
+                mysqli_close($link);
             }
-            mysqli_free_result($result);
-            mysqli_close($link);
             ?>
         </table>
     </div>
-
 </body>
 
 </html>
 
-
 <!--Script abrir pestaña MyProfile-->
 <script>
-  
     $(document).ready(function() {
 
         $('button#MyProfile').click(function() {
             $("#card").fadeToggle('slow');
-            
         })
 
         $('#cancel').click(function() {
             $('#card').hide();
         })
-        
+
+        $('button#addProduct').click(function() {
+            $("#productuberria").fadeToggle('slow');
+        })
     })
 </script>
