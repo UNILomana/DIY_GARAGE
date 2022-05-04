@@ -6,16 +6,25 @@
 package view;
 
 import java.awt.Color;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.Model;
 import model.UsersTable;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartFrame;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.chart.plot.PiePlot3D;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYZDataset;
 
 /**
  *
@@ -84,6 +93,7 @@ public class View extends javax.swing.JFrame {
         jButtonPieChart = new javax.swing.JButton();
         jButtonBackView = new javax.swing.JButton();
         jButtonAnotherGraphic = new javax.swing.JButton();
+        jButtonAnother2 = new javax.swing.JButton();
         jLabelTextoPrincipal = new javax.swing.JLabel();
         jButtonUsers = new javax.swing.JButton();
         jButtonProducts = new javax.swing.JButton();
@@ -395,6 +405,8 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
+        jDialogGraphicsGeneral.setPreferredSize(new java.awt.Dimension(618, 650));
+
         jButtonGraphicView.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonGraphicView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BarChart.jpg"))); // NOI18N
         jButtonGraphicView.setText("Graphic Bookings & Purchases");
@@ -420,10 +432,20 @@ public class View extends javax.swing.JFrame {
         jButtonBackView.setActionCommand("BACKVIEW");
 
         jButtonAnotherGraphic.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonAnotherGraphic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grafico-de-barras.jpg"))); // NOI18N
         jButtonAnotherGraphic.setText("Another");
         jButtonAnotherGraphic.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAnotherGraphicActionPerformed(evt);
+            }
+        });
+
+        jButtonAnother2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonAnother2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/line-chart.jpg"))); // NOI18N
+        jButtonAnother2.setText("Graphic Line Chart");
+        jButtonAnother2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAnother2ActionPerformed(evt);
             }
         });
 
@@ -435,23 +457,23 @@ public class View extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
-                        .addComponent(jButtonAnotherGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonAnother2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButtonBackView)
                         .addGap(25, 25, 25))
                     .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
                         .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonGraphicView)
-                            .addComponent(jButtonPieChart))
-                        .addContainerGap(135, Short.MAX_VALUE))))
+                            .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jButtonAnotherGraphic, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButtonPieChart, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap(217, Short.MAX_VALUE))))
         );
         jDialogGraphicsGeneralLayout.setVerticalGroup(
             jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(39, 39, 39)
                 .addComponent(jButtonGraphicView)
-                .addGap(34, 34, 34)
-                .addComponent(jButtonPieChart)
                 .addGroup(jDialogGraphicsGeneralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -459,8 +481,12 @@ public class View extends javax.swing.JFrame {
                         .addGap(34, 34, 34))
                     .addGroup(jDialogGraphicsGeneralLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButtonAnotherGraphic)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(jButtonPieChart)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButtonAnotherGraphic, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButtonAnother2)
+                        .addContainerGap(517, Short.MAX_VALUE))))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -508,6 +534,11 @@ public class View extends javax.swing.JFrame {
 
         jButtonGraphicsGeneral.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonGraphicsGeneral.setText("GRAPHICS");
+        jButtonGraphicsGeneral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGraphicsGeneralActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -606,6 +637,10 @@ public class View extends javax.swing.JFrame {
             f.setSize(1000, 600);
             f.setLocationRelativeTo(null);
             f.setVisible(true);
+
+            File lineChart = new File("BarChart1.JPEG");
+
+            ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
@@ -614,59 +649,55 @@ public class View extends javax.swing.JFrame {
 
     private void jButtonPieChartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPieChartActionPerformed
         // TODO add your handling code here:
-        DefaultPieDataset pieDataset = new DefaultPieDataset();
-        pieDataset.setValue("January", Model.bookingsMonthD(1));
-        pieDataset.setValue("February", Model.bookingsMonthD(2));
-        pieDataset.setValue("March", Model.bookingsMonthD(3));
-        pieDataset.setValue("April", Model.bookingsMonthD(4));
-        pieDataset.setValue("May", Model.bookingsMonthD(5));
-        pieDataset.setValue("June", Model.bookingsMonthD(6));
-        pieDataset.setValue("July", Model.bookingsMonthD(7));
-        pieDataset.setValue("August", Model.bookingsMonthD(8));
-        pieDataset.setValue("September", Model.bookingsMonthD(9));
-        pieDataset.setValue("October", Model.bookingsMonthD(10));
-        pieDataset.setValue("November", Model.bookingsMonthD(11));
-        pieDataset.setValue("December", Model.bookingsMonthD(12));
-        JFreeChart piechart = ChartFactory.createPieChart("Pie Chart", pieDataset, true, true, true);
-        PiePlot P = (PiePlot) piechart.getPlot();
+        try {
+            DefaultPieDataset pieDataset = new DefaultPieDataset();
+            pieDataset.setValue("January", Model.bookingsMonthD(1));
+            pieDataset.setValue("February", Model.bookingsMonthD(2));
+            pieDataset.setValue("March", Model.bookingsMonthD(3));
+            pieDataset.setValue("April", Model.bookingsMonthD(4));
+            pieDataset.setValue("May", Model.bookingsMonthD(5));
+            pieDataset.setValue("June", Model.bookingsMonthD(6));
+            pieDataset.setValue("July", Model.bookingsMonthD(7));
+            pieDataset.setValue("August", Model.bookingsMonthD(8));
+            pieDataset.setValue("September", Model.bookingsMonthD(9));
+            pieDataset.setValue("October", Model.bookingsMonthD(10));
+            pieDataset.setValue("November", Model.bookingsMonthD(11));
+            pieDataset.setValue("December", Model.bookingsMonthD(12));
+            JFreeChart piechart = ChartFactory.createPieChart("Pie Chart", pieDataset, true, true, true);
+            PiePlot P = (PiePlot) piechart.getPlot();
 //        P.setForegroundAlpha(TOP_ALIGNMENT);
-        ChartFrame frame = new ChartFrame("Pie Chart", piechart);
-        frame.setVisible(true);
-        frame.setSize(750, 530);
-        this.setVisible(false);
+            ChartFrame frame = new ChartFrame("Pie Chart", piechart);
+            frame.setVisible(true);
+            frame.setSize(750, 530);
+            this.setVisible(false);
+
+            File lineChart = new File("PieChart.JPEG");
+
+            ChartUtilities.saveChartAsJPEG(lineChart, piechart, 1000, 600);
+        } catch (IOException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }//GEN-LAST:event_jButtonPieChartActionPerformed
 
     private void jButtonAnotherGraphicActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnotherGraphicActionPerformed
         // TODO add your handling code here:
-        double cantidad1 = Model.bookingsMonthD(1);
-        double cantidad2 = Model.bookingsMonthD(2);
-        double cantidad3 = Model.bookingsMonthD(3);
-        double cantidad4 = Model.bookingsMonthD(4);
-        double cantidad5 = Model.bookingsMonthD(5);
-        double cantidad6 = Model.bookingsMonthD(6);
-        double cantidad7 = Model.bookingsMonthD(7);
-        double cantidad8 = Model.bookingsMonthD(8);
-        double cantidad9 = Model.bookingsMonthD(9);
-        double cantidad10 = Model.bookingsMonthD(10);
-        double cantidad11 = Model.bookingsMonthD(11);
-        double cantidad12 = Model.bookingsMonthD(12);
+
 
         try {
             DefaultCategoryDataset ds = new DefaultCategoryDataset();
-            ds.addValue(cantidad1, "January", "");
-            ds.addValue(cantidad2, "February", "");
-            ds.addValue(cantidad3, "March", "");
-            ds.addValue(cantidad4, "April", "");
-            ds.addValue(cantidad5, "May", "");
-            ds.addValue(cantidad6, "June", "");
-            ds.addValue(cantidad7, "July", "");
-            ds.addValue(cantidad8, "August", "");
-            ds.addValue(cantidad9, "September", "");
-            ds.addValue(cantidad10, "October", "");
-            ds.addValue(cantidad11, "November", "");
-            ds.addValue(cantidad12, "December", "");
-            
+            ds.addValue(Model.bookingsMonthD(1), "January", "");
+            ds.addValue(Model.bookingsMonthD(2), "February", "");
+            ds.addValue(Model.bookingsMonthD(3), "March", "");
+            ds.addValue(Model.bookingsMonthD(4), "April", "");
+            ds.addValue(Model.bookingsMonthD(5), "May", "");
+            ds.addValue(Model.bookingsMonthD(6), "June", "");
+            ds.addValue(Model.bookingsMonthD(7), "July", "");
+            ds.addValue(Model.bookingsMonthD(8), "August", "");
+            ds.addValue(Model.bookingsMonthD(9), "September", "");
+            ds.addValue(Model.bookingsMonthD(10), "October", "");
+            ds.addValue(Model.bookingsMonthD(11), "November", "");
+            ds.addValue(Model.bookingsMonthD(12), "December", "");
 
             JFreeChart jf;
             jf = ChartFactory.createBarChart3D("Bookings", "Comparison between Bookings per Month", "EARNED MONEY", ds, PlotOrientation.VERTICAL, true, true, true);
@@ -674,11 +705,68 @@ public class View extends javax.swing.JFrame {
             f.setSize(1000, 600);
             f.setLocationRelativeTo(null);
             f.setVisible(true);
+
+            File lineChart = new File("BarChart2.JPEG");
+
+            ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
+            
         } catch (Exception e) {
             System.out.println("Error" + e);
         }
         this.setVisible(false);
     }//GEN-LAST:event_jButtonAnotherGraphicActionPerformed
+
+    private void jButtonAnother2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnother2ActionPerformed
+
+        // TODO add your handling code here:
+        try {
+
+            DefaultCategoryDataset ds = new DefaultCategoryDataset();
+            ds.setValue(Model.bookingsMonthD(1), "bookings", "January");
+            ds.setValue(Model.bookingsMonthD(2), "bookings", "February");
+            ds.setValue(Model.bookingsMonthD(3), "bookings", "March");
+            ds.setValue(Model.bookingsMonthD(4), "bookings", "April");
+            ds.setValue(Model.bookingsMonthD(5), "bookings", "May");
+            ds.setValue(Model.bookingsMonthD(6), "bookings", "June");
+            ds.setValue(Model.bookingsMonthD(7), "bookings", "July");
+            ds.setValue(Model.bookingsMonthD(8), "bookings", "August");
+            ds.setValue(Model.bookingsMonthD(9), "bookings", "September");
+            ds.setValue(Model.bookingsMonthD(10), "bookings", "October");
+            ds.setValue(Model.bookingsMonthD(11), "bookings", "November");
+            ds.setValue(Model.bookingsMonthD(12), "bookings", "December");
+            ds.setValue(Model.purchaseMonthD(1), "purchase", "January");
+            ds.setValue(Model.purchaseMonthD(2), "purchase", "February");
+            ds.setValue(Model.purchaseMonthD(3), "purchase", "March");
+            ds.setValue(Model.purchaseMonthD(4), "purchase", "April");
+            ds.setValue(Model.purchaseMonthD(5), "purchase", "May");
+            ds.setValue(Model.purchaseMonthD(6), "purchase", "June");
+            ds.setValue(Model.purchaseMonthD(7), "purchase", "July");
+            ds.setValue(Model.purchaseMonthD(8), "purchase", "August");
+            ds.setValue(Model.purchaseMonthD(9), "purchase", "September");
+            ds.setValue(Model.purchaseMonthD(10), "purchase", "October");
+            ds.setValue(Model.purchaseMonthD(11), "purchase", "November");
+            ds.setValue(Model.purchaseMonthD(12), "purchase", "December");
+
+            JFreeChart jf = ChartFactory.createLineChart("LineChart", "Comparison between Bookings per Month", "EARNED MONEY", ds, PlotOrientation.VERTICAL, true, true, true);
+            ChartFrame frame = new ChartFrame("", jf);
+            jf.getTitle().setPaint(Color.GREEN);
+            CategoryPlot p = jf.getCategoryPlot();
+            p.setRangeGridlinePaint(Color.black);
+            frame.setSize(1000, 600);
+            frame.setVisible(true);
+
+            File lineChart = new File("line_Chart_example.JPEG");
+
+            ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
+        } catch (IOException ex) {
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_jButtonAnother2ActionPerformed
+
+    private void jButtonGraphicsGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraphicsGeneralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonGraphicsGeneralActionPerformed
 
     public static View viewaSortuBistaratu() {
         View v = new View();
@@ -725,6 +813,7 @@ public class View extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton jButtonAnother2;
     public javax.swing.JButton jButtonAnotherGraphic;
     public javax.swing.JButton jButtonBACKFACTURATION;
     public javax.swing.JButton jButtonBACKUSER;

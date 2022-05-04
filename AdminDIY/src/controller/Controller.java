@@ -8,7 +8,10 @@ package controller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Month;
+import java.time.format.TextStyle;
 import java.util.ArrayList;
+import java.util.Locale;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import model.Bookings;
 import model.BookingsTable;
@@ -150,32 +153,50 @@ public class Controller implements ActionListener {
                 break;
 
             case "OK":
-                
+
                 System.out.println("Ok botoia sakatu duzu");
                 if (view.jComboBoxFacturation.getSelectedIndex() == 0) {
                     System.out.println("Bookings Facturacion Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.bookingsMonth(1) + model.bookingsMonth(2) + model.bookingsMonth(3) + model.bookingsMonth(4) + model.bookingsMonth(5) + model.bookingsMonth(6)
-                            + model.bookingsMonth(7) + model.bookingsMonth(8) + model.bookingsMonth(9) + model.bookingsMonth(10)+ model.bookingsMonth(11) + model.bookingsMonth(12) + model.bookingsTotal());
+                    view.jTextAreaFacturation.setText("");
+                    for (int i = 1; i <= 12; i++) {
+                        Month hilabetea = Month.of(i);
+                        String mes = hilabetea.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+                        view.jTextAreaFacturation.append(" " + mes + " Bookings \n -------------------------- \n " + model.bookingsMonthD(i) + " € \n \n");
+                    }
+                    view.jTextAreaFacturation.append(" TOTAL BOOKINGS FACTURATION \n -------------------------- \n " + model.bookingsTotal() + " € \n \n");
                     
                 }
                 if (view.jComboBoxFacturation.getSelectedIndex() == 1) {
                     System.out.println("Purchase Facturation Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.purchaseMonth(1) + model.purchaseMonth(2)  + model.purchaseMonth(3) + model.purchaseMonth(4)  + model.purchaseMonth(5)  + model.purchaseMonth(6) 
-                            + model.purchaseMonth(7)  + model.purchaseMonth(8)  + model.purchaseMonth(9)  + model.purchaseMonth(10)  + model.purchaseMonth(11)  + model.purchaseMonth(12)  + model.purchaseTotal());
-                    
+                    view.jTextAreaFacturation.setText("");                    
+                    for (int i = 1; i <= 12; i++) {
+                        Month hilabetea = Month.of(i);
+                        String mes = hilabetea.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+                        view.jTextAreaFacturation.append(" " + mes + " Purchase \n -------------------------- \n " + model.purchaseMonthD(i) + " € \n \n");
+                    }
+                    view.jTextAreaFacturation.append(" TOTAL PURCHASE FACTURATION \n -------------------------- \n " + model.purchaseTotal() + " € \n \n");
                 }
                 if (view.jComboBoxFacturation.getSelectedIndex() == 2) {
                     System.out.println("Total Facturation Annual opzioa");
                     view.jDialogBiling.setSize(600, 400);
                     view.jTextAreaFacturation.setVisible(true);
-                    view.jTextAreaFacturation.setText(model.factMonth(1) + model.factMonth(2) + model.factMonth(3) + model.factMonth(4) + model.factMonth(5)
-                            + model.factMonth(6) + model.factMonth(7) + model.factMonth(8) + model.factMonth(9) + model.factMonth(10) + model.factMonth(11) + model.factMonth(12)
-                            + model.totalFact(2022));
+                    view.jTextAreaFacturation.setText("");
+                    for (int i = 1; i <= 12; i++) {
+                        Month hilabetea = Month.of(i);
+                        String mes = hilabetea.getDisplayName(TextStyle.FULL, Locale.ENGLISH);
+                        view.jTextAreaFacturation.append(" " + mes + " Facturation \n --------------------------  \n " + model.factMonth(i) + " € \n \n");
+                    }
+                    view.jTextAreaFacturation.append(" TOTAL PURCHASE FACTURATION \n -------------------------- \n " + model.totalFact(2022) + " € \n \n");
                     
+                    
+//                    view.jTextAreaFacturation.setText(model.factMonth(1) + model.factMonth(2) + model.factMonth(3) + model.factMonth(4) + model.factMonth(5)
+//                            + model.factMonth(6) + model.factMonth(7) + model.factMonth(8) + model.factMonth(9) + model.factMonth(10) + model.factMonth(11) + model.factMonth(12)
+//                            + model.totalFact(2022));
+
                 }
                 break;
 
@@ -219,41 +240,45 @@ public class Controller implements ActionListener {
                 if (view.jComboBoxFacturation.getSelectedIndex() == 1) {
                     model.purchaseFactToFile(view.jTextAreaFacturation.getText());
                 }
-                 if (view.jComboBoxFacturation.getSelectedIndex() == 2) {
+                if (view.jComboBoxFacturation.getSelectedIndex() == 2) {
                     model.TotalFactToFile(view.jTextAreaFacturation.getText());
                 }
-                 break;
-                 
+                break;
+
             case "SAVE_Bookings":
                 System.out.println("Save botoia sakatu duzu");
                 model.bookingsToFile();
                 break;
-                
+
             case "GRAPHICS":
-                
+
                 System.out.println("Graphics botoia sakatu duzu");
                 view.jDialogGraphicsGeneral.setVisible(true);
                 view.jDialogGraphicsGeneral.setSize(600, 450);
                 view.setVisible(false);
                 break;
-                
+
             case "Graphic":
                 System.out.println("Graphic ikusteko botoia sakatu duzu");
-                break;
                 
+                break;
+
             case "GraphicPieChart":
                 System.out.println("Pie Chart botoia sakatu duzu");
                 break;
-            
+
             case "Another":
                 System.out.println("Another botoia sakatu duzu");
                 break;
+
             case "BACKVIEW":
                 System.out.println("Back botoia sakatu duzu");
                 view.setVisible(true);
                 view.jDialogGraphicsGeneral.setVisible(false);
                 break;
+
+            case "Another2":
+                System.out.println("Another2 botoia sakatu duzu");
         }
     }
 }
-

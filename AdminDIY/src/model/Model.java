@@ -615,7 +615,8 @@ public class Model {
         return best;
     }
         
-    public String bookingsTotal() {
+    public static Double bookingsTotal() {
+        //prueba se cambia string por double, para controller textareafacturation
         int year = LocalDate.now().getYear();
         
         String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Month'";
@@ -632,11 +633,13 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " TOTAL BOOKINGS FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+        return total;
+    //return cadena = " TOTAL BOOKINGS FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
 
     }
 
-    public String purchaseTotal() {
+    public static Double purchaseTotal() {
+        //prueba se cambia string por double, para controller textareafacturation
         int year = LocalDate.now().getYear();
         
         String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Month'";
@@ -653,37 +656,59 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " TOTAL PURCHASE FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+        return total;
+        //return cadena = " TOTAL PURCHASE FACTURATION \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
 
     }
     
-    public String bookingsMonth(int month){
-        int year = LocalDate.now().getYear();
-        Month hilabetea = Month.of(month);
-        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
-        
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
-        double total = 0;
-        String cadena = "";
-
-        try (Connection conn = connect();
-                Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                total = rs.getDouble("Facturation_Month");
-
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex.getMessage());
-        }
-        return cadena = " " + mes + " Bookings \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
-
-    }
+//    public String bookingsMonth(int month){
+//        int year = LocalDate.now().getYear();
+//        Month hilabetea = Month.of(month);
+//        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
+//        
+//        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
+//        double total = 0;
+//        String cadena = "";
+//
+//        try (Connection conn = connect();
+//                Statement stmt = conn.createStatement();
+//                ResultSet rs = stmt.executeQuery(sql)) {
+//            while (rs.next()) {
+//                total = rs.getDouble("Facturation_Month");
+//
+//            }
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//        return cadena = " " + mes + " Bookings \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+//
+//    }
+//    
+//    public String purchaseMonth(int month){
+//        int year = LocalDate.now().getYear();
+//        Month hilabetea = Month.of(month);
+//        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
+//        
+//        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
+//        double total = 0;
+//        String cadena = "";
+//
+//        try (Connection conn = connect();
+//                Statement stmt = conn.createStatement();
+//                ResultSet rs = stmt.executeQuery(sql)) {
+//            while (rs.next()) {
+//                total = rs.getDouble("Facturation_Month");
+//
+//            }
+//        } catch (Exception ex) {
+//            JOptionPane.showMessageDialog(null, ex.getMessage());
+//        }
+//        return cadena = " " + mes + " Purchases  \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+//    }
     
-    public String purchaseMonth(int month){
+    
+    public static Double purchaseMonthD(int month){
         int year = LocalDate.now().getYear();
-        Month hilabetea = Month.of(month);
-        String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
         
         String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
         double total = 0;
@@ -699,7 +724,7 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        return cadena = " " + mes + " Purchases  \n -------------------------- \n " + String.valueOf(total) + " € \n \n";
+        return total;
     }
     
     public static Double bookingsMonthD(int month){
@@ -722,7 +747,8 @@ public class Model {
         return total;
     }
     
-    public String factMonth(int month){
+    public static Double factMonth(int month){
+        //prueba se cambia string por double, para controller textareafacturation
         int year = LocalDate.now().getYear();
         Month hilabetea = Month.of(month);
         String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
@@ -742,13 +768,14 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
-        return cadena = " " + mes + " Facturation \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
+        return total;
+        //return cadena = " " + mes + " Facturation \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
     }
     
-    public String totalFact(int year) {
+    public static double totalFact(int year) {
+        //prueba se cambia string por double, para controller textareafacturation
         
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-01-31') + "
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') + "
                 + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-01-01' AND '"+year+"-12-31') AS 'Facturation_Annual'"; 
         
         double total = 0;
@@ -763,8 +790,8 @@ public class Model {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage());
         }
-        
-        return cadena= " TOTAL FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
+        return total;
+        //return cadena= " TOTAL FACTURATION \n --------------------------  \n " + String.valueOf(total) + " € \n \n";
 
     }
 
