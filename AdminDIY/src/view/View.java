@@ -405,8 +405,6 @@ public class View extends javax.swing.JFrame {
                 .addGap(18, 18, 18))
         );
 
-        jDialogGraphicsGeneral.setPreferredSize(new java.awt.Dimension(618, 650));
-
         jButtonGraphicView.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonGraphicView.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/BarChart.jpg"))); // NOI18N
         jButtonGraphicView.setText("Graphic Bookings & Purchases");
@@ -564,7 +562,7 @@ public class View extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButtonProducts, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButtonBiling, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -587,7 +585,7 @@ public class View extends javax.swing.JFrame {
                             .addComponent(jButtonPurchases)
                             .addComponent(jButtonBiling)))
                     .addComponent(jButtonBOOKINGS, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(jButtonGraphicsGeneral)
                 .addGap(14, 14, 14)
                 .addComponent(jButtonExit)
@@ -638,7 +636,7 @@ public class View extends javax.swing.JFrame {
             f.setLocationRelativeTo(null);
             f.setVisible(true);
 
-            File lineChart = new File("BarChart1.JPEG");
+            File lineChart = new File("./files/BarChart1.JPEG");
 
             ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
         } catch (Exception e) {
@@ -671,7 +669,7 @@ public class View extends javax.swing.JFrame {
             frame.setSize(750, 530);
             this.setVisible(false);
 
-            File lineChart = new File("PieChart.JPEG");
+            File lineChart = new File("./files/PieChart.JPEG");
 
             ChartUtilities.saveChartAsJPEG(lineChart, piechart, 1000, 600);
         } catch (IOException ex) {
@@ -706,7 +704,7 @@ public class View extends javax.swing.JFrame {
             f.setLocationRelativeTo(null);
             f.setVisible(true);
 
-            File lineChart = new File("BarChart2.JPEG");
+            File lineChart = new File("./files/BarChart2.JPEG");
 
             ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
             
@@ -755,7 +753,7 @@ public class View extends javax.swing.JFrame {
             frame.setSize(1000, 600);
             frame.setVisible(true);
 
-            File lineChart = new File("line_Chart_example.JPEG");
+            File lineChart = new File("./files/Line_Chart.JPEG");
 
             ChartUtilities.saveChartAsJPEG(lineChart, jf, 1000, 600);
         } catch (IOException ex) {

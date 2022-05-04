@@ -416,7 +416,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("ArchivoUsers.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/ArchivoUsers.csv"));
             String l;
             for (Users us : listausuarios) {
 
@@ -440,7 +440,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("ArchivoProducts.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/ArchivoProducts.csv"));
             String l;
             for (Products pd : listaproductos) {
 
@@ -464,7 +464,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("ArchivoBookings.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/ArchivoBookings.csv"));
             String l;
             for (Bookings res : listabookings) {
 
@@ -488,7 +488,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("BookingsFacturation.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/BookingsFacturation.csv"));
             String l;
             
 
@@ -512,7 +512,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("PurchaseFacturation.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/PurchaseFacturation.csv"));
             String l;
             
 
@@ -536,7 +536,7 @@ public class Model {
         PrintWriter outputStream = null;
 
         try {
-            outputStream = new PrintWriter(new FileWriter("TotalFacturation.csv"));
+            outputStream = new PrintWriter(new FileWriter("./files/TotalFacturation.csv"));
             String l;
             
 
