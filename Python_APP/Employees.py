@@ -1,7 +1,8 @@
 import Basic
 from Person import Person
 
-#https://www.geeksforgeeks.org/employee-management-system-using-python/
+
+# https://www.geeksforgeeks.org/employee-management-system-using-python/
 
 class Employee(Person):
     def __init__(self, i, sn, ss, stlf, a, se, sp):
@@ -16,4 +17,3 @@ class Employee(Person):
 
     def print(self):
         print(self.id, self.name, self.surname, self.phone, self.address, self.email, self.password)
-

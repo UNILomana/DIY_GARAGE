@@ -1,23 +1,27 @@
-import employers_menu
-print('MENU')
-print('================')
-print('a) Employees Management')
-print('b) Products Management')
-print('c) Bookings Management')
-print('d) Users Management')
-print('e) Exit')
+from employers_menu import menu_E as menu_Emp
+from users_menu import menuU as menu_Use
 
-option = input('Enter an option: ').lower()
+def menuGeneral():
+    print('MENU')
+    print('=========================')
+    print('a) Employees Management')
+    print('b) Products Management')
+    print('c) Bookings Management')
+    print('d) Users Management')
+    print('e) Exit')
 
-while option != 'e':
-    if option == 'a':
-        employers_menu()
-    if option == 'b':
-        products_menu()
-    if option == 'c':
-        bookings_menu()
-    if option == 'd':
-        users_menu()
+    option=''
+    print('=========================')
 
-    option = input('Enter an option: ').lower()
+    while option != 'e':
+        option = input('Main menu options: ').lower()
+        if option == 'a':
+            menu_Emp()
+        if option == 'b':
+            menu_Use()
+        if option == 'c':
+            bookings_menu()
+        if option == 'd':
+            users_menu.menu()
 
+menuGeneral()

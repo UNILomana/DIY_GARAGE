@@ -1,31 +1,28 @@
-#Metodo basikoak askotan erabiltzen direlako.
+# Metodo basikoak askotan erabiltzen direlako.
 import os
 import pickle
-import csv
-from csv import reader
-from datetime import date
-
-import pandas as pd
 
 
 class BasicMethods():
     @staticmethod
     def askinteger(znb):
-            a=input('Enter a value for ' + znb + ': ')
-            return a
+        a = input('Enter a value for ' + znb + ': ')
+        return a
 
     @staticmethod
     def askstring(name):
-            a=input('Enter a value for ' + name + ': ')
-            return a
+        a = input('Enter a value for ' + name + ': ')
+        return a
 
+    # append the list
     @staticmethod
-    def save_object(obj, filename):
+    def save_object_append(obj, filename):
         with open(filename, 'ab') as outp:  # Overwrites any existing file.
             pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
+    # write the list
     @staticmethod
-    def save_object2(obj, filename):
+    def save_object_write(obj, filename):
         with open(filename, 'wb') as outp:  # Overwrites any existing file.
             pickle.dump(obj, outp, pickle.HIGHEST_PROTOCOL)
 
@@ -38,14 +35,13 @@ class BasicMethods():
             while cont == 1:
                 try:
                     objects.append(pickle.load(inp))
-                    for objetua in objects:
-                        print(objetua.id, objetua.name, objetua.surname)
                 except EOFError:
-                    print("End of file\n")
                     cont = 0
+            for objetua in objects:
+                print(objetua.id, objetua.name, objetua.surname)
+            print("End of file\n")
         else:
             print("There aren´t any clients")
-
 
     @staticmethod
     def delete_object(obj, filename):
@@ -61,17 +57,14 @@ class BasicMethods():
                 try:
                     objects.append(pickle.load(inp))
                 except EOFError:
-                    print("end of file\n")
+
                     cont = 0
-            #inp.close()
+            inp.close()
             if os.path.exists(filename):
                 os.remove(filename)
             for object in objects:
                 if int(object.id) != int(i):
-                    BasicMethods.save_object2(object, filename)
+                    BasicMethods.save_object_write(object, filename)
+            print("end of file\n")
         else:
             print("There aren´t any clients")
-
-
-
-
