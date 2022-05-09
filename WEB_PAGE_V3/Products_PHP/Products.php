@@ -117,7 +117,7 @@ $surname = $_SESSION["Surname"];
                 ?>
             </table>
 
-            <form id="newbooking" name="newbooking" method="POST" action="PHP_Purchase.php">
+            <form method="POST" action="PHP_Purchase.php">
                 <h1>Buy Product</h1>
                 <div class="form-group">
                     <?php
@@ -133,22 +133,24 @@ $surname = $_SESSION["Surname"];
                     ?>
                 </div>
                 <input type="text" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required />
-                <input type="submit" id="newbookings" value="Erosi" name="getpurchase" />
+                <input type="submit" value="Buy" name="getpurchase" />
+                <p id='status_button'></p>
             </form>
             <a href="./MyPurchases.php"><input type="button" value="MyPurchases"></a>
-
         </div>
     </div>
 
-    <?php
-    //ondo erosi baldin bada mezua azaldu
-    ?>
-
-
 </body>
-
 </html>
 
+<!--If is an error on the booking-->
+<?php
+    if (isset($_GET['correct'])) {
+        if ($_GET['correct']  == 'yes') {
+            echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
+        }
+    }
+?>
 
 <!--Script abrir pestaña MyProfile-->
 <script>

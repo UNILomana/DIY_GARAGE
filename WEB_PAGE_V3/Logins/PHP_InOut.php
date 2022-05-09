@@ -10,6 +10,7 @@ else if($_GET['logout'] == 'yes')
 } else{}
 
 
+
 function logout(){
 	session_start();
 	session_destroy();	
@@ -73,5 +74,6 @@ function login(){
         }
     }
 }
+
 
 ?>

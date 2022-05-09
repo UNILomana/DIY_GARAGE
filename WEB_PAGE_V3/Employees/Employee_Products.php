@@ -1,14 +1,14 @@
-<?php 
+<?php
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
-	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
-	die();
+if (!$_SESSION["Email"] || $_SESSION["Password"] == null) {
+
+    echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
+    die();
 }
 ?>
 
@@ -17,7 +17,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 
 <head>
     <!--LINK-s de referencia Jquery, Boostrap, css CUIDAR los link y versiones-->
-    <title>Employees</title>
+    <title>Products of the shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -28,7 +28,6 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 </head>
 
 <?php
-//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
@@ -39,9 +38,9 @@ $result = mysqli_query($link, "select * from products");
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Home.html"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -49,7 +48,6 @@ $result = mysqli_query($link, "select * from products");
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="mr-5"> <a href="./employees_web.php">Home</a></li>
                     <li class="mr-5"><a href='./GarageAvailability.php'>Garage Availability</a></li>
                     <li class="mr-5"> <a href='./ListBookingsForEmployees.php'>List of Bookings</a></li>
                 </ul>
@@ -77,23 +75,21 @@ $result = mysqli_query($link, "select * from products");
     </div>
 
     <!--Main body-->
-    <div class="container mt-5">
-        
-        <!--Select-a-->
-        <H1>Products list</H1>
-
-        <table>
-            <tr>
-                <th scope="col">&nbsp;Product_Id</th>
-                <th scope="col">&nbsp;Name</th>
-                <th scope="col">&nbsp;Price</th>
-                <th scope="col">&nbsp;Stock</th>
-            </tr>
-            <?php
-            while ($erregistroa = mysqli_fetch_array($result)) {
-                $argazki_helbidea = $erregistroa["Product_picture"];
-                printf(
-                    "<tr>
+    <div class="row container mt-5 mx-auto">
+        <h5>Products list</h5>
+        <div class="col-md-6">
+            <table>
+                <tr>
+                    <th scope="col">&nbsp;Product_Id</th>
+                    <th scope="col">&nbsp;Name</th>
+                    <th scope="col">&nbsp;Price</th>
+                    <th scope="col">&nbsp;Stock</th>
+                </tr>
+                <?php
+                while ($erregistroa = mysqli_fetch_array($result)) {
+                    $argazki_helbidea = $erregistroa["Product_picture"];
+                    printf(
+                        "<tr>
                                 <td>&nbsp;%s&nbsp;</td>
                                 <td>&nbsp;%s&nbsp;</td>
                                 <td>&nbsp;%s&nbsp;</td>
@@ -106,33 +102,33 @@ $result = mysqli_query($link, "select * from products");
                                 </td>
 
                             </tr>",
-                    $erregistroa["Product_Id"],
-                    $erregistroa["Name"],
-                    $erregistroa["Price"],
-                    $erregistroa["Stock"],
-                    $erregistroa["Product_Id"]
-                );
-            }
-            ?>
-        </table>
-
-        <button id='addProduct' class="btn btn-outline-warning" type="button">Add Product</button>
-        
-        <div id='productuberria' style="display: none">
-            <form id="newproduct" name="newproduct" method="POST" action="PHP_Employees.php" enctype="multipart/form-data">
-                <h1>New Product</h1>
-                <input type="text" name="product_name" placeholder="Name" min="1" required /> </br>
-                <input type="text" pattern="[+-]?([0-9]*[.])?[0-9]+" name="product_price" placeholder="Unit price" min="1" required /> </br>
-                <input type="text" pattern="[0-9]+" name="product_stock" placeholder="Stock" min="1" required /> </br>
-                <input class="col-sm-8" type="file" accept="image/png, image/jpeg" name="argazkia" required></br>
-                <input type="submit" id="newproduct" value="ADD" name="newproduct"/>
-            </form>
+                        $erregistroa["Product_Id"],
+                        $erregistroa["Name"],
+                        $erregistroa["Price"],
+                        $erregistroa["Stock"],
+                        $erregistroa["Product_Id"]
+                    );
+                }
+                ?>
+            </table>
         </div>
-        </br>
-        
-    </div>
+        <div class="col-md-6">
+            <button id='addProduct' class="btn btn-outline-warning">Add Product</button>
 
+            <div id='productuberria' style="display: none">
+                <form method="POST" action="PHP_Employees.php" enctype="multipart/form-data">
+                    <h5 class="mt-2">New Product</h5>
+                    <input type="text" class="mt-2" name="product_name"  placeholder="Name" required /> </br>
+                    <input type="text" class="mt-2" name="product_price" placeholder="Unit price" pattern="[+-]?([0-9]*[.])?[0-9]+" min="1" required /> </br>
+                    <input type="text" class="mt-2" name="product_stock" placeholder="Stock" pattern="[0-9]+" min="1" max="1000" required /> </br>
+                    <input type="file" class="mt-2" name="argazkia" class="col-sm-8"  accept="image/png, image/jpeg"  required></br>
+                    <input type="submit" class="mt-2" value="ADD" name="newproduct" />
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
 
 <!--Script abrir pestaña MyProfile-->
@@ -150,5 +146,6 @@ $result = mysqli_query($link, "select * from products");
         $('button#addProduct').click(function() {
             $("#productuberria").fadeToggle('slow');
         })
+        
     })
 </script>

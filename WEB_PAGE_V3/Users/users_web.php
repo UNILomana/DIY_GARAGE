@@ -66,7 +66,7 @@ $surname = $_SESSION["Surname"];
                                     printf(' ');
                                     printf($surname); ?></p>
                     </form>
-                    <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='./MyBookings.php'>My Bookings</a></button>
+                    <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Bookings_PHP/MyBookings.php'>My Bookings</a></button>
                     <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Products_PHP/MyPurchases.php'>My Purchases</a></button></br>
                     <button class="btn btn-secondary mt-2"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
                 </div>

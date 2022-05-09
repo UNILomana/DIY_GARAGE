@@ -1,4 +1,3 @@
-
 <?php
 include("../connect_db.php");
 
@@ -12,28 +11,21 @@ if (isset($_POST['insert_book'])) {
 
 function delete_bookings($erreserba)
 {
-  //include("../connect_db.php");
-  //$gakoa = $_GET["erreserba"];
   $gakoa = $erreserba;
   $link = connectDataBase();
 
   $delete = mysqli_query($link, "delete from bookings where Booking_Id='$gakoa'");
-  $result = mysqli_query($link, "select * from bookings");
 
   mysqli_close($link);
-  /*Berriro ere hasierako fitxategiari deitzeko*/
   header("Location: ./MYBookings.php");
 }
 
 
 function insert_bookings()
 {
-  $link = connectDataBase(); //connect_db.php-ko funtzioa
+  $link = connectDataBase(); 
   session_start();
   $sesioa = $_SESSION['User_Id'];
- // include("../connect_db.php");
-
-
   $date = $_POST['data'];
   $time = $_POST['ordua'];
   $type = $_POST['vehicles'];
@@ -50,16 +42,15 @@ function insert_bookings()
   $helper = $lerroa['Helper'];
   
   if ($emaitza2 == 0) {
+    header("Location: ./Bookings.php?incorrect=yes");
 
     //$kabina = mysqli_query($link, "select * from cabins where Type = '$type' and Disponibility = '1'");
   } else if ($emaitza2 > 0) {
     $kaixo = mysqli_query($link, "select * from bookings where Date = '$date' and Hour= '$time' and Cabin_Id ='$cabin'"); //comprueba si existe alguna reserva con esa fecha
     $ilara = mysqli_num_rows($kaixo);
 
-    if ($ilara > 0) {
-      //echo "<script> document.getElementById('status_button').innerHTML = 'The dates are not avaliable' </script>"; //si alguna fecha existe salta error
-      echo '<script type="text/javascript">alert("The dates are not avaliable");</script>';
-      header("Location: ./Bookings.php");
+    if ($ilara > 0) {     
+      header("Location: ./Bookings.php?incorrect=yes");
     } else {
 
       
@@ -80,14 +71,12 @@ function insert_bookings()
       //Cuidado con el NULL ha dado problemas
       if ($help == 'yes') {
         $result = mysqli_query($link, "insert into bookings values ('','$sesioa','$cabin','$date', '$time', '$type', '$help', '$helper' , '$hours', '$total_price')");
-        echo "<script> window.parent.document.getElementById('status_button').innerHTML = 'Saved!' </script>";
       } else if ($help == 'no') {
         $result = mysqli_query($link, "insert into bookings values ('','$sesioa','$cabin','$date', '$time', '$type', '$help', NULL, '$hours', '$total_price')");
-        echo "<script> window.parent.document.getElementById('status_button').innerHTML = 'Saved!' </script>";
       }
 
       mysqli_close($link);
-      header("Location: ./Bookings.php");
+      header("Location: ./Bookings.php?incorrect=no");
     }
   }
 }

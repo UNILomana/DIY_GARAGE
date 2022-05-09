@@ -26,7 +26,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
-<!--Datos de perfil para Usuario-->
+
 <?php
 //session_start();
 include("../connect_db.php");
@@ -80,11 +80,10 @@ $surname = $_SESSION["Surname"];
     <!--MYPURCHASES CARD-->
     <div id='booking-card-body' class="col-6 mx-auto card text-white">
         <div class="card-body row mt-2">
-            <!--Select-a-->
-            <H1>Your Purchases list</H1>
+           
+            <h5>Your Purchases list</h5>
             <?php
             $sesioa = $_SESSION['User_Id'];
-            //include("../connect_db.php");
             $link = connectDataBase();
             $result = mysqli_query($link, "select * from purchase where User_Id = '$sesioa'");
             ?>

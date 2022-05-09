@@ -6,17 +6,16 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
 	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
 	die();
 }
 ?>
-
+<!DOCTYPE html>
 <html>
 
 <head>
     <!--LINK-s de referencia Jquery, Boostrap, css CUIDAR los link y versiones-->
-    <title>Employees</title>
+    <title>Employees Web Page</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -27,7 +26,6 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 </head>
 
 <?php
-//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
@@ -39,7 +37,7 @@ $surname = $_SESSION["Surname"];
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Home.html"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -74,12 +72,8 @@ $surname = $_SESSION["Surname"];
         </div>
     </div>
 
-
-
     <div class="container mt-5">
         <h1>web page for employees</h1>
-
-
     </div>
 
 </body>

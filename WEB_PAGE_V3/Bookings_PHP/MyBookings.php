@@ -11,10 +11,12 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 	die();
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <title>My Booking</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -36,7 +38,7 @@ $surname = $_SESSION["Surname"];
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
@@ -76,10 +78,9 @@ $surname = $_SESSION["Surname"];
     </div>
 
     <!--MYBOOKINGS CARD-->
-    <div id='booking-card-body' class="col-6 mx-auto card text-white">
-        <div class="card-body row mt-2">
-            <!--Select-a-->
-            <H1>Your booking list</H1>
+    <div id='booking-card-body' class="card col-6 mx-auto text-white">
+        <div class="row card-body  mt-2">
+            <h5>Your booking list</h5>
             <?php
             $sesioa = $_SESSION['User_Id'];
             //include("../connect_db.php");
@@ -98,17 +99,17 @@ $surname = $_SESSION["Surname"];
                 while ($erregistroa = mysqli_fetch_array($result)) {
                     printf(
                         "<tr>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>
-                                    <a href='PHP_Bookings.php?erreserba=%s'> 
-                                        <img src='..//Images/icon.png' width=30px>
-                                    </a>
-                                </td>
-                            </tr>",
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>&nbsp;%s&nbsp;</td>
+                            <td>
+                                <a href='PHP_Bookings.php?erreserba=%s'> 
+                                    <img src='..//Images/icon.png' width=30px>
+                                </a>
+                            </td>
+                        </tr>",
                         $erregistroa["Booking_Id"],
                         $erregistroa["Date"],
                         $erregistroa["Hour"],

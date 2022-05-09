@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>DIY GARAGE</title>
+    <title>Register Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -25,7 +25,6 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav me-auto">
-                    <li><a href="../index.php">Home</a></li>
                 </ul>
             </div>
         </div>
@@ -56,7 +55,7 @@
         <div id='register-card-body' class="col-6 mx-auto card text-white">
             <div class="card-body row ">
                 <h5 class="card-title">Register</h5>
-                <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="register.php">
+                <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./register.php">
                     <i id='register-icon' class="fa fa-user"></i>
                     <input type="text" name="name" placeholder="Name" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
                     <i id='register-icon' class="fa fa-user"></i>
@@ -88,7 +87,7 @@
     include("../connect_db.php");
     $link = connectDataBase();
 
-    if (isset($_POST['email'])) {  //recogemos los datos del formulario
+    if (isset($_POST['email'])) { 
         $name = $_POST["name"];
         $surname = $_POST["apellido"];
         $dni = $_POST["dni"];
@@ -111,26 +110,20 @@
             $dni_error = "Sorry... ID card already taken";
             echo "<script> document.getElementById('status_button').innerHTML = '$dni_error' </script>";
         } else {
-            
             $query = mysqli_query($link, "insert into users values ('$dni','$name','$surname','$TLF', '$email', '$password', '')");
-
             echo "<script> document.getElementById('status_button').innerHTML = 'Saved!' </script>";
         }
     }
     ?>
 
     <script>
-        // validación de registro, comprueba contraseña
-
         $("#registro").submit(function() {
-
             if ($("#password").val() != $("#passwordrep").val()) {
                 alert("The passwords must match");
                 return false;
             }
         })
         $("#registro").submit(function() {
-
             if ($("#password").val() != $("#passwordrep").val()) {
                 alert("The passwords must match");
                 return false;

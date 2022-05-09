@@ -6,7 +6,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
 	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
 	die();
 }
@@ -16,7 +15,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 
 <head>
     <!--LINK-s de referencia Jquery, Boostrap, css CUIDAR los link y versiones-->
-    <title>Employees</title>
+    <title>List of bookings</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -28,7 +27,6 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 
 
 <?php
-//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
@@ -40,7 +38,7 @@ $surname = $_SESSION["Surname"];
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Home.html"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -48,7 +46,6 @@ $surname = $_SESSION["Surname"];
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="mr-5"> <a href="./employees_web.php">Home</a></li>
                     <li class="mr-5"><a href='./Employee_Products.php'>Products managment</a></li>
                     <li class="mr-5"><a href='./GarageAvailability.php'>Garage Availability</a></li>
                 </ul>
@@ -76,11 +73,11 @@ $surname = $_SESSION["Surname"];
     </div>
 
     <!--Main body-->
-    <div class="container mt-5">
+    <div class="container mt-5 table-responsive-xl">
         <H1>Booking list for employees</H1>
         <form method="post">
-            <input type="submit" name="todayList" value="Gaurkoa" />
-            <input type="submit" name="totalList" value="Historikoa" />
+            <input type="submit" name="todayList" value="Today´s bookings" />
+            <input type="submit" name="allList" value="All bookings" />
         </form>
         <table>
             <tr>
@@ -96,7 +93,7 @@ $surname = $_SESSION["Surname"];
             /*Botoia sakatu ezkero bata edo bestea agertzen da. Funtzioetan gordeta daude*/
             if (array_key_exists('todayList', $_POST)) {
                 gaurkoLista();
-            } else if (array_key_exists('totalList', $_POST)) {
+            } else if (array_key_exists('allList', $_POST)) {
                 totalList();
             } else {
                 gaurkoLista(); //directamente gaurko lista agertzeko
@@ -107,7 +104,7 @@ $surname = $_SESSION["Surname"];
                 $link = connectDataBase();
                 $result = mysqli_query($link, "select * from bookings");
                 $gaur = date("Y-m-d"); //date erabiliz urtea-hilabetea-eguna gordetzen dira 
-                echo  'Gaurko data= ', $gaur;
+                echo  'Date= ', $gaur;
                 while ($erregistroa = mysqli_fetch_array($result)) {
                     if ($erregistroa["Date"] == $gaur) { //DB-ko Date eremua berdina bada $gaur-ekin imprimatzen dira
                         printf(
@@ -180,10 +177,6 @@ $surname = $_SESSION["Surname"];
 
         $('#cancel').click(function() {
             $('#card').hide();
-        })
-
-        $('button#addProduct').click(function() {
-            $("#productuberria").fadeToggle('slow');
         })
     })
 </script>

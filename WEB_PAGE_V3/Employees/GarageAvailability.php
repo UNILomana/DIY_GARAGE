@@ -17,7 +17,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 
 <head>
     <!--LINK-s de referencia Jquery, Boostrap, css CUIDAR los link y versiones-->
-    <title>Employees</title>
+    <title>Garage Availability</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -28,7 +28,6 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 </head>
 
 <?php
-//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
 $email = $_SESSION["Email"];
@@ -41,7 +40,7 @@ $result = mysqli_query($link, "select * from cabins");
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md  navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="Home.html"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
                 <span class="line"></span>
                 <span class="line"></span>
@@ -49,7 +48,6 @@ $result = mysqli_query($link, "select * from cabins");
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav me-auto">
-                    <li class="mr-5"> <a href="./employees_web.php">Home</a></li>
                     <li class="mr-5"><a href='./Employee_Products.php'>Products managment</a></li>
                     <li class="mr-5"> <a href='./ListBookingsForEmployees.php'>List of Bookings</a></li>
                 </ul>
@@ -114,7 +112,6 @@ $result = mysqli_query($link, "select * from cabins");
                 <th scope="col">&nbsp;Disponibility</th>
             </tr>
             <?php
-            //include("connect_db.php"); //Kontuz len deklaratua dago
             $link = connectDataBase();
             $result = mysqli_query($link, "select * from cabins");
 
@@ -147,25 +144,18 @@ $result = mysqli_query($link, "select * from cabins");
             ?>
         </table>
     </div>
-
 </body>
-
 </html>
 
 
 <!--Script abrir pestaña MyProfile-->
 <script>
-  
     $(document).ready(function() {
-
         $('button#MyProfile').click(function() {
-            $("#card").fadeToggle('slow');
-            
+            $("#card").fadeToggle('slow'); 
         })
-
         $('#cancel').click(function() {
             $('#card').hide();
         })
-        
     })
 </script>
