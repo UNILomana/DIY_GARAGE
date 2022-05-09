@@ -81,8 +81,6 @@ $surname = $_SESSION["Surname"];
 
             <form method="POST" action="./PHP_Bookings.php">
                 <!--id="newbooking" name="newbooking"-->
-                <h1>New Booking</h1>
-
                 <div class="form-group">
                     <input type="date" name="data" min="<?php echo date("Y-m-d"); ?>" required></br>
                     <!--NOT PAST DATES-->
@@ -99,11 +97,11 @@ $surname = $_SESSION["Surname"];
                 </div>
 
                 <div class="form-group">
-                    <label>Select vehicle:</label>
+                    <label>Select your vehicle:</label>
                     <div class="form-check">
-                        <input type="radio" name="vehicles" value="Cars" required> Cars </input></br>
-                        <input type="radio" name="vehicles" value="Motorbikes"> Motorbikes </input></br>
-                        <input type="radio" name="vehicles" value="Big vehicles"> Big vehicles </input></br>
+                        <input type="radio" name="vehicles" value="Cars" required> Car </input></br>
+                        <input type="radio" name="vehicles" value="Motorbikes"> Motorbike </input></br>
+                        <input type="radio" name="vehicles" value="Big vehicles"> Big vehicle </input></br>
                     </div>
                 </div>
 
@@ -122,7 +120,7 @@ $surname = $_SESSION["Surname"];
 
                 <p id='status_button'></p>
                 <!--Shows if saved-->
-                <input type="submit" value="book" name="insert_book" />
+                <input type="submit" value="Book" name="insert_book" />
             </form>
         </div>
     </div>
@@ -131,7 +129,7 @@ $surname = $_SESSION["Surname"];
     <?php
         if (isset($_GET['incorrect'])) {
             if ($_GET['incorrect']  == 'yes') {
-                echo "<script>document.getElementById('status_button').innerHTML = 'Error!' </script>";
+                echo "<script>document.getElementById('status_button').innerHTML = 'This date is not available!' </script>";
             }
             if ($_GET['incorrect'] == 'no'){
                 echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
