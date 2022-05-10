@@ -23,6 +23,7 @@
                 <span class="line"></span>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav me-2"><a href="./Products_PHP/Products_Unloged.php">Our Products</a></ul>
                 <ul class="navbar-nav me-auto"><a href="./contact.php">Contact Us</a></ul>
                 <p class="me-3 text-danger" id="login_text"></p>
                 <button id='Login' class="btn btn-outline-warning" type="button">Login</button>

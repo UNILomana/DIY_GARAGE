@@ -113,11 +113,6 @@ $surname = $_SESSION["Surname"];
                     </div>
                 </div>
 
-                <div class="form-group">
-                    <label>Use hours:</label>
-                    <input type="number" name="use_hours" placeholder="Hours" min='1' max='8' required></br>
-                </div>
-
                 <p id='status_button'></p>
                 <!--Shows if saved-->
                 <input type="submit" value="Book" name="insert_book" />

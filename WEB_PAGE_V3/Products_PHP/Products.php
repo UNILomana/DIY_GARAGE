@@ -1,14 +1,14 @@
-<?php 
+<?php
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
-	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
-	die();
+if (!$_SESSION["Email"] || $_SESSION["Password"] == null) {
+
+    echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
+    die();
 }
 ?>
 
@@ -80,76 +80,59 @@ $surname = $_SESSION["Surname"];
         </div>
     </div>
 
-    <!--BOOKING FORM-->
-    <?php
-    //include("../connect_db.php");
-    $link = connectDataBase();
-    $result = mysqli_query($link, "select * from products");
-    ?>
 
-    <div id='booking-card-body' class="col-6 mx-auto card text-white">
-        <div class="card-body row mt-2">
-            <h5 class="card-title">Products list</h5>
-            <table>
-                <tr>
-                    <th scope="col">&nbsp;Product_Id</th>
-                    <th scope="col">&nbsp;Name</th>
-                    <th scope="col">&nbsp;Price</th>
-                    <th scope="col">&nbsp;Stock</th>
-                </tr>
-                <?php
-                while ($erregistroa = mysqli_fetch_array($result)) {
-                    printf(
-                        "<tr>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                                <td>&nbsp;%s&nbsp;</td>
-                            </tr>",
-                        $erregistroa["Product_Id"],
-                        $erregistroa["Name"],
-                        $erregistroa["Price"],
-                        $erregistroa["Stock"]
-                    );
-                }
-                // mysqli_free_result($result);
-                //mysqli_close($link);
-                ?>
-            </table>
-
-            <form method="POST" action="./PHP_Purchase.php">
-                <h1>Buy Product</h1>
-                <div class="form-group">
-                    <?php
-                    $result = mysqli_query($link, "select * from products");
-
-                    echo '<select name="products">';
-                    while ($erregistroa = mysqli_fetch_array($result)) {
-                        echo '<option value="' . $erregistroa['Product_Id'] . '">' . $erregistroa['Name'] . '</option>';
-                    }
-                    echo '</select></br>';
-                    mysqli_free_result($result);
-                    mysqli_close($link);
-                    ?>
-                </div>
-                <input type="text" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required />
-                <input type="submit" value="Buy" name="getpurchase" />
-                <p id='status_button'></p>
-            </form>
-            <a href="./MyPurchases.php"><input type="button" value="MyPurchases"></a>
+    <div class="container mt-5">
+        <div class="row">
+            <?php
+            $result = mysqli_query($link, "select * from products");
+            while ($erregistroa = mysqli_fetch_array($result)) {
+                $argazki_helbidea = $erregistroa["Product_picture"];
+                printf(
+                    "<div class= 'col-sm-3' name='products'>
+							<img src='$argazki_helbidea' width='150px' height='150px'></img>
+							<p>&nbsp;%s&nbsp;</p>
+							<p>&nbsp;%s&nbsp;€</p>
+					</div>",
+                    $erregistroa["Name"],
+                    $erregistroa["Price"]
+                );
+            };
+            ?>
         </div>
+
+        <form method="POST" action="./PHP_Purchase.php">
+            <h1>Buy Product</h1>
+            <div class="form-group">
+                <?php
+                $result = mysqli_query($link, "select * from products");
+
+                echo '<select name="products">';
+                while ($erregistroa = mysqli_fetch_array($result)) {
+                    echo '<option value="' . $erregistroa['Product_Id'] . '">' . $erregistroa['Name'] . '</option>';
+                }
+                echo '</select></br>';
+                mysqli_free_result($result);
+                mysqli_close($link);
+                ?>
+            </div>
+            <input type="text" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required />
+            <input type="submit" value="Buy" name="getpurchase" />
+            <p id='status_button'></p>
+        </form>
     </div>
 
+
 </body>
+
 </html>
 
 <!--If is an error on the booking-->
 <?php
-    if (isset($_GET['correct'])) {
-        if ($_GET['correct']  == 'yes') {
-            echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
-        }
+if (isset($_GET['correct'])) {
+    if ($_GET['correct']  == 'yes') {
+        echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
     }
+}
 ?>
 
 <!--Script abrir pestaña MyProfile-->
