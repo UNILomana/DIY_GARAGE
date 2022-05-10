@@ -31,15 +31,15 @@
         </div>
     </nav>
 
-     <!--LOGIN CARD-->
-     <div class="row">
+    <!--LOGIN CARD-->
+    <div class="row">
         <div id='card' class="ms-auto">
             <div id='card-body' class="card text-white bg-primary">
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
                     <form action='./Logins/PHP_InOut.php' method="POST">
                         <label>Email:</label></br>
-                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"/>
+                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
                         <label>Password:</label></br>
                         <input style='width:95%;' type='password' id='pasahitza' name='password' />
                         <input type="checkbox" onclick="showPass()">Show Password </br>
@@ -53,23 +53,23 @@
         </div>
     </div>
 
-    <div class="row">
-        <div id='register-card-body' class="col-6 mx-auto card text-white">
-            <div class="card-body row ">
-                <h5 class="card-title">Contact Form</h5>
-                <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./mail.php">
-                    <label class="col-4 mt-3">Name</label> <input class="col-4" type="text" name="name"></br>
-                    <label class="col-4 mt-3 mb-3">Your Email</label> <input class="col-4" type="text" name="email"></br>
-                    <label>Message</label></br><textarea name="message" rows="6" cols="27"></textarea></br>
-                    <p class="col-8 mt-3" id='contact_text'></p>
-                    <input type="submit" value="Send"></br><input type="reset" value="Clear"></br>
-                </form>
-                <div class="col-lg-6">
-                    <img src="./Images/mail.png" width="95%">
-                </div>
+
+    <div id='register-card-body' class="col-6 mx-auto card text-white">
+        <div class="card-body row ">
+            <h5 class="card-title">Contact Form</h5>
+            <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./mail.php">
+                <label class="col-4 mt-3">Name</label> <input class="col-4" type="text" name="name"></br>
+                <label class="col-4 mt-3 mb-3">Your Email</label> <input class="col-4" type="text" name="email"></br>
+                <label>Message</label></br><textarea name="message" rows="6" cols="27"></textarea></br>
+                <p class="col-8 mt-3" id='contact_text'></p>
+                <input type="submit" value="Send"></br><input type="reset" value="Clear"></br>
+            </form>
+            <div class="col-lg-6">
+                <img src="./Images/cliente.png" width="95%">
             </div>
         </div>
     </div>
+
 
 </body>
 

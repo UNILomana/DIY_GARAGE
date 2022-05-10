@@ -52,7 +52,7 @@
 
     <!--REGISTER FORM-->
     <!--Deja registrarse como 'iker.fer@gmail' -->
-    <div class="row">
+   
         <div id='register-card-body' class="col-6 mx-auto card text-white">
             <div class="card-body row ">
                 <h5 class="card-title">Register</h5>
@@ -82,7 +82,7 @@
                 <a href="../index.php">Go to login</a>
             </div>
         </div>
-    </div>
+
 
     <?php
     include("../connect_db.php");
