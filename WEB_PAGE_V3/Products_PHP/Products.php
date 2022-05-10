@@ -117,7 +117,7 @@ $surname = $_SESSION["Surname"];
                 ?>
             </table>
 
-            <form method="POST" action="PHP_Purchase.php">
+            <form method="POST" action="./PHP_Purchase.php">
                 <h1>Buy Product</h1>
                 <div class="form-group">
                     <?php

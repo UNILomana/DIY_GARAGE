@@ -50,7 +50,8 @@
         </div>
     </div>
 
-    <!--REGISTER FORM--> <!--Deja registrarse como 'iker.fer@gmail' -->
+    <!--REGISTER FORM-->
+    <!--Deja registrarse como 'iker.fer@gmail' -->
     <div class="row">
         <div id='register-card-body' class="col-6 mx-auto card text-white">
             <div class="card-body row ">
@@ -63,7 +64,7 @@
                     <i id='register-icon' class="fa fa-id-card"></i>
                     <input type="text" name="dni" placeholder="ID card" required pattern="^[0-9]{8,8}[A-Za-z]$" title="The format must be 8 digits and one letter."></br>
                     <i id='register-icon' class="fa fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Email" required> </br>
+                    <input type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"> </br>
                     <!--ONDO IPINI-->
                     <i id='register-icon' class="fa fa-lock"></i>
                     <input type="password" id="password" placeholder="Password" name="password" minlength="6" required> </br>
@@ -87,13 +88,17 @@
     include("../connect_db.php");
     $link = connectDataBase();
 
-    if (isset($_POST['email'])) { 
+    if (isset($_POST['email'])) {
+        $result = $link->prepare("insert into users values (? , ? , ? , ? , ? , ? , ?)");
+        $result->bind_param("sssssss", $dni, $name, $surname, $TLF, $email, $password, $profile_photo);
+
+        $dni = $_POST["dni"];
         $name = $_POST["name"];
         $surname = $_POST["apellido"];
-        $dni = $_POST["dni"];
+        $TLF = $_POST["TLF"];
         $email = $_POST["email"];
         $password = $_POST["password"];
-        $TLF = $_POST["TLF"];
+        $profile_photo = '';
 
         //VALIDACIÓN DE EMAIL
         $sqlEmail = "select * from users where email= '$email'";
@@ -110,26 +115,22 @@
             $dni_error = "Sorry... ID card already taken";
             echo "<script> document.getElementById('status_button').innerHTML = '$dni_error' </script>";
         } else {
-            $query = mysqli_query($link, "insert into users values ('$dni','$name','$surname','$TLF', '$email', '$password', '')");
+            $result->execute();
             echo "<script> document.getElementById('status_button').innerHTML = 'Saved!' </script>";
         }
+        $result->close();
+        $link->close();
     }
     ?>
-
-    <script>
-        $("#registro").submit(function() {
-            if ($("#password").val() != $("#passwordrep").val()) {
-                alert("The passwords must match");
-                return false;
-            }
-        })
-        $("#registro").submit(function() {
-            if ($("#password").val() != $("#passwordrep").val()) {
-                alert("The passwords must match");
-                return false;
-            }
-        })
-    </script>
 </body>
 
 </html>
+
+<script>
+    $("#registro").submit(function() {
+        if ($("#password").val() != $("#passwordrep").val()) {
+            alert("The passwords must match");
+            return false;
+        }
+    })
+</script>

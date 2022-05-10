@@ -34,9 +34,7 @@ function login(){
                                         and Password = '$password'");
 
         if (mysqli_num_rows($result_users) == 0 && mysqli_num_rows($result_employees) == 0) {
-            $user_error = 'Incorrect username or password please try again';
-            echo"<script> document.getElementById('login_text').innerHTML = '$user_error' </script>";
-            header("Location: ../index.php");
+            header("Location: ../index.php?incorrect=yes");
         }
         /*FOR USERS*/ 
         else if ($erregistroa = mysqli_fetch_array($result_users)) {

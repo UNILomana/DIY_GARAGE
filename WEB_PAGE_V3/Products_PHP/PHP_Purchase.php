@@ -22,9 +22,14 @@ function delete_purchase($erosketa){
 
 function insert_purchase(){
     session_start();
-    
     $link = connectDataBase();
 
+    //INSERT VALUES(CON SEGURIDAD PREPARED STATEMENTS)
+    //a todos los valores ponerles string('s') bestela no funciona
+    $result = $link->prepare("insert into purchase values (? , ? , ? , ? , ? , ? )");
+    $result -> bind_param("ssssss", $purchase_Id, $sesioa , $ID , $quantity , $date , $total_Price );
+
+    $purchase_Id = '';
     $ID = $_POST['products'];
     $quantity =  $_POST['zenbatekoa'];
     $sesioa = $_SESSION['User_Id'];
@@ -34,11 +39,10 @@ function insert_purchase(){
     $row = mysqli_fetch_assoc($price);
     $total_Price = ((float)$row['Price'] * (int)$quantity);  
     
-    //INSERT VALUES
-    $result = mysqli_query($link, "insert into purchase values ('', '$sesioa', '$ID', '$quantity', '$date', '$total_Price' )");
-
-    mysqli_close($link);
-    header("Location: ./Products.php?correct=yes");
+    $result->execute();
+    $result->close();
+    $link->close();
   
+    header("Location: ./Products.php?correct=yes");
 }
 ?>

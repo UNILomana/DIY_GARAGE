@@ -25,6 +25,14 @@ function insert_bookings()
 {
   $link = connectDataBase(); 
   session_start();
+
+  //INSERT VALUES(CON SEGURIDAD PREPARED STATEMENTS)
+  //Bookings_Id al ser AUTO_INCREMENT hay que dejarlo vacío
+  //Cuidado con el NULL ha dado problemas
+  $result = $link -> prepare ("insert into bookings values (?,?,?,?,?,?,?,?,?,?)");
+  $result -> bind_param("ssssssssss", $booking_id, $sesioa , $cabin , $date , $time , $type , $help , $helper , $hours , $total_price);
+
+  $booking_id = '';
   $sesioa = $_SESSION['User_Id'];
   $date = $_POST['data'];
   $time = $_POST['ordua'];
@@ -32,20 +40,19 @@ function insert_bookings()
   $help = $_POST['yes_no'];
   $hours = $_POST['use_hours'];
 
-
   //Elegir la cabina y el ayudante SEGUN TYPE OF VEHICLE
   $kabina = mysqli_query($link, "select * from cabins where Type = '$type'");
   $kabina_lerroa = mysqli_fetch_assoc($kabina);
   $cabin = $kabina_lerroa['Cabin_Id'];
-  $helper = $kabina_lerroa['Helper'];
   
   //COMPRUEBA QUE LAS FECHAS ESTAN DISPONIBLES
-  $fecha= mysqli_query($link, "select * from bookings where Date = '$date' and Hour= '$time' and Cabin_Id ='$cabin'"); //comprueba si existe alguna reserva con esa fecha
+  $fecha= mysqli_query($link, "select * from bookings where Date = '$date' and Hour= '$time' and Cabin_Id ='$cabin'"); 
   $fecha_lerroa = mysqli_num_rows($fecha);
 
   if ($fecha_lerroa > 0) {     
     header("Location: ./Bookings.php?incorrect=yes");
   } else {
+
     //TOTAL_PRICE CALCULO
     $price = mysqli_query($link, "select * from vehicles where Type = '$type'");
     $price_lerroa = mysqli_fetch_assoc($price);
@@ -71,17 +78,16 @@ function insert_bookings()
     }
     $total_price = ((float)$price_lerroa['Price_Hour'] + (float)$worker_hours_price);*/
 
-
-    //Bookings_Id al ser AUTO_INCREMENT hay que dejarlo vacío
-    //Cuidado con el NULL ha dado problemas
     if ($help == 'yes') {
-      $result = mysqli_query($link, "insert into bookings values ('','$sesioa','$cabin','$date', '$time', '$type', '$help', '$helper' , '$hours', '$total_price')");
+      $helper = $kabina_lerroa['Helper'];
     } else if ($help == 'no') {
-      $result = mysqli_query($link, "insert into bookings values ('','$sesioa','$cabin','$date', '$time', '$type', '$help', NULL, '$hours', '$total_price')");
+      $helper = NULL;
     }
 
-    mysqli_close($link);
+    $result->execute();
+    $result->close();
+    $link->close();
+
     header("Location: ./Bookings.php?incorrect=no");
     }
   }
-?>

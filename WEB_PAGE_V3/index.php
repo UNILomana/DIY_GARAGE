@@ -37,9 +37,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Login</h5>
                     <form action='./Logins/PHP_InOut.php' method="POST">
-                        <p>Email:</p>
-                        <input style='width:95%;' type='text' name='email' id="mail" />
-                        <p>Password:</p>
+                        <label>Email:</label></br>
+                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"/>
+                        <label>Password:</label></br>
                         <input style='width:95%;' type='password' id='pasahitza' name='password' />
                         <input type="checkbox" onclick="showPass()">Show Password </br>
                         <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
@@ -57,19 +57,20 @@
 
         <p>Who we are? xvfxv</p>
 
-        <!--If is an error on the booking-->
-        <?php
-        if (isset($_GET['incorrect'])) {
-            if ($_GET['incorrect']  == 'yes') {
-                echo "<script>document.getElementById('login_text').innerHTML = 'Incorrect username or password please try again' </script>";
-            }
-        }
-        ?>
+
     </div>
 
 </body>
 
 </html>
+
+<?php
+if (isset($_GET['incorrect'])) {
+    if ($_GET['incorrect']  == 'yes') {
+        echo "<script>document.getElementById('login_text').innerHTML = 'Incorrect username or password please try again' </script>";
+    }
+}
+?>
 
 <!--JQuery Script abrir pestaña login-->
 <script>
