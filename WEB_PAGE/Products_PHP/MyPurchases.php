@@ -19,6 +19,7 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
     <title>My purchases List</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="../Images/page2.png">
     <link rel="stylesheet" href="../Styles/Style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -34,6 +35,16 @@ $link = connectDataBase();
 $email = $_SESSION["Email"];
 $name = $_SESSION["Name"];
 $surname = $_SESSION["Surname"];
+$sesioa = $_SESSION['User_Id'];
+
+/*Navbar Photo*/
+$emaitza = mysqli_query($link, "select * from users where User_Id='$sesioa'");
+$erregistroa = mysqli_fetch_array($emaitza);
+if ($erregistroa["Profile_Img"] == NULL) {
+    $argazki_helbidea = '../Images/Clients/none.png';
+} else {
+    $argazki_helbidea = $erregistroa["Profile_Img"];
+}
 ?>
 
 <body>
@@ -52,8 +63,10 @@ $surname = $_SESSION["Surname"];
                     <li class="mr-5"><a href="../Bookings_PHP/Bookings.php">Bookings</a></li>
                     <li><a href="../Products_PHP/Products.php">Products</a></li>
                 </ul>
-                <button id='MyProfile' class="btn btn-outline-warning" type="button">MyProfile</button>
-            </div>
+                <button id='MyProfile' class="btn " type="button">
+                    <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
+                </button>
+              </div>
         </div>
     </nav>
 
@@ -72,7 +85,31 @@ $surname = $_SESSION["Surname"];
                     <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Bookings_PHP/MyBookings.php'>My Bookings</a></button>
                     <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
                     <button class="btn btn-secondary mt-2"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
+                    <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#photoModal">Change photo</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Photo Modal  -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photoModalLabel">Choose a photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="../PHP_photo.php" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Select the photo to change:</label></br>
+                        <input type="file" class="mt-2" name="profilephoto" class="col-sm-8" accept="image/png, image/jpeg" required></br>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save" name="changephoto" /></button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

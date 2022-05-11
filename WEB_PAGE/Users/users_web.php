@@ -1,20 +1,21 @@
-<?php 
+<?php
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
-	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
-	die();
+if (!$_SESSION["Email"] || $_SESSION["Password"] == null) {
+
+    echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
+    die();
 }
 ?>
 <html>
 
 <head>
     <title>DIY GARAGE</title>
+    <link rel="icon" href="../Images/page2.png">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../Styles/Style.css">
@@ -26,12 +27,21 @@ if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
 
 <!--Datos de perfil para Usuario-->
 <?php
-//session_start();
 include("../connect_db.php");
 $link = connectDataBase();
-$email= $_SESSION["Email"];
-$name= $_SESSION["Name"];
+$sesioa = $_SESSION['User_Id'];
+$email = $_SESSION["Email"];
+$name = $_SESSION["Name"];
 $surname = $_SESSION["Surname"];
+
+/*Navbar Photo*/
+$emaitza = mysqli_query($link, "select * from users where User_Id='$sesioa'");
+$erregistroa = mysqli_fetch_array($emaitza);
+if ($erregistroa["Profile_Img"] == NULL) {
+    $argazki_helbidea = '../Images/Clients/none.png';
+} else {
+    $argazki_helbidea = $erregistroa["Profile_Img"];
+}
 ?>
 
 <body>
@@ -49,7 +59,9 @@ $surname = $_SESSION["Surname"];
                     <li class="mr-5"><a href="../Bookings_PHP/Bookings.php">Bookings</a></li>
                     <li><a href="../Products_PHP/Products.php">Products</a></li>
                 </ul>
-                <button id='MyProfile' class="btn btn-outline-warning" type="button">MyProfile</button>
+                <button id='MyProfile' class="btn " type="button">
+                    <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
+                </button>
             </div>
         </div>
     </nav>
@@ -58,7 +70,7 @@ $surname = $_SESSION["Surname"];
     <div class="row">
         <div id='card' class="ms-auto">
             <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body" >
+                <div class="card-body">
                     <h5 class="card-title">My Profile</h5>
                     <form action='index.php' method="POST">
                         <p>Email: <?php printf($email); ?> </p>
@@ -69,23 +81,43 @@ $surname = $_SESSION["Surname"];
                     <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Bookings_PHP/MyBookings.php'>My Bookings</a></button>
                     <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Products_PHP/MyPurchases.php'>My Purchases</a></button></br>
                     <button class="btn btn-secondary mt-2"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
+                    <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#photoModal">Change photo</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Photo Modal  -->
+    <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="photoModalLabel">Choose a photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="../PHP_photo.php" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <label>Select the photo to change:</label></br>
+                        <input type="file" class="mt-2" name="profilephoto" class="col-sm-8" accept="image/png, image/jpeg" required></br>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save" name="changephoto" /></button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 
     <div class="container mt-5">
         <h1>web page for users</h1>
-
         <a href='../Products_PHP/Products.php'>Products</a>
         <a href='../Bookings_PHP/Bookings.php'>Bookings</a>
-
     </div>
-
+   
 </body>
-
 </html>
 
 <!--Script abrir pestaña login-->
