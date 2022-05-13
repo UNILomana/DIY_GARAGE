@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
-<?php 
-	include("../connect_db.php");
-	$link = connectDataBase();
-	$result = mysqli_query($link, "select * from products");
+<?php
+include("../connect_db.php");
+$link = connectDataBase();
+$result = mysqli_query($link, "select * from products");
 ?>
+
 <head>
     <title>DIY GARAGE</title>
     <meta charset="utf-8">
@@ -19,33 +20,33 @@
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
+        <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+        </div>
+        <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-auto">
-                    <li><a href="../contact.php">Contact us</a></li>
-                    
-                </ul>
-                <button id='Login' class="btn btn-outline-warning" type="button">Login</button>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../contact_php/contact.php">Contact</a></ul>
             </div>
+        </div>
+        <div class="col-4 text-center">
+            <p class="me-3 text-danger" id="login_text"></p>
+            <button id='Login' class="btn btn-outline-dark" type="button">Login</button>
         </div>
     </nav>
 
     <!--LOGIN CARD-->
     <div class="row">
         <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+            <div id='card-body' class="card ">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">Login</h5>
-                    <form action='./Logins/PHP_InOut.php' method="POST">
+                    <form action='../Logins/PHP_InOut.php' method="POST">
                         <label>Email:</label></br>
-                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"/>
+                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
                         <label>Password:</label></br>
                         <input style='width:95%;' type='password' id='pasahitza' name='password' />
                         <input type="checkbox" onclick="showPass()">Show Password </br>
@@ -53,36 +54,55 @@
                         <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                     </form>
 
-                    <a class="btn btn-outline-warning mt-3" href="./Logins/register.php">Register</a>
+                    <a class="btn btn-secondary mt-3" href="../Logins/register.php">Register</a>
                 </div>
             </div>
         </div>
     </div>
 
-
     <div class="container mt-5">
-		<div class="row">
-			<?php
-			while ($erregistroa = mysqli_fetch_array($result)){
-				$argazki_helbidea = $erregistroa["Product_picture"];
-				printf(
-					"<div class= 'col-sm-3'>
+    <h2>Products shop</h2>
+        <div class="row mt-5">
+            <?php
+            while ($erregistroa = mysqli_fetch_array($result)) {
+                $argazki_helbidea = $erregistroa["Product_picture"];
+                printf(
+                    "<div class= 'col-sm-3'>
 						<img src='$argazki_helbidea' width='150px' height='150px'></img>
 						<p>&nbsp;%s&nbsp;</p>
 						<p>&nbsp;%s&nbsp;€</p>
 					</div>",
-					$erregistroa["Name"],
-					$erregistroa["Price"]
-				);
-			};
-			?>
-		</div>
+                    $erregistroa["Name"],
+                    $erregistroa["Price"]
+                );
+            };
+            ?>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_Unloged.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../contact_php/contact.php">Contact</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+        </div>
     </div>
 
 </body>
 
+</html>
 
-<!--Script abrir pestaña login-->
+<!--JQuery Script abrir pestaña login-->
 <script>
     $(document).ready(function() {
 
@@ -94,61 +114,23 @@
             $('#card').fadeToggle('slow');
         })
     })
+
+    function showPass() {
+        var x = document.getElementById("pasahitza");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    const email = document.getElementById("email");
+
+    email.addEventListener("input", function(event) {
+        if (email.validity.typeMismatch) {
+            email.setCustomValidity("¡Se esperaba una dirección de correo electrónico!");
+        } else {
+            email.setCustomValidity("");
+        }
+    });
 </script>
-
-<!--PHP FOR LOGIN-->
-<?php /*
-include("./connect_db.php");
-$link = connectDataBase();
-if (isset($_POST['email'])) {
-
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $result_users = mysqli_query($link, "select * from users 
-                                        where Email='$email' 
-                                        and Password = '$password'");
-    $result_employees = mysqli_query($link, "select * from employees 
-                                        where Email='$email' 
-                                        and Password = '$password'");
-
-    if (mysqli_num_rows($result_users) == 0 && mysqli_num_rows($result_employees) == 0) {
-        echo "<script>alert('Incorrect username or password please try again');</script>";
-    }
-    /*FOR USERS*/ /*else if ($erregistroa = mysqli_fetch_array($result_users)) {
-        if ($email = $erregistroa['Email'] & $password = $erregistroa['Password']) {
-
-            session_start();
-
-            //guardamos en variables de session los datos que utilizaremos a lo largo de la sesion:
-            $email = $erregistroa['Email'];
-            $_SESSION["Email"] = $erregistroa['Email'];
-            $_SESSION["Name"] = $erregistroa['Name'];
-            $_SESSION["Surname"] = $erregistroa['Surname'];
-            $_SESSION["TLF"] = $erregistroa['TLF'];
-            $_SESSION["Password"] = $erregistroa['Password'];
-            $_SESSION["User_Id"] = $erregistroa['User_Id'];
-
-            echo "<script>alert('Welcome to the system " . $_SESSION["Name"] . "');</script>";
-            header("Location: ./Users/users_web.php");
-        }
-    }
-    /*FOR EMPLOYEES*//* else if ($erregistroa = mysqli_fetch_array($result_employees)) {
-        if ($email = $erregistroa['Email'] & $password = $erregistroa['Password']) {
-
-            session_start();
-            $email = $erregistroa['Email'];
-            $_SESSION["Email"] = $erregistroa['Email'];
-            $_SESSION["Name"] = $erregistroa['Name'];
-            $_SESSION["Surname"] = $erregistroa['Surname'];
-            $_SESSION["TLF"] = $erregistroa['TLF'];
-            $_SESSION["Password"] = $erregistroa['Password'];
-            $_SESSION["Employee_Id"] = $erregistroa['Employee_Id'];
-
-            echo "<script>alert('Welcome to the system " . $_SESSION["Name"] . "');</script>";
-            header("Location: ./Employees/employees_web.php");
-        }
-    }
-}*/
-?>
-
-</html>

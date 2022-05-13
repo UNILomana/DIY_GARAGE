@@ -12,36 +12,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 
 <body>
+
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
             <a class="navbar-brand" href="index.php"><img src="./Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+        </div>
+        <div class="col-4">
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
+                <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-2"><a href="./Products_PHP/Products_Unloged.php">Our Products</a></ul>
-                <ul class="navbar-nav me-auto"><a href="./contact.php">Contact Us</a></ul>
-                <p class="me-3 text-danger" id="login_text"></p>
-                <button id='Login' class="btn btn-outline-warning" type="button">Login</button>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="./Products_PHP/Products_Unloged.php">Products</a></ul>
+                <ul class="navbar-nav navbar-hover mx-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="./contact_php/contact.php">Contact</a></ul>
             </div>
+        </div>
+        <div class="col-4 text-center">
+            <p class="text-danger" id="login_text"></p>
+            <button id='Login' class="mx-auto btn btn-outline-dark" type="button">Login</button>
         </div>
     </nav>
 
+
     <!--LOGIN CARD-->
-    <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+    <div class="row ">
+        <div id='card' class="ms-auto cstm-bg">
+            <div id='card-body' class="card">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">Login</h5>
                     <form action='./Logins/PHP_InOut.php' method="POST">
                         <label>Email:</label></br>
-                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"/>
+                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
                         <label>Password:</label></br>
                         <input style='width:95%;' type='password' id='pasahitza' name='password' />
                         <input type="checkbox" onclick="showPass()">Show Password </br>
@@ -49,7 +54,7 @@
                         <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                     </form>
 
-                    <a class="btn btn-outline-warning mt-3" href="./Logins/register.php">Register</a>
+                    <a class="btn btn-secondary mt-3" href="./Logins/register.php">Register</a>
                 </div>
             </div>
         </div>
@@ -57,10 +62,57 @@
 
 
     <div class="container mt-5">
+        <div class="container mt-5 text-center">
+            <h2>Welcome to DIY garage </h2>
+            <br>
+            <h3>The garage for all your car and mechanical problems</h3>
 
-        <p>Who we are? xvfxv</p>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./images/garagecarousel.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/carouselgarage.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./images/carouseltest.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="3">
+                    </div>
+                </div>
 
+                <button class="carousel-control-prev text-dark" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
+                    <span class="" aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                    <span class="sr-only">Previous</span>
+                </button>
+                <button class="carousel-control-next text-dark" type="button" data-target="#carouselExampleIndicators" data-slide="next">
+                    <span class="" aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                    <span class="sr-only">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_PHP/Products_Unloged.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="./contact_php/contact.php">Contact</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+        </div>
     </div>
 
 </body>

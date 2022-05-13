@@ -1,14 +1,14 @@
-<?php 
+<?php
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
-if(!$_SESSION["Email"] || $_SESSION["Password"] == null){
-    
-	echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
-	die();
+if (!$_SESSION["Email"] || $_SESSION["Password"] == null) {
+
+    echo "<html> <marquee><h1>You don't have permission to load this page.<h1></marquee><html>";
+    die();
 }
 ?>
 
@@ -48,33 +48,33 @@ if ($erregistroa["Profile_Img"] == NULL) {
 ?>
 
 <body>
-
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
             <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+        </div>
+        <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="mr-5"><a href="../Bookings_PHP/Bookings.php">Bookings</a></li>
-                    <li><a href="../Products_PHP/Products.php">Products</a></li>
-                </ul>
-                <button id='MyProfile' class="btn " type="button">
-                    <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
-                </button>
-              </div>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Products_PHP/Products.php">Products</a></ul>
+                <ul class="navbar-nav navbar-hover mx-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Bookings_PHP/Bookings.php">Bookings</a></ul>
+            </div>
+        </div>
+        <div class="col-4 text-center">
+            <p class="me-3 text-danger" id="login_text"></p>
+            <button id='MyProfile' class="btn " type="button">
+                <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
+            </button>
         </div>
     </nav>
 
     <!--LOGIN CARD-->
     <div class="row">
         <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+            <div id='card-body' class="card ">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">My Profile</h5>
                     <form action='index.php' method="POST">
                         <p>Email: <?php printf($email); ?> </p>
@@ -103,7 +103,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
                     <div class="modal-body">
                         <label>Select the photo to change:</label></br>
                         <input type="file" class="mt-2" name="profilephoto" class="col-sm-8" accept="image/png, image/jpeg" required></br>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -117,7 +117,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
     <!--MYPURCHASES CARD-->
     <div id='booking-card-body' class="col-6 mx-auto card text-white">
         <div class="card-body row mt-2">
-           
+
             <h5>Your Purchases list</h5>
             <?php
             $sesioa = $_SESSION['User_Id'];
@@ -159,6 +159,24 @@ if ($erregistroa["Profile_Img"] == NULL) {
                 mysqli_close($link);
                 ?>
             </table>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3 mt-5">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Products_PHP/Products.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Bookings_PHP/Bookings.php">Bookings</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
         </div>
     </div>
 

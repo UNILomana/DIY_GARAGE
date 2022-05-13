@@ -45,32 +45,33 @@ if ($erregistroa["Profile_Img"] == NULL) {
 ?>
 
 <body>
+
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
             <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+        </div>
+        <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+                <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="mr-5"><a href="../Bookings_PHP/Bookings.php">Bookings</a></li>
-                    <li><a href="../Products_PHP/Products.php">Products</a></li>
-                </ul>
-                <button id='MyProfile' class="btn " type="button">
-                    <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
-                </button>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Products_PHP/Products.php">Products</a></ul>
             </div>
+        </div>
+        <div class="col-4 text-center">
+            <p class="me-3 text-danger" id="login_text"></p>
+            <button id='MyProfile' class="btn " type="button">
+                <img src="<?php printf($argazki_helbidea); ?>" alt="Logo" style="width:75px; height: 75px;" class="rounded-pill">
+            </button>
         </div>
     </nav>
 
     <!--LOGIN CARD-->
     <div class="row">
         <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+            <div id='card-body' class="card ">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">My Profile</h5>
                     <form action='index.php' method="POST">
                         <p>Email: <?php printf($email); ?> </p>
@@ -99,7 +100,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
                     <div class="modal-body">
                         <label>Select the photo to change:</label></br>
                         <input type="file" class="mt-2" name="profilephoto" class="col-sm-8" accept="image/png, image/jpeg" required></br>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -156,19 +157,38 @@ if ($erregistroa["Profile_Img"] == NULL) {
         </div>
     </div>
 
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Products_PHP/Products.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Bookings_PHP/Bookings.php">Bookings</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+        </div>
+    </div>
+
     <!--If is an error on the booking-->
     <?php
-        if (isset($_GET['incorrect'])) {
-            if ($_GET['incorrect']  == 'yes') {
-                echo "<script>document.getElementById('status_button').innerHTML = 'This date is not available!' </script>";
-            }
-            if ($_GET['incorrect'] == 'no'){
-                echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
-            }
+    if (isset($_GET['incorrect'])) {
+        if ($_GET['incorrect']  == 'yes') {
+            echo "<script>document.getElementById('status_button').innerHTML = 'This date is not available!' </script>";
         }
+        if ($_GET['incorrect'] == 'no') {
+            echo "<script>document.getElementById('status_button').innerHTML = 'Saved!' </script>";
+        }
+    }
     ?>
 
 </body>
+
 </html>
 
 <!--Script abrir pestaña MyProfile-->

@@ -14,28 +14,28 @@
 </head>
 
 <body>
-
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md  navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
             <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+        </div>
+        <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-auto">
-                </ul>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover me-5"></ul>
             </div>
+        </div>
+        <div class="col-4 text-center">
         </div>
     </nav>
 
     <!--LOGIN CARD-->
     <div class="row">
         <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+            <div id='card-body' class="card ">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">Login</h5>
                     <form action='index.php' method="POST">
                         <p>Email:</p>
@@ -45,7 +45,7 @@
                         <input type="submit" class=" mt-3 btn btn-secondary" value='Entry'>
                         <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                     </form>
-                    <a class="btn btn-outline-warning " href="./Logins/register.php">Register</a>
+                    <a class="btn btn-secondary " href="./Logins/register.php">Register</a>
                 </div>
             </div>
         </div>
@@ -53,36 +53,38 @@
 
     <!--REGISTER FORM-->
     <!--Deja registrarse como 'iker.fer@gmail' -->
-   
-        <div id='register-card-body' class="col-6 mx-auto card text-white">
-            <div class="card-body row ">
-                <h5 class="card-title">Register</h5>
-                <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./register.php">
-                    <i id='register-icon' class="fa fa-user"></i>
-                    <input type="text" name="name" placeholder="Name" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
-                    <i id='register-icon' class="fa fa-user"></i>
-                    <input type="text" name="apellido" placeholder="Surname" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
-                    <i id='register-icon' class="fa fa-id-card"></i>
-                    <input type="text" name="dni" placeholder="ID card" required pattern="^[0-9]{8,8}[A-Za-z]$" title="The format must be 8 digits and one letter."></br>
-                    <i id='register-icon' class="fa fa-envelope"></i>
-                    <input type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"> </br>
-                    <!--ONDO IPINI-->
-                    <i id='register-icon' class="fa fa-lock"></i>
-                    <input type="password" id="password" placeholder="Password" name="password" minlength="6" required> </br>
-                    <i id='register-icon' class="fa fa-lock"></i>
-                    <input type="password" id="passwordrep" placeholder="Repeat password" name="password" minlength="6" required> </br>
-                    <i id='register-icon' class="fa fa-phone"></i>
-                    <input type="int" name="TLF" placeholder="TLF"> </br>
-                    <input type="submit" value='Register'>
-                    <p id='status_button' class='button'></p>
-                    <!--Shows if saved-->
-                </form>
-                <div class="col-lg-7">
-                    <img src="../Images/pic-register.svg">
-                </div>
-                <a href="../index.php">Go to login</a>
+
+    <div id='register-card-body' class="col-6 mx-auto card">
+        <div class="card-body row ">
+            <h5 class="card-title">Register</h5>
+            <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./register.php">
+                <i id='register-icon' class="fa fa-user"></i>
+                <input type="text" name="name" placeholder="Name" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
+                <i id='register-icon' class="fa fa-user"></i>
+                <input type="text" name="apellido" placeholder="Surname" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
+                <i id='register-icon' class="fa fa-id-card"></i>
+                <input type="text" name="dni" placeholder="ID card" required pattern="^[0-9]{8,8}[A-Za-z]$" title="The format must be 8 digits and one letter."></br>
+                <i id='register-icon' class="fa fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"> </br>
+                <!--ONDO IPINI-->
+                <i id='register-icon' class="fa fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" name="password" minlength="6" required> </br>
+                <i id='register-icon' class="fa fa-lock"></i>
+                <input type="password" id="passwordrep" placeholder="Repeat password" name="password" minlength="6" required> </br>
+                <i id='register-icon' class="fa fa-phone"></i>
+                <input type="int" name="TLF" placeholder="TLF"> </br>
+                <input type="submit" value='Register'>
+                <p id='status_button' class='button'></p>
+                <!--Shows if saved-->
+            </form>
+            <div class="col-lg-7">
+                <img src="../Images/pic-register.svg">
             </div>
+            <a href="../index.php">Go to login</a>
         </div>
+    </div>
+
+
 
 
     <?php

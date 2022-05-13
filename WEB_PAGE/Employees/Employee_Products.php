@@ -39,29 +39,29 @@ $result = mysqli_query($link, "select * from products");
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+        <div class="col-4 text-center">
             <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+        </div>
+        <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <span class="line"></span>
-                <span class="line"></span>
-                <span class="line"></span>
+            <i class="fa fa-caret-down"></i>
             </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav me-auto">
-                    <li class="mr-5"><a href='./GarageAvailability.php'>Garage Availability</a></li>
-                    <li class="mr-5"> <a href='./ListBookingsForEmployees.php'>List of Bookings</a></li>
-                </ul>
-                <button id='MyProfile' class="btn btn-outline-warning" type="button">MyProfile</button>
+            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href='./ListBookingsForEmployees.php'>List of Bookings</a></ul>
             </div>
+        </div>
+        <div class="col-4 text-center">
+            <p class="me-3 text-danger" id="login_text"></p>
+            <button id='MyProfile' class="btn btn-outline-dark" type="button">MyProfile</button>
         </div>
     </nav>
 
     <!--MYPROFILE CARD-->
     <div class="row">
         <div id='card' class="ms-auto">
-            <div id='card-body' class="card text-white bg-primary">
-                <div class="card-body">
+            <div id='card-body' class="card ">
+                <div class="card-body cscard-bg">
                     <h5 class="card-title">My Profile</h5>
                     <form action='index.php' method="POST">
                         <p>Email: <?php printf($email); ?> </p>
@@ -77,7 +77,7 @@ $result = mysqli_query($link, "select * from products");
 
     <!--Main body-->
     <div class="row container mt-5 mx-auto">
-        <h5>Products list</h5>
+        <h2>Products list</h2>
         <div class="col-md-6">
             <table>
                 <tr>
@@ -114,18 +114,36 @@ $result = mysqli_query($link, "select * from products");
             </table>
         </div>
         <div class="col-md-6">
-            <button id='addProduct' class="btn btn-outline-warning">Add Product</button>
+            <button id='addProduct' class="btn btn-outline-dark">Add Product</button>
 
             <div id='productuberria' style="display: none">
                 <form method="POST" action="PHP_Employees.php" enctype="multipart/form-data">
                     <h5 class="mt-2">New Product</h5>
-                    <input type="text" class="mt-2" name="product_name"  placeholder="Name" required /> </br>
+                    <input type="text" class="mt-2" name="product_name" placeholder="Name" required /> </br>
                     <input type="text" class="mt-2" name="product_price" placeholder="Unit price" pattern="[+-]?([0-9]*[.])?[0-9]+" min="1" required /> </br>
                     <input type="text" class="mt-2" name="product_stock" placeholder="Stock" pattern="[0-9]+" min="1" max="1000" required /> </br>
-                    <input type="file" class="mt-2" name="argazkia" class="col-sm-8"  accept="image/png, image/jpeg"  required></br>
+                    <input type="file" class="mt-2" name="argazkia" class="col-sm-8" accept="image/png, image/jpeg" required></br>
                     <input type="submit" class="mt-2" value="ADD" name="newproduct" />
                 </form>
             </div>
+        </div>
+    </div>
+
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3 mt-5">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Employees/Employee_Products.php">Products Management</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Employees/ListBookingsForEmployees.php">List of Bookings</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
         </div>
     </div>
 </body>
@@ -147,6 +165,6 @@ $result = mysqli_query($link, "select * from products");
         $('button#addProduct').click(function() {
             $("#productuberria").fadeToggle('slow');
         })
-        
+
     })
 </script>

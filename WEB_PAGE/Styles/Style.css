@@ -18,7 +18,7 @@ html {
 #register-card-body {
     margin-top: 100px;
     width: 50%;
-    background-color: rgb(204, 216, 34);
+    background-color: #c4c4c49a;
 }
 
 #booking-card-body {
@@ -56,4 +56,30 @@ li {
 a,
 u {
     text-decoration: none;
+}
+
+
+/*
+/* 
+.vl {
+  border-left: 3px solid red;
+  height: 75px;
+} */
+
+.cstm-bg {
+    background-color: #C4C4C4;
+}
+
+.cscard-bg {
+    background-color: #c4c4c49a;
+}
+
+.navbar-hover:hover {
+    background: #dbdbdb;
+    border-radius: 20px;
+}
+
+.footer-hover:hover {
+    background: #dbdbdb;
+    border-radius: 20px;
 }
