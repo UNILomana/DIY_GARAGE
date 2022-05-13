@@ -2,19 +2,18 @@ from Employees import Employee
 import Basic
 
 
-def menu_E():
+def menu():
     print('\tEmployee management')
-    print('\t=========================')
+    print('\t================')
     print('\ta) View all employers')
     print('\tb) Create a new employee')
     print('\tc) Delete an employee')
     print('\td) Main menu')
 
-    print('\t=========================')
-    option =''
+    option= ''
 
     while option != 'd':
-        option = input('\tEnter an option: ').lower()
+        option = input('Enter an option: ').lower()
         if option == 'a':
             Display_Employees()
         if option == 'b':
@@ -24,9 +23,11 @@ def menu_E():
 
 
 def Add_Employ():
+    #eginda
     ans = 1
     while ans == 1:
-        e1 = Employee('', '', '', '', '', '', '')
+
+        e1 = Employee("", "", "", "", "", "","")
 
         e1.setId()
         e1.setName()
@@ -36,27 +37,28 @@ def Add_Employ():
         e1.setEmail()
         e1.setPassword()
 
-        Basic.BasicMethods.save_object_append(e1, 'employee_data.pkl')
+        Basic.BasicMethods.save_object(e1, 'employee_data.txt')
         print("Employee Added Successfully ")
-        ans = int(input("Do you want to add a new student? (1/0)"))
+        ans = int(input("Do you want to add a new employee? (1/0)"))
         del e1
 
 
-# Function to Remove Employee with given id
+# Function to Remove Employee with given Id
 def Remove_Employ():
+    #irakurri listan gorde listatik elegidu eta borratu idatzi berriz artxiboan
     ans = 1
     while ans == 1:
-        Basic.BasicMethods.delete_object(Employee, 'employee_data.pkl')
+        Basic.BasicMethods.delete_object(Employee, 'employee_data.txt')
+
         print("Employee Delete Successfully ")
-        ans = int(input("Do you want to delete another student? (1/0)"))
+        ans = int(input("Do you want to delete another employee? (1/0)"))
 
 
 # Function to Display All Employees
 def Display_Employees():
-    Basic.BasicMethods.read_object(Employee, 'employee_data.pkl')
+    Basic.BasicMethods.read_employee(Employee, 'employee_data.txt')
 
 
-# Functon to go main_menu
 def main_menu():
     from menu import menuGeneral
     menuGeneral()

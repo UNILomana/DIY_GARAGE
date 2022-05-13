@@ -3,26 +3,26 @@ import Basic
 
 
 
-def menuU():
+def menu():
     print('\tUsers management')
-    print('\t=========================')
+    print('\t================')
     print('\ta) View all users')
     print('\tb) Create a new user')
     print('\tc) Delete an user')
     print('\td) Main menu')
-    option = ''
-    print('\t=========================')
 
-    while option != 'e':
-        option = input('\tEnter an option: ').lower()
+    option = ''
+
+    while option != 'd':
+        option = input('Enter an option: ').lower()
         if option == 'a':
             Display_Users()
         if option == 'b':
             Add_User()
         if option == 'c':
             Remove_User()
-        if option == 'd':
-            main_menu()
+
+
 
 
 
@@ -31,7 +31,7 @@ def Add_User():
     ans = 1
     while ans == 1:
 
-        u1 = User('', '', '', '', '', '', '')
+        u1 = User ("", "", "", "", "", "")
 
         u1.setId()
         u1.setName()
@@ -47,6 +47,7 @@ def Add_User():
 
 
 def Remove_User():
+    #irakurri listan gorde listatik elegidu eta borratu idatzi berriz artxiboan
     ans = 1
     while ans == 1:
         Basic.BasicMethods.delete_object(User,'user_data.txt')
@@ -61,3 +62,4 @@ def Display_Users():
 def main_menu():
     from menu import menuGeneral
     menuGeneral()
+

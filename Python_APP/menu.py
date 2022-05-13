@@ -1,27 +1,32 @@
-from employers_menu import menu_E as menu_Emp
-from users_menu import menuU as menu_Use
+from employers_menu import menu as menuEmployers
+from users_menu import menu as menuUsers
+from products_menu import menu as menuProducts
 
-def menuGeneral():
+def menuMimprimatu():
     print('MENU')
-    print('=========================')
-    print('a) Employees Management')
+    print('================')
+    print('a) Employers Management')
     print('b) Products Management')
     print('c) Bookings Management')
     print('d) Users Management')
     print('e) Exit')
 
-    option=''
-    print('=========================')
+    option = ''
+    print("================")
+def menuGeneral():
 
+    menuMimprimatu()
+    option = input('Enter an option: ').lower()
     while option != 'e':
-        option = input('Main menu options: ').lower()
         if option == 'a':
-            menu_Emp()
+            menuEmployers()
         if option == 'b':
-            menu_Use()
+            menuProducts()
         if option == 'c':
             bookings_menu()
         if option == 'd':
-            users_menu.menu()
+            menuUsers()
+        menuMimprimatu()
+        option = input('Main menu Enter an option: ').lower()
 
 menuGeneral()
