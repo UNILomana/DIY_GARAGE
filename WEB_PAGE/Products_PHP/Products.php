@@ -51,7 +51,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
         <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
@@ -117,7 +117,8 @@ if ($erregistroa["Profile_Img"] == NULL) {
 
 
     <div class="container mt-5">
-        <div class="row">
+    <h2>Products shop</h2>
+        <div class="row mt-5">
             <?php
             $result = mysqli_query($link, "select * from products");
             while ($erregistroa = mysqli_fetch_array($result)) {

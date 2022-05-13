@@ -20,7 +20,7 @@ $result = mysqli_query($link, "select * from products");
 
 <body>
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
         <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>

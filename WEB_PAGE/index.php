@@ -18,7 +18,7 @@
 <body>
 
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-lg cstm-bg py-2 row justify-content-center">
+    <nav class="navbar navbar-expand-lg cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
             <a class="navbar-brand" href="index.php"><img src="./Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
@@ -39,63 +39,61 @@
 
 
     <!--LOGIN CARD-->
-    <div class="row ">
-        <div id='card' class="ms-auto cstm-bg">
-            <div id='card-body' class="card">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">Login</h5>
-                    <form action='./Logins/PHP_InOut.php' method="POST">
-                        <label>Email:</label></br>
-                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
-                        <label>Password:</label></br>
-                        <input style='width:95%;' type='password' id='pasahitza' name='password' />
-                        <input type="checkbox" onclick="showPass()">Show Password </br>
-                        <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
-                        <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
-                    </form>
 
-                    <a class="btn btn-secondary mt-3" href="./Logins/register.php">Register</a>
-                </div>
+    <div id='card' class="ms-auto cstm-bg">
+        <div id='card-body' class="card">
+            <div class="card-body cscard-bg">
+                <h5 class="card-title">Login</h5>
+                <form action='./Logins/PHP_InOut.php' method="POST">
+                    <label>Email:</label></br>
+                    <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
+                    <label>Password:</label></br>
+                    <input style='width:95%;' type='password' id='pasahitza' name='password' />
+                    <input type="checkbox" onclick="showPass()">Show Password </br>
+                    <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
+                    <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
+                </form>
+
+                <a class="btn btn-secondary mt-3" href="./Logins/register.php">Register</a>
             </div>
         </div>
     </div>
 
 
-    <div class="container mt-5">
-        <div class="container mt-5 text-center">
-            <h2>Welcome to DIY garage </h2>
-            <br>
-            <h3>The garage for all your car and mechanical problems</h3>
-            <!-- Carousel -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <!-- Indicators/dots -->
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
-                </div>
-                <!-- The slideshow/carousel -->
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="./images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./images/ferrari.jpeg" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./images/moto2.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
-                    </div>
-                </div>
-                <!-- Left and right controls/icons -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon"></span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                    <span class="carousel-control-next-icon"></span>
-                </button>
+    <div class="container mt-5 text-center">
+        <h2>Welcome to DIY garage </h2>
+        <br>
+        <h3>The garage for all your car and mechanical problems</h3>
+        <!-- Carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <!-- Indicators/dots -->
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
             </div>
+            <!-- The slideshow/carousel -->
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./Images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./Images/ferrari.jpeg" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./Images/moto2.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
+                </div>
+            </div>
+            <!-- Left and right controls/icons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
         </div>
     </div>
+
 
     <!--FOOTER-->
     <div class="cstm-bg d-flex justify-content-around p-3">

@@ -47,7 +47,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
 <body>
 
     <!---NAVBAR-->
-    <nav class="navbar navbar-expand-md cstm-bg py-2 row justify-content-center">
+    <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
             <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
@@ -113,9 +113,8 @@ if ($erregistroa["Profile_Img"] == NULL) {
 
     <!--BOOKING FORM-->
     <div id='booking-card-body' class="card col-6 mx-auto text-white">
+        <h2>New Booking</h2>
         <div class="row card-body mt-2">
-            <h5 class="card-title">New Booking</h5>
-
             <form method="POST" action="./PHP_Bookings.php">
                 <!--id="newbooking" name="newbooking"-->
                 <div class="form-group">
