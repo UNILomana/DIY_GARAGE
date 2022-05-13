@@ -66,32 +66,32 @@
             <h2>Welcome to DIY garage </h2>
             <br>
             <h3>The garage for all your car and mechanical problems</h3>
-
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
+            <!-- Carousel -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <!-- Indicators/dots -->
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+                </div>
+                <!-- The slideshow/carousel -->
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="./images/garagecarousel.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="1">
+                        <img src="./images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
                     </div>
                     <div class="carousel-item">
-                        <img src="./images/carouselgarage.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="2">
+                        <img src="./images/ferrari.jpeg" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
                     </div>
                     <div class="carousel-item">
-                        <img src="./images/carouseltest.png" class="d-block w-70" style="height: 266px; width: 1000px;" alt="3">
+                        <img src="./images/moto2.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
                     </div>
                 </div>
-
-                <button class="carousel-control-prev text-dark" type="button" data-target="#carouselExampleIndicators" data-slide="prev">
-                    <span class="" aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
-                    <span class="sr-only">Previous</span>
+                <!-- Left and right controls/icons -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
                 </button>
-                <button class="carousel-control-next text-dark" type="button" data-target="#carouselExampleIndicators" data-slide="next">
-                    <span class="" aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
-                    <span class="sr-only">Next</span>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
                 </button>
             </div>
         </div>
