@@ -21,7 +21,7 @@
     </div>
     <div class="col-4">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-      <i class="fa fa-caret-down"></i>
+        <i class="fa fa-caret-down"></i>
       </button>
       <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
         <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Products_PHP/Products_Unloged.php">Products</a></ul>
@@ -34,29 +34,31 @@
   </nav>
 
   <!--LOGIN CARD-->
-  <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">Login</h5>
-                    <form action='index.php' method="POST">
-                        <p>Email:</p>
-                        <input style='width:95%;' type='text' name='email' />
-                        <p>Password:</p>
-                        <input style='width:95%;' type='password' name='password' /> </br>
-                        <input type="submit" class=" mt-3 btn btn-secondary" value='Entry'>
-                        <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
-                    </form>
-                    <a class="btn btn-secondary " href="./Logins/register.php">Register</a>
-                </div>
-            </div>
-        </div>
+
+  <div id='card' class="ms-auto">
+    <div id='card-body' class="card ">
+      <div class="card-body cscard-bg">
+        <h5 class="card-title">Login</h5>
+        <form action='../Logins/PHP_InOut.php' method="POST">
+          <label>Email:</label></br>
+          <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
+          <label>Password:</label></br>
+          <input style='width:95%;' type='password' id='pasahitza' name='password' />
+          <input type="checkbox" onclick="showPass()">Show Password </br>
+          <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
+          <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
+        </form>
+
+        <a class="btn btn-secondary mt-3" href="../Logins/register.php">Register</a>
+      </div>
     </div>
+  </div>
+
 
   <div class="d-flex justify-content-center">
     <div class="d-flex flex-column w-50 justify-content-center  m-5">
       <h2>Contact us</h2>
-      <form class="bg-light px-5 py-3">
+      <form class="bg-light px-5 py-3" id="registro" name="registro" method="POST" action="./mail.php">
         <div class="form-row">
           <div class="form-group">
             <label for="inputAddress">Name</label>
@@ -77,7 +79,8 @@
             <textarea class="form-control" placeholder="Your message...." id="exampleFormControlTextarea1" rows="4"></textarea>
           </div>
         </div>
-        <button type="submit" class="btn btn-outline-dark my-3">Send</button>
+        <p class="col-8 mt-3" id='contact_text'></p>
+        <input type="submit" class="btn btn-outline-dark my-3 me-3" value="Send"><input type="reset"  class="btn btn-outline-dark my-3" value="Clear"></br>
       </form>
     </div>
   </div>
@@ -111,6 +114,15 @@ if (isset($_GET['incorrect'])) {
   if ($_GET['incorrect']  == 'yes') {
     echo "<script>document.getElementById('login_text').innerHTML = 'Incorrect username or password please try again' </script>";
   }
+}
+?>
+
+<!--If is an error on the booking-->
+<?php
+if (isset($_GET['mail'])) {
+    if ($_GET['mail']  == 'no') {
+        echo "<script>document.getElementById('contact_text').innerHTML = 'Send!' </script>";
+    }
 }
 ?>
 

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 </head>
 
 <body>
@@ -40,13 +39,13 @@
 
     <!--LOGIN CARD-->
 
-    <div id='card' class="ms-auto cstm-bg">
+    <div id='card' class="ms-auto">
         <div id='card-body' class="card">
             <div class="card-body cscard-bg">
                 <h5 class="card-title">Login</h5>
                 <form action='./Logins/PHP_InOut.php' method="POST">
                     <label>Email:</label></br>
-                    <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
+                    <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
                     <label>Password:</label></br>
                     <input style='width:95%;' type='password' id='pasahitza' name='password' />
                     <input type="checkbox" onclick="showPass()">Show Password </br>
@@ -147,13 +146,5 @@ if (isset($_GET['incorrect'])) {
         }
     }
 
-    const email = document.getElementById("email");
 
-    email.addEventListener("input", function(event) {
-        if (email.validity.typeMismatch) {
-            email.setCustomValidity("¡Se esperaba una dirección de correo electrónico!");
-        } else {
-            email.setCustomValidity("");
-        }
-    });
 </script>

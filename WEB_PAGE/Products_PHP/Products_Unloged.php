@@ -39,7 +39,6 @@ $result = mysqli_query($link, "select * from products");
     </nav>
 
     <!--LOGIN CARD-->
-    <div class="row">
         <div id='card' class="ms-auto">
             <div id='card-body' class="card ">
                 <div class="card-body cscard-bg">
@@ -58,11 +57,12 @@ $result = mysqli_query($link, "select * from products");
                 </div>
             </div>
         </div>
-    </div>
+    
 
-    <div class="container mt-5">
+    
+    <div class="container me-5 mt-5 d-flex flex-column align-items-start">
     <h2>Products shop</h2>
-        <div class="row mt-5">
+        <div class="row mt-5 d-flex justify-content-center">
             <?php
             while ($erregistroa = mysqli_fetch_array($result)) {
                 $argazki_helbidea = $erregistroa["Product_picture"];

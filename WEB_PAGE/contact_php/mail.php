@@ -9,5 +9,5 @@ $subject = "Contact Form Web Page";
 $mailheader = "From: $email \r\n";
 
 //mail($recipient, $subject, $formcontent, $mailheader) or die("Error!");
-header("Location: ./contact.php?incorrect=no");
+header("Location: ./contact.php?mail=no");
 ?>

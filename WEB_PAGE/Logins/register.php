@@ -21,7 +21,7 @@
         </div>
         <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-            <i class="fa fa-caret-down"></i>
+                <i class="fa fa-caret-down"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav navbar-hover me-5"></ul>
@@ -31,25 +31,7 @@
         </div>
     </nav>
 
-    <!--LOGIN CARD-->
-    <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card ">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">Login</h5>
-                    <form action='index.php' method="POST">
-                        <p>Email:</p>
-                        <input style='width:95%;' type='text' name='email' />
-                        <p>Password:</p>
-                        <input style='width:95%;' type='password' name='password' /> </br>
-                        <input type="submit" class=" mt-3 btn btn-secondary" value='Entry'>
-                        <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
-                    </form>
-                    <a class="btn btn-secondary " href="./Logins/register.php">Register</a>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!--REGISTER FORM-->
     <!--Deja registrarse como 'iker.fer@gmail' -->

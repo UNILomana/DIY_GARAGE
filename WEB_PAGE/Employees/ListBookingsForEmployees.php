@@ -43,7 +43,7 @@ $surname = $_SESSION["Surname"];
         </div>
         <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-            <i class="fa fa-caret-down"></i>
+                <i class="fa fa-caret-down"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Employees/Employee_Products.php">Products Management</a></ul>
@@ -56,22 +56,22 @@ $surname = $_SESSION["Surname"];
     </nav>
 
     <!--MYPROFILE CARD-->
-    <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card ">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">My Profile</h5>
-                    <form action='index.php' method="POST">
-                        <p>Email: <?php printf($email); ?> </p>
-                        <p>Name: <?php printf($name);
-                                    printf(' ');
-                                    printf($surname); ?></p>
-                    </form>
-                    <button class="btn btn-secondary"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
-                </div>
+
+    <div id='card' class="ms-auto">
+        <div id='card-body' class="card ">
+            <div class="card-body cscard-bg">
+                <h5 class="card-title">My Profile</h5>
+                <form action='index.php' method="POST">
+                    <p>Email: <?php printf($email); ?> </p>
+                    <p>Name: <?php printf($name);
+                                printf(' ');
+                                printf($surname); ?></p>
+                </form>
+                <button class="btn btn-secondary"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
             </div>
         </div>
     </div>
+
 
     <!--Main body-->
     <div class="container mt-5 table-responsive-xl">

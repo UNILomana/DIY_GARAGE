@@ -40,11 +40,11 @@ $surname = $_SESSION["Surname"];
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
-        <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="./employees_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
         <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-            <i class="fa fa-caret-down"></i>
+                <i class="fa fa-caret-down"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href='./Employee_Products.php'>Products managment</a></ul>
@@ -58,22 +58,22 @@ $surname = $_SESSION["Surname"];
     </nav>
 
     <!--MYPROFILE CARD-->
-    <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card ">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">My Profile</h5>
-                    <form action='index.php' method="POST">
-                        <p>Email: <?php printf($email); ?> </p>
-                        <p>Name: <?php printf($name);
-                                    printf(' ');
-                                    printf($surname); ?></p>
-                    </form>
-                    <button class="btn btn-secondary"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
-                </div>
+
+    <div id='card' class="ms-auto">
+        <div id='card-body' class="card ">
+            <div class="card-body cscard-bg">
+                <h5 class="card-title">My Profile</h5>
+                <form action='index.php' method="POST">
+                    <p>Email: <?php printf($email); ?> </p>
+                    <p>Name: <?php printf($name);
+                                printf(' ');
+                                printf($surname); ?></p>
+                </form>
+                <button class="btn btn-secondary"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
             </div>
         </div>
     </div>
+
 
     <div class="container mt-5">
         <h1>web page for employees</h1>

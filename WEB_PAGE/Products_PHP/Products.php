@@ -53,11 +53,11 @@ if ($erregistroa["Profile_Img"] == NULL) {
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
-        <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="../Users/users_web.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
         <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-            <i class="fa fa-caret-down"></i>
+                <i class="fa fa-caret-down"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav navbar-hover "><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../Bookings_PHP/Bookings.php">Bookings</a></ul>
@@ -72,25 +72,25 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </nav>
 
     <!--LOGIN CARD-->
-    <div class="row">
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card ">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">My Profile</h5>
-                    <form action='index.php' method="POST">
-                        <p>Email: <?php printf($email); ?> </p>
-                        <p>Name: <?php printf($name);
-                                    printf(' ');
-                                    printf($surname); ?></p>
-                    </form>
-                    <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Bookings_PHP/MyBookings.php'>My Bookings</a></button>
-                    <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
-                    <button class="btn btn-secondary mt-2"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
-                    <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#photoModal">Change photo</button>
-                </div>
+
+    <div id='card' class="ms-auto">
+        <div id='card-body' class="card ">
+            <div class="card-body cscard-bg">
+                <h5 class="card-title">My Profile</h5>
+                <form action='index.php' method="POST">
+                    <p>Email: <?php printf($email); ?> </p>
+                    <p>Name: <?php printf($name);
+                                printf(' ');
+                                printf($surname); ?></p>
+                </form>
+                <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='../Bookings_PHP/MyBookings.php'>My Bookings</a></button>
+                <button class="btn btn-info mt-2"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
+                <button class="btn btn-secondary mt-2"><a style='text-decoration:none; color:white' href='../Logins/PHP_InOut.php?logout=yes'>Log Out</a></button>
+                <button class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#photoModal">Change photo</button>
             </div>
         </div>
     </div>
+
 
     <!-- Photo Modal  -->
     <div class="modal fade" id="photoModal" tabindex="-1" aria-labelledby="photoModalLabel" aria-hidden="true">
@@ -100,7 +100,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
                     <h5 class="modal-title" id="photoModalLabel">Choose a photo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form method="POST" action="../PHP_photo.php" enctype="multipart/form-data">
+                <form method="POST" action="../Users/PHP_photo.php" enctype="multipart/form-data">
                     <div class="modal-body">
                         <label>Select the photo to change:</label></br>
                         <input type="file" class="mt-2" name="profilephoto" class="col-sm-8" accept="image/png, image/jpeg" required></br>
@@ -116,9 +116,9 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
 
-    <div class="container mt-5">
-    <h2>Products shop</h2>
-        <div class="row mt-5">
+    <div class="container me-5 mt-5 d-flex flex-column align-items-start">
+        <h2>Products shop</h2>
+        <div class="row mt-5 d-flex justify-content-center">
             <?php
             $result = mysqli_query($link, "select * from products");
             while ($erregistroa = mysqli_fetch_array($result)) {
