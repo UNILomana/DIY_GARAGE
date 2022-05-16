@@ -116,7 +116,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
         <h2>New Booking</h2>
         <p>In this section you can choose the day and time you want to have your vehicle repaired. </br>
         To view <b>your cabin bookings</b> go to your profile where you can find <b>My bookings.</b></p>
-        <div class="row card-body mt-2">
+        <div class="row card-body mt-2 ">
             <form method="POST" action="./PHP_Bookings.php">
                 <!--id="newbooking" name="newbooking"-->
                 <div class="form-group">

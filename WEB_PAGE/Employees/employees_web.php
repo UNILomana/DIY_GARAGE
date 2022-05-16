@@ -76,7 +76,21 @@ $surname = $_SESSION["Surname"];
 
 
     <div class="container mt-5">
-        <h1>web page for employees</h1>
+        <h1>Employees Page</h1>
+        <p>This page is dedicated to employees. Where you can add <b>new products</b> to the shop so that customers can buy them, and delete a product that is no longer available. </br>
+        In the reservations tab you can view <b>all reservations</b> made by customers with all the information, you can also view only <b>today's reservations</b>.</p>
+        <div class="row mt-5">
+            <a href='../Employees/Employee_Products.php' class="col-md-5 me-auto text-decoration-none">
+                <div class="card text-center justify-content-center" id="card_bookings" style='height:200px;'>
+                    <h5 class="card-title">Products managment</h5>
+                </div>
+            </a>
+            <a href='../Employees/ListBookingsForEmployees.php' class="col-md-5 mx-auto text-decoration-none">
+                <div class="card text-center justify-content-center" id="card_products" style='height:200px;'>
+                    <h5 class="card-title">List of Bookings</h5>
+                </div>
+            </a>
+        </div>
     </div>
 
     <!--FOOTER-->

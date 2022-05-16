@@ -123,6 +123,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
             $sesioa = $_SESSION['User_Id'];
             $link = connectDataBase();
             $result = mysqli_query($link, "select * from purchase where User_Id = '$sesioa'");
+            
             ?>
             <table>
                 <tr>
