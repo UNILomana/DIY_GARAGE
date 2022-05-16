@@ -1,7 +1,7 @@
 from employers_menu import menu as menuEmployers
 from users_menu import menu as menuUsers
 from products_menu import menu as menuProducts
-
+from Booking_menu import menu as menuBookings
 
 def menuMimprimatu():
     print('MENU')
@@ -28,6 +28,6 @@ def menuGeneral():
         if option == 'd':
             menuUsers()
         menuMimprimatu()
-        option = input('Main menu Enter an option: ').lower()
+        option = input('Main menu \nEnter an option: ').lower()
 
 menuGeneral()

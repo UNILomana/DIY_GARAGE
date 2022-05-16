@@ -91,6 +91,55 @@ class BasicMethods():
         else:
             print("There aren't any users")
 
+    def delete_booking(obj, filename):
+        if os.path.exists(filename):
+            BasicMethods.read_Booking(obj, filename)
+            id = input("Enter the id of the booking: ")
+            if (id.isdigit()):
+                inp = open(filename, 'rb')
+                objects = []
+                cont = 1
+                while cont == 1:
+                    try:
+                        objects.append(pickle.load(inp))
+                    except EOFError:
+
+                        cont = 0
+                inp.close()
+                if os.path.exists(filename):
+                    os.remove(filename)
+                for objetua in objects:
+                    if int(objetua.Id) != int(id):
+                        BasicMethods.save_object2(objetua, filename)
+                print("end of file\n")
+            else:
+                print("Insert a correct value please.")
+        else:
+            print("There aren't any booking")
+
+    def read_Booking(obj, filename):
+        if os.path.exists(filename):
+            inp = open(filename, 'rb')
+            objects = []
+            cont = 1
+
+            while cont == 1:
+                try:
+                    objects.append(pickle.load(inp))
+
+                except EOFError:
+                    cont = 0
+            for booking in objects:
+                print("Booking Id: " + booking.Id + "\n", " User Id: " + booking.User_Id + "\n",
+                      " Cabin Id: " + booking.Cabin_Id + "\n", " Date: " + booking.Date + "\n",
+                      " Hour: " + booking.Hour + "\n", " Vehicle Type: " + booking.Vehicle_Type + "\n",
+                      "Employee Help: " + booking.Employee_Help + "\n", "Employee Id: " + booking.Employee_Id + "\n",
+                      " Used Hours: " + booking.Use_Hours + "\n", " Price: " + booking.Price + "€\n")
+
+            print("End of file\n")
+            return objects
+        else:
+            print("There aren't any booking")
 
     @staticmethod
     def delete_object(obj,filename):
