@@ -528,6 +528,11 @@ public class View extends javax.swing.JFrame {
 
         jButtonPurchases.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonPurchases.setText("PURCHASES");
+        jButtonPurchases.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonPurchasesActionPerformed(evt);
+            }
+        });
 
         jButtonBiling.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonBiling.setText("FACTURATION");
@@ -739,6 +744,10 @@ public class View extends javax.swing.JFrame {
     private void jButtonGraphicsGeneralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGraphicsGeneralActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonGraphicsGeneralActionPerformed
+
+    private void jButtonPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPurchasesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonPurchasesActionPerformed
 
     public static View viewaSortuBistaratu() {
         View v = new View();

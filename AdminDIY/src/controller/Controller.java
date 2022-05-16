@@ -233,7 +233,7 @@ public class Controller implements ActionListener {
 
                 case "BACKUSER":
                     view.jDialogBESTUSER.setVisible(false);
-                    view.jDialogUsers.setVisible(true);
+                    view.setVisible(true);
                     break;
 
                 case "BACKFACTURATION":

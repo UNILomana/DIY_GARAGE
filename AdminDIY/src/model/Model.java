@@ -17,6 +17,7 @@ import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.YearMonth;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -709,8 +710,11 @@ public class Model {
     
     public static Double purchaseMonthD(int month){
         int year = LocalDate.now().getYear();
+        YearMonth yearMonthObject = YearMonth.of(year,month);
+        int daysInMonth = yearMonthObject.lengthOfMonth();
+
+        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-" + daysInMonth + "') AS 'Facturation_Month'";
         
-        String sql = "SELECT (SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
         double total = 0;
         String cadena = "";
 
@@ -729,10 +733,14 @@ public class Model {
     
     public static Double bookingsMonthD(int month){
         int year = LocalDate.now().getYear();
-        
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'";
+
+        YearMonth yearMonthObject = YearMonth.of(year,month);
+        int daysInMonth = yearMonthObject.lengthOfMonth();
+        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-" + daysInMonth + "') AS 'Facturation_Month'";
+
         double total = 0;
         String cadena = "";
+        
 
         try (Connection conn = connect();
                 Statement stmt = conn.createStatement();
@@ -752,9 +760,12 @@ public class Model {
         int year = LocalDate.now().getYear();
         Month hilabetea = Month.of(month);
         String mes = hilabetea.getDisplayName(TextStyle.FULL,Locale.ENGLISH);
-               
-        String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') + "
-                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-31') AS 'Facturation_Month'"; 
+        YearMonth yearMonthObject = YearMonth.of(year,month);
+        int daysInMonth = yearMonthObject.lengthOfMonth();
+            String sql = "SELECT (SELECT SUM(Price) FROM bookings WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-" + daysInMonth + "') + "
+                + "(SELECT SUM(Total_Price) FROM purchase WHERE Date BETWEEN '"+year+"-"+month+"-01' AND '"+year+"-"+month+"-" + daysInMonth + "') AS 'Facturation_Month'"; 
+        
+       
         
         double total = 0;
         String cadena = "";
