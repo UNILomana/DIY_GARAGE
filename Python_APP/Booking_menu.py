@@ -1,27 +1,26 @@
-
 import datetime
 import Basic
 from Booking import Booking
 
 def menu():
-    print("\tBookings")
-    print("\t=============")
-    print("\ta) Create a Booking")
-    print("\tb) Delete a Booking")
-    print("\tc) List of Bookings")
-    print("\td) Main Menu")
+    print('\tBookings')
+    print('\t=============')
+    print('\ta) Create a Booking')
+    print('\tb) Delete a Booking')
+    print('\tc) List of Bookings')
+    print('\td) Main Menu')
+
     option = ''
 
-    while option != 'e':
-        option = input("Enter an option: ").lower()
+    while option != 'd':
+        option = input('Enter an option: ').lower()
         if option == 'a':
             create()
         if option == 'b':
             delete()
         if option == 'c':
             List()
-        if option =='d':
-            main_menu()
+
 
 def create():
     ans = 1

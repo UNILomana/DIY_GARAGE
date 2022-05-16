@@ -28,6 +28,6 @@ def menuGeneral():
         if option == 'd':
             menuUsers()
         menuMimprimatu()
-        option = input('Main menu Enter an option: ').lower()
+        option = input('Main menu \nEnter an option: ').lower()
 
 menuGeneral()
