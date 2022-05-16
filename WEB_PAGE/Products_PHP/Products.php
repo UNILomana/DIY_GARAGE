@@ -116,8 +116,11 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
 
-    <div class="container me-5 mt-5 d-flex flex-column align-items-start">
+    <div class="container mt-5 d-flex flex-column ">
         <h2>Products shop</h2>
+        <p>This is the list of products we currently have in our shop. In order to purchase the following products, please <b>scroll down</b> to the bottom where you can choose the product and quantity. </br>
+        To view your purchases go to <b>your profile</b> where you can find <b>My Purchases</b>.
+    </p>
         <div class="row mt-5 d-flex justify-content-center">
             <?php
             $result = mysqli_query($link, "select * from products");

@@ -113,9 +113,24 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <div class="container mt-5">
-        <h1>web page for users</h1>
-        <a href='../Products_PHP/Products.php'>Products</a>
-        <a href='../Bookings_PHP/Bookings.php'>Bookings</a>
+        <h1>Welcome back <?php printf($name) ?>!!</h1>
+        <p>On this website you will be able to book cabins to fix your car, motorbike or large vehicle with your own hands at the <b>best prices</b>.</br>
+            You can make a general overhaul of the car, change engine components, change wheels.
+            In our <b>product shop</b> have all the elements to be able to make these changes. </br>
+            We also offer help from our expert technicians with more than 20 years of experience in the sector. </p>
+
+        <div class="row mt-5">
+            <a href='../Bookings_PHP/Bookings.php' class="col-md-5 me-auto text-decoration-none">
+                <div class="card text-center justify-content-center" id="card_bookings" style='height:200px;'>
+                    <h5 class="card-title">Cabins Booking</h5>
+                </div>
+            </a>
+            <a href='../Products_PHP/Products.php' class="col-md-5 mx-auto text-decoration-none">
+                <div class="card text-center justify-content-center" id="card_products" style='height:200px;'>
+                    <h5 class="card-title">Products Shop</h5>
+                </div>
+            </a>
+        </div>
     </div>
 
     <!--FOOTER-->
@@ -142,6 +157,23 @@ if ($erregistroa["Profile_Img"] == NULL) {
 <!--Script abrir pestaña login-->
 <script>
     $(document).ready(function() {
+
+        $('#card_bookings').animate({
+            opacity: '0'
+        });
+        
+        $('#card_products').animate({
+            opacity: '0'
+        });
+
+        $('#card_bookings').animate({
+            opacity: '1'
+        }, "slow");
+
+        
+        $('#card_products').animate({
+            opacity: '1'
+        }, "slow");
 
         $('button#MyProfile').click(function() {
             $("#card").fadeToggle('slow');

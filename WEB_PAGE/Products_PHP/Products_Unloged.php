@@ -60,8 +60,11 @@ $result = mysqli_query($link, "select * from products");
     
 
     
-    <div class="container me-5 mt-5 d-flex flex-column align-items-start">
+    <div class="container mt-5 d-flex flex-column align-items-start">
     <h2>Products shop</h2>
+    <p>On this page you can see the different products that are available for purchase in our garage shop.  
+    In order to purchase the following products, you must be logged in.
+    </p>
         <div class="row mt-5 d-flex justify-content-center">
             <?php
             while ($erregistroa = mysqli_fetch_array($result)) {

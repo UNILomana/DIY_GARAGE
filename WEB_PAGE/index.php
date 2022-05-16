@@ -91,6 +91,9 @@
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
+        <p class="mt-3">On this website you can make reservations, buy products for the car, and so you can change all kinds of components of the car without any problem. </br>
+            We offer you the place and the tools to do it and you do everything else.</br>
+            In case you need help, our experts will be on site to help and advise you.</p>
     </div>
 
 
@@ -145,6 +148,4 @@ if (isset($_GET['incorrect'])) {
             x.type = "password";
         }
     }
-
-
 </script>

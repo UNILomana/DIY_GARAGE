@@ -115,7 +115,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--MYBOOKINGS CARD-->
-    <div id='booking-card-body' class="card col-6 mx-auto text-white">
+    <div id='booking-card-body' class=" table-responsive-xl card col-6 mx-auto text-white">
         <div class="row card-body  mt-2">
             <h5>Your booking list</h5>
             <?php

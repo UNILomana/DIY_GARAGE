@@ -115,7 +115,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--MYPURCHASES CARD-->
-    <div id='booking-card-body' class="col-6 mx-auto card text-white">
+    <div id='booking-card-body' class="table-responsive-xl col-6 mx-auto card text-white">
         <div class="card-body row mt-2">
 
             <h5>Your Purchases list</h5>

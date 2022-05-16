@@ -114,6 +114,8 @@ if ($erregistroa["Profile_Img"] == NULL) {
     <!--BOOKING FORM-->
     <div id='booking-card-body' class="card col-6 mx-auto text-white">
         <h2>New Booking</h2>
+        <p>In this section you can choose the day and time you want to have your vehicle repaired. </br>
+        To view <b>your cabin bookings</b> go to your profile where you can find <b>My bookings.</b></p>
         <div class="row card-body mt-2">
             <form method="POST" action="./PHP_Bookings.php">
                 <!--id="newbooking" name="newbooking"-->
@@ -157,7 +159,7 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--FOOTER-->
-    <div class="cstm-bg d-flex justify-content-around p-3">
+    <div class="cstm-bg d-flex justify-content-around p-3 mt-5">
         <div class="d-flex flex-column">
             <a class="footer-hover text-decoration-none text-dark p-2" href="../Products_PHP/Products.php">Products</a>
             <a class="footer-hover text-decoration-none text-dark p-2" href="../Bookings_PHP/Bookings.php">Bookings</a>

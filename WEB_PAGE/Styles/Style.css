@@ -58,6 +58,14 @@ u {
     z-index: -5;
 }
 
+#card_bookings {
+    background-image: url("../Images/back_bookings.jpg");
+}
+
+#card_products {
+    background-image: url("../Images/back_products.jpg");
+}
+
 
 /*
 /* 
