@@ -77,10 +77,10 @@
                     <img src="./Images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/ferrari.jpeg" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
+                    <img src="./Images/carouseltest.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/moto2.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
+                    <img src="./Images/moto.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
                 </div>
             </div>
             <!-- Left and right controls/icons -->
