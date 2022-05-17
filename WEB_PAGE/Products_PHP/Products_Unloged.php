@@ -22,11 +22,11 @@ $result = mysqli_query($link, "select * from products");
     <!---NAVBAR-->
     <nav class="navbar navbar-expand-md cstm-bg py-2 justify-content-center">
         <div class="col-4 text-center">
-        <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
+            <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
         <div class="col-4">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-            <i class="fa fa-caret-down"></i>
+                <i class="fa fa-caret-down"></i>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav navbar-hover me-5"><a class="text-dark text-decoration-none p-3 rounded-pill h5" href="../contact_php/contact.php">Contact</a></ul>
@@ -39,32 +39,33 @@ $result = mysqli_query($link, "select * from products");
     </nav>
 
     <!--LOGIN CARD-->
-        <div id='card' class="ms-auto">
-            <div id='card-body' class="card ">
-                <div class="card-body cscard-bg">
-                    <h5 class="card-title">Login</h5>
-                    <form action='../Logins/PHP_InOut.php' method="POST">
-                        <label>Email:</label></br>
-                        <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
-                        <label>Password:</label></br>
-                        <input style='width:95%;' type='password' id='pasahitza' name='password' />
-                        <input type="checkbox" onclick="showPass()">Show Password </br>
-                        <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
-                        <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
-                    </form>
-
-                    <a class="btn btn-secondary mt-3" href="../Logins/register.php">Register</a>
-                </div>
+    <div id='card' class="ms-auto">
+        <div id='card-body' class="card ">
+            <div class="card-body cscard-bg">
+                <h5 class="card-title">Login</h5>
+                <form action='../Logins/PHP_InOut.php' method="POST">
+                    <label>Email:</label></br>
+                    <input style='width:95%;' type='email' name='email' id="mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')" />
+                    <label>Password:</label></br>
+                    <input style='width:95%;' type='password' id='pasahitza' name='password' />
+                    <input type="checkbox" onclick="showPass()">Show Password </br>
+                    <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
+                    <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
+                </form>
+                <p class="mt-3"> Don´t have an account yet? </br>
+                    <a href="../Logins/register.php">Register now</a>
+                </p>
             </div>
         </div>
-    
+    </div>
 
-    
+
+
     <div class="container mt-5 d-flex flex-column align-items-start">
-    <h2>Products shop</h2>
-    <p>On this page you can see the different products that are available for purchase in our garage shop.  
-    In order to purchase the following products, you must be logged in.
-    </p>
+        <h2>Products shop</h2>
+        <p>On this page you can see the different products that are available for purchase in our garage shop.
+            In order to purchase the following products, you must be logged in.
+        </p>
         <div class="row mt-5 d-flex justify-content-center">
             <?php
             while ($erregistroa = mysqli_fetch_array($result)) {

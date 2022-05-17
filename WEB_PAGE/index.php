@@ -52,8 +52,8 @@
                     <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
                     <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                 </form>
-
-                <a class="btn btn-secondary mt-3" href="./Logins/register.php">Register</a>
+                <p class="mt-3"> Don´t have an account yet? </br>
+                <a href="./Logins/register.php">Register now</a></p>
             </div>
         </div>
     </div>
@@ -67,53 +67,58 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./Images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
+                    <img src="./Images/garagecarousel.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="1">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/carouseltest.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
+                    <img src="./Images/carouseltest.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="2">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/moto.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
+                    <img src="./Images/moto.jpg " class="d-block w-100" style="height: 500px; width: 1000px;" alt="3">
                 </div>
             </div>
             <!-- Left and right controls/icons -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <p class="mt-3">On this website you can make reservations, buy products for the car, and so you can change all kinds of components of the car without any problem. </br>
-            We offer you the place and the tools to do it and you do everything else.</br>
-            In case you need help, our experts will be on site to help and advise you.</p>
-    </div>
 
+        <div class="container mt-5 text-center">
 
-    <!--FOOTER-->
-    <div class="cstm-bg d-flex justify-content-around p-3">
-        <div class="d-flex flex-column">
-            <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_PHP/Products_Unloged.php">Products</a>
-            <a class="footer-hover text-decoration-none text-dark p-2" href="./contact_php/contact.php">Contact</a>
-        </div>
-
-        <div class="d-flex flex-column">
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
-        </div>
-
-        <div class="d-flex flex-column">
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+            <p class="mt-3">On this website you can make reservations, buy products for the car, and so you can change all kinds of components of the car without any problem. </br>
+                We offer you the place and the tools to do it and you do everything else.</br>
+                In case you need help, our experts will be on site to help and advise you.</p>
         </div>
     </div>
+
+        <!--FOOTER-->
+        <div class="cstm-bg d-flex justify-content-around p-3">
+            <div class="d-flex flex-column">
+                <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_PHP/Products_Unloged.php">Products</a>
+                <a class="footer-hover text-decoration-none text-dark p-2" href="./contact_php/contact.php">Contact</a>
+            </div>
+
+            <div class="d-flex flex-column">
+                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+            </div>
+
+            <div class="d-flex flex-column">
+                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+            </div>
+        </div>
 
 </body>
 

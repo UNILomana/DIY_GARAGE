@@ -66,6 +66,24 @@ u {
     background-image: url("../Images/back_products.jpg");
 }
 
+#table_products {
+    width: 100%;
+    display: block;
+}
+
+thead {
+    display: inline-block;
+    width: auto;
+}
+
+#table_body {
+    height: 250px;
+    display: inline-block;
+    width: 100%;
+    overflow-y: scroll;
+    padding-bottom: 40px;
+}
+
 
 /*
 /* 

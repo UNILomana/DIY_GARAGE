@@ -115,18 +115,18 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--MYPURCHASES CARD-->
-    <div id='booking-card-body' class="table-responsive-xl col-6 mx-auto card text-white">
+    <div id='booking-card-body' class="table-responsive-xl col-6 mx-auto card ">
         <div class="card-body row mt-2">
 
-            <h5>Your Purchases list</h5>
+            <h2>Your Purchases list</h2>
             <?php
             $sesioa = $_SESSION['User_Id'];
             $link = connectDataBase();
             $result = mysqli_query($link, "select * from purchase where User_Id = '$sesioa'");
             
             ?>
-            <table>
-                <tr>
+            <table class="table table-bordered bg-light mt-3">
+                <tr class="table-light">
                     <th scope="col">&nbsp;Purchase Id</th>
                     <th scope="col">&nbsp;Product Id</th>
                     <th scope="col">&nbsp;Quantity</th>
