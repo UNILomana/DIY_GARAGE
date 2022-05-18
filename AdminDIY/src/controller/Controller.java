@@ -226,7 +226,7 @@ public class Controller implements ActionListener {
                     System.out.println("BEST USER botoia sakatu duzu");
                     view.jDialogBESTUSER.setVisible(true);
                     view.jDialogBESTUSER.setSize(400, 300);
-                    view.jDialogUsers.setVisible(false);
+                    view.jDialogBookings.setVisible(false);
                     view.jTextAreaBestUserB.setText(model.bestUserB());
                     view.jDialogBESTUSER.getContentPane().setBackground(view.jDialogUsers.getBackground());
                     break;

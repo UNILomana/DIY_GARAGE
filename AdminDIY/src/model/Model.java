@@ -575,7 +575,7 @@ public class Model {
                     totalUser = totalUser + count;
                     if (totalUser > bestUser) {
                         bestUser = totalUser;
-                        best = rs.getString("User_Id") + " , Gastatua:" + bestUser + " €";
+                        best = rs.getString("User_Id") + " , Spent:" + bestUser + " €";
                     }
                 }
             } catch (Exception ex) {
@@ -605,7 +605,7 @@ public class Model {
                     totalUser = totalUser + count;
                     if (totalUser > bestUser) {
                         bestUser = totalUser;
-                        best = rs.getString("User_Id") + " , Gastatua:" + bestUser + " €";
+                        best = rs.getString("User_Id") + " , Spent:" + bestUser + " €";
                     }
                 }
             } catch (Exception ex) {

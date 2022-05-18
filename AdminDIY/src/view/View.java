@@ -67,7 +67,6 @@ public class View extends javax.swing.JFrame {
         jLabelUsuariosCont = new javax.swing.JLabel();
         jButtonSaveUsers = new javax.swing.JButton();
         jButtonBackUsers = new javax.swing.JButton();
-        jButtonBestUser = new javax.swing.JButton();
         jDialogProducts = new javax.swing.JDialog();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -99,6 +98,7 @@ public class View extends javax.swing.JFrame {
         jTableBookings = new javax.swing.JTable();
         jLabelBookings = new javax.swing.JLabel();
         jButtonSaveBookings = new javax.swing.JButton();
+        jButtonBestUser = new javax.swing.JButton();
         jDialogGraphicsGeneral = new javax.swing.JDialog();
         jButtonGraphicView = new javax.swing.JButton();
         jButtonPieChart = new javax.swing.JButton();
@@ -130,10 +130,6 @@ public class View extends javax.swing.JFrame {
         jButtonBackUsers.setText("BACK");
         jButtonBackUsers.setActionCommand("BACK_USERS");
 
-        jButtonBestUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonBestUser.setText("BEST USER");
-        jButtonBestUser.setActionCommand("BESTUSER");
-
         javax.swing.GroupLayout jDialogUsersLayout = new javax.swing.GroupLayout(jDialogUsers.getContentPane());
         jDialogUsers.getContentPane().setLayout(jDialogUsersLayout);
         jDialogUsersLayout.setHorizontalGroup(
@@ -151,8 +147,6 @@ public class View extends javax.swing.JFrame {
                         .addComponent(jButtonSaveUsers))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogUsersLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonBestUser)
-                        .addGap(109, 109, 109)
                         .addComponent(jButtonBackUsers)))
                 .addContainerGap())
         );
@@ -169,9 +163,7 @@ public class View extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabelUsuariosCont, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jDialogUsersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonBackUsers)
-                    .addComponent(jButtonBestUser))
+                .addComponent(jButtonBackUsers)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -369,6 +361,11 @@ public class View extends javax.swing.JFrame {
         jButtonBackBookings.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButtonBackBookings.setText("BACK");
         jButtonBackBookings.setActionCommand("BACKBOOKINGS");
+        jButtonBackBookings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBackBookingsActionPerformed(evt);
+            }
+        });
 
         jTableBookings.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -388,6 +385,10 @@ public class View extends javax.swing.JFrame {
         jButtonSaveBookings.setToolTipText("");
         jButtonSaveBookings.setActionCommand("SAVE_Bookings");
 
+        jButtonBestUser.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButtonBestUser.setText("BEST USER");
+        jButtonBestUser.setActionCommand("BESTUSER");
+
         javax.swing.GroupLayout jDialogBookingsLayout = new javax.swing.GroupLayout(jDialogBookings.getContentPane());
         jDialogBookings.getContentPane().setLayout(jDialogBookingsLayout);
         jDialogBookingsLayout.setHorizontalGroup(
@@ -399,7 +400,9 @@ public class View extends javax.swing.JFrame {
                     .addComponent(jLabelBookings, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(73, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogBookingsLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(116, 116, 116)
+                .addComponent(jButtonBestUser, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButtonSaveBookings)
                     .addComponent(jButtonBackBookings))
@@ -408,14 +411,19 @@ public class View extends javax.swing.JFrame {
         jDialogBookingsLayout.setVerticalGroup(
             jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDialogBookingsLayout.createSequentialGroup()
-                .addContainerGap(39, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(jLabelBookings)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonSaveBookings)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButtonBackBookings)
+                .addGap(18, 18, 18)
+                .addGroup(jDialogBookingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jDialogBookingsLayout.createSequentialGroup()
+                        .addComponent(jButtonSaveBookings)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonBackBookings))
+                    .addGroup(jDialogBookingsLayout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(jButtonBestUser)))
                 .addGap(18, 18, 18))
         );
 
@@ -748,6 +756,10 @@ public class View extends javax.swing.JFrame {
     private void jButtonPurchasesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPurchasesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonPurchasesActionPerformed
+
+    private void jButtonBackBookingsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBackBookingsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonBackBookingsActionPerformed
 
     public static View viewaSortuBistaratu() {
         View v = new View();
