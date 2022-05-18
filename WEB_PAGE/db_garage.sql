@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost:3306
--- Tiempo de generación: 17-05-2022 a las 10:59:30
+-- Tiempo de generación: 18-05-2022 a las 12:09:07
 -- Versión del servidor: 8.0.29-0ubuntu0.20.04.3
 -- Versión de PHP: 7.4.3
 
@@ -21,6 +21,7 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `db_garage`
 --
+DROP DATABASE IF EXISTS `db_garage`;
 CREATE DATABASE IF NOT EXISTS `db_garage` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `db_garage`;
 
@@ -46,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   KEY `Garage_Id` (`Cabin_Id`),
   KEY `Vehicle_Type` (`Vehicle_Type`),
   KEY `Employee_Id` (`Employee_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=191 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `bookings`
@@ -142,13 +143,13 @@ CREATE TABLE IF NOT EXISTS `products` (
 --
 
 INSERT INTO `products` (`Product_Id`, `Name`, `Price`, `Stock`, `Product_picture`) VALUES
-(1, 'Oil', 10.5, 192, '../Images/Products/oil.jpg'),
-(2, 'Chains', 55.9, 88, '../Images/Products/cadenas.jpg'),
+(1, 'Oil', 10.5, 190, '../Images/Products/oil.jpg'),
+(2, 'Chains', 55.9, 83, '../Images/Products/cadenas.jpg'),
 (3, 'Air Filter', 15.2, 117, '../Images/Products/filtro.jpg'),
 (4, 'Car mats', 14.75, 96, '../Images/Products/alfombrillas.jpg'),
 (5, 'Brake pads', 20.5, 237, '../Images/Products/pastillas.jpg'),
-(6, 'Spark Plug', 15.75, 99, '../Images/Products/bujia.jpg'),
-(7, 'Shock-absorber', 85.9, 166, '../Images/Products/amortiguador.jpg'),
+(6, 'Spark Plug', 15.75, 94, '../Images/Products/bujia.jpg'),
+(7, 'Shock-absorber', 85.9, 164, '../Images/Products/amortiguador.jpg'),
 (8, 'Fuse kit', 14.5, 237, '../Images/Products/fusibles.jpg'),
 (9, 'Tyres', 60.35, 499, '../Images/Products/neumatico.jpeg'),
 (10, 'Led Lights', 14.35, 194, '../Images/Products/led.jpg');
@@ -172,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `purchase` (
   KEY `Product_Id` (`Product_Id`),
   KEY `Product_Id_2` (`Product_Id`),
   KEY `Product_Id_3` (`Product_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `purchase`
@@ -188,11 +189,14 @@ INSERT INTO `purchase` (`Purchase_Id`, `User_Id`, `Product_Id`, `Quantity`, `Dat
 (43, '22222222A', 8, 3, '2022-05-16', 43.5),
 (44, '33333333A', 3, 2, '2022-01-13', 30.4),
 (45, '22222222A', 8, 1, '2022-03-24', 14.5),
-(46, '55555555A', 10, 2, '2022-04-28', 28.7),
 (47, '44444444A', 5, 4, '2022-06-15', 82),
-(48, '55555555A', 7, 1, '2022-07-13', 85.9),
 (49, '11111111A', 2, 1, '2022-09-16', 55.9),
-(50, '33333333A', 1, 2, '2022-11-06', 21);
+(50, '33333333A', 1, 2, '2022-11-06', 21),
+(51, '11111111A', 6, 5, '2022-05-17', 78.75),
+(53, '22222222A', 2, 4, '2022-04-12', 30),
+(54, '22222222A', 7, 2, '2022-04-10', 30),
+(55, '33333333A', 1, 2, '2022-07-16', 21),
+(56, '11111111A', 2, 1, '2022-07-27', 55.9);
 
 --
 -- Disparadores `purchase`
@@ -236,11 +240,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`User_Id`, `Name`, `Surname`, `TLF`, `Email`, `Password`, `Profile_Img`) VALUES
-('11111111A', 'Mikel', 'Nieve', 666666666, 'markel@gmail.com', '12345678', '\r\n'),
+('11111111A', 'Mikel', 'Nieve', 666666666, 'nieve@gmail.com', '12345678', '../Images/Clients/photo-1566275529824-cca6d008f3da.jpg'),
 ('22222222A', 'Dani', 'García', 0, 'garcia@gmail.com', '12345678', ''),
 ('33333333A', 'Dan', 'Carter', 777777777, 'carter@gmail.com', '12345678', ''),
-('44444444A', 'Evaristo', 'Páramos', 666667777, 'paramos@gmail.com', '12345678', ''),
-('55555555A', 'Ivan', 'Kunne', 666888888, 'kunne@gmail.com', '12345678', '');
+('44444444A', 'Evaristo', 'Páramos', 666667777, 'paramos@gmail.com', '12345678', '');
 
 -- --------------------------------------------------------
 
