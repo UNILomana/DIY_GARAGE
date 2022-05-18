@@ -168,9 +168,9 @@ if ($erregistroa["Profile_Img"] == NULL) {
                         ?>
                     </div>
                     <input class="col-md-6 mt-4" type="number" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required /></br>
-                    <input class="btn btn-outline-secondary text-dark col-md-3 mt-3" type="submit" value="Make purchase" name="getpurchase" />
+                    <input class="btn btn-outline-secondary text-dark col-auto mt-3" type="submit" value="Make purchase" name="getpurchase" />
                    
-                    <button class="btn btn-outline-secondary text-dark col-md-3 mt-3"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
+                    <button class="btn btn-outline-secondary text-dark col-auto mt-3"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
                     <p id='status_button'></p>
                 </form>
             </div>

@@ -153,8 +153,8 @@ if ($erregistroa["Profile_Img"] == NULL) {
                 </div>
                 <p id='status_button'></p>
                 <!--Shows if saved-->
-                <input class="btn btn-outline-secondary text-dark mx-5 col-md-1" type="submit" value="Book" name="insert_book" />
-                <button class="btn btn-outline-secondary text-dark col-md-3 mt-3"><a style='text-decoration:none; color:black' href='./MyBookings.php'>My Bookings</a></button></br>
+                <input class="btn btn-outline-secondary text-dark mx-5 col-auto " type="submit" value="Book" name="insert_book" />
+                <button class="btn btn-outline-secondary text-dark col-auto mt-3"><a style='text-decoration:none; color:black' href='./MyBookings.php'>My Bookings</a></button></br>
        
             </form>
             </div>
