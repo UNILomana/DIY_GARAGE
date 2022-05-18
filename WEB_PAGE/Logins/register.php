@@ -20,12 +20,6 @@
             <a class="navbar-brand" href="../index.php"><img src="../Images/Logo.png" alt="Logo" style="width:100px;" class="rounded-pill"> </a>
         </div>
         <div class="col-4">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-placement="bottom" title="Menua" data-bs-target="#collapsibleNavbar">
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
-                <ul class="navbar-nav navbar-hover me-5"></ul>
-            </div>
         </div>
         <div class="col-4 text-center">
         </div>
@@ -34,25 +28,23 @@
 
 
     <!--REGISTER FORM-->
-    <!--Deja registrarse como 'iker.fer@gmail' -->
 
     <div id='register-card-body' class="col-6 mx-auto card">
         <div class="card-body row ">
             <h5 class="card-title">Register</h5>
             <form class="col-xl-5 boxr mt-4 mb-4" id="registro" name="registro" method="POST" action="./register.php">
                 <i id='register-icon' class="fa fa-user"></i>
-                <input type="text" name="name" placeholder="Name" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
+                <input type="text" name="name" placeholder="Name" required pattern="[A-Za-zÀ-ÿ\s]*" title="You must enter only letters."></br>
                 <i id='register-icon' class="fa fa-user"></i>
-                <input type="text" name="apellido" placeholder="Surname" required pattern="[A-Za-z]*" title="You must enter only letters."></br>
+                <input type="text" name="apellido" placeholder="Surname" required pattern="[A-Za-zÀ-ÿ\s]*" title="You must enter only letters."></br>
                 <i id='register-icon' class="fa fa-id-card"></i>
-                <input type="text" name="dni" placeholder="ID card" required pattern="^[0-9]{8,8}[A-Za-z]$" title="The format must be 8 digits and one letter."></br>
+                <input type="text" name="dni" placeholder="ID card" required pattern="^[0-9]{8,8}[A-Z]$" title="The format must be 8 digits and one letter."></br>
                 <i id='register-icon' class="fa fa-envelope"></i>
                 <input type="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" oninvalid="this.setCustomValidity('Use a valid format. Example: pedro@gmail.com')"> </br>
-                <!--ONDO IPINI-->
                 <i id='register-icon' class="fa fa-lock"></i>
-                <input type="password" id="password" placeholder="Password" name="password" minlength="6" required> </br>
+                <input type="password" id="password" placeholder="Password" name="password" minlength="8" required> </br>
                 <i id='register-icon' class="fa fa-lock"></i>
-                <input type="password" id="passwordrep" placeholder="Repeat password" name="password" minlength="6" required> </br>
+                <input type="password" id="passwordrep" placeholder="Repeat password" name="password" minlength="8" required> </br>
                 <i id='register-icon' class="fa fa-phone"></i>
                 <input type="int" name="TLF" placeholder="TLF"> </br>
                 <input type="submit" value='Register'>

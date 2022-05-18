@@ -2,6 +2,7 @@
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -112,11 +113,11 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--BOOKING FORM-->
-    <div id='booking-card-body' class="card col-6 mx-auto text-white">
-        <h2>New Booking</h2>
-        <p>In this section you can choose the day and time you want to have your vehicle repaired. </br>
+    <div id='booking-card-body' class="card col-6 mx-auto ">
+        <h2 class="mt-2 mx-3">New Booking</h2>
+        <p class="mt-2 mx-3">In this section you can choose the day and time you want to have your vehicle repaired. </br>
             To view <b>your cabin bookings</b> go to your profile where you can find <b>My bookings.</b></p>
-        <div class="card-body mt-2 ">
+        <div class="card-body mt-2 mx-3">
             <form class="row g-3 align-items-center justify-content-center" method="POST" action="./PHP_Bookings.php">
                 <div class="col-md-6">
                     <label class="form-label">Date:</label>
@@ -154,8 +155,9 @@ if ($erregistroa["Profile_Img"] == NULL) {
                 <!--Shows if saved-->
                 <input class="btn btn-outline-secondary text-dark mx-5 col-md-1" type="submit" value="Book" name="insert_book" />
                 <button class="btn btn-outline-secondary text-dark col-md-3 mt-3"><a style='text-decoration:none; color:black' href='./MyBookings.php'>My Bookings</a></button></br>
+       
             </form>
-        </div>
+            </div>
     </div>
 
     <!--FOOTER-->

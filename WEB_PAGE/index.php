@@ -38,7 +38,6 @@
 
 
     <!--LOGIN CARD-->
-
     <div id='card' class="ms-auto">
         <div id='card-body' class="card">
             <div class="card-body cscard-bg">
@@ -53,7 +52,8 @@
                     <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                 </form>
                 <p class="mt-3"> Don´t have an account yet? </br>
-                <a href="./Logins/register.php">Register now</a></p>
+                    <a href="./Logins/register.php">Register now</a>
+                </p>
             </div>
         </div>
     </div>
@@ -67,30 +67,29 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <!-- Indicators/dots -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></button>
             </div>
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./Images/garagecarousel.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="1">
+                    <img src="./Images/garagecarousel.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="out">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/carouseltest.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="2">
+                    <img src="./Images/carouseltest.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="in">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/moto.jpg " class="d-block w-100" style="height: 500px; width: 1000px;" alt="3">
+                    <img src="./Images/moto.jpg " class="d-block w-100" style="height: 500px; width: 1000px;" alt="moto">
                 </div>
             </div>
             <!-- Left and right controls/icons -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="carousel-control-prev-icon"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="carousel-control-next-icon"></span>
+
             </button>
         </div>
 
@@ -102,23 +101,23 @@
         </div>
     </div>
 
-        <!--FOOTER-->
-        <div class="cstm-bg d-flex justify-content-around p-3">
-            <div class="d-flex flex-column">
-                <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_PHP/Products_Unloged.php">Products</a>
-                <a class="footer-hover text-decoration-none text-dark p-2" href="./contact_php/contact.php">Contact</a>
-            </div>
-
-            <div class="d-flex flex-column">
-                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
-                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
-            </div>
-
-            <div class="d-flex flex-column">
-                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
-                <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
-            </div>
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around p-3">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="./Products_PHP/Products_Unloged.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="./contact_php/contact.php">Contact</a>
         </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+        </div>
+    </div>
 
 </body>
 

@@ -63,21 +63,21 @@
         <div class="form-row">
           <div class="form-group">
             <label for="inputAddress">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Your name....">
+            <input type="text" class="form-control" id="inputName" placeholder="Your name...." required>
           </div>
           <div class="form-group">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" placeholder="your email...." id="inputEmail4">
+            <input type="email" class="form-control" placeholder="your email...." id="inputEmail4" required>
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Subject</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Subject....">
+          <input type="text" class="form-control" id="inputAddress" placeholder="Subject...." required>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Your message</label>
-            <textarea class="form-control" placeholder="Your message...." id="exampleFormControlTextarea1" rows="4"></textarea>
+            <textarea class="form-control" placeholder="Your message...." id="exampleFormControlTextarea1" rows="4" required></textarea>
           </div>
         </div>
         <p class="col-8 mt-3" id='contact_text'></p>
