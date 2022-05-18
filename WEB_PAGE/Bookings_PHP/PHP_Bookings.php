@@ -17,7 +17,7 @@ function delete_bookings($erreserba)
   $delete = mysqli_query($link, "delete from bookings where Booking_Id='$gakoa'");
 
   mysqli_close($link);
-  header("Location: ./MYBookings.php");
+  header("Location: ./MyBookings.php");
 }
 
 

@@ -48,8 +48,9 @@
           <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
           <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
         </form>
-
-        <a class="btn btn-secondary mt-3" href="../Logins/register.php">Register</a>
+        <p class="mt-3"> Don´t have an account yet? </br>
+          <a href="../Logins/register.php">Register now</a>
+        </p>
       </div>
     </div>
   </div>
@@ -62,25 +63,25 @@
         <div class="form-row">
           <div class="form-group">
             <label for="inputAddress">Name</label>
-            <input type="text" class="form-control" id="inputName" placeholder="Your name....">
+            <input type="text" class="form-control" id="inputName" placeholder="Your name...." required>
           </div>
           <div class="form-group">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" placeholder="your email...." id="inputEmail4">
+            <input type="email" class="form-control" placeholder="your email...." id="inputEmail4" required>
           </div>
         </div>
         <div class="form-group">
           <label for="inputAddress">Subject</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="Subject....">
+          <input type="text" class="form-control" id="inputAddress" placeholder="Subject...." required>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label for="exampleFormControlTextarea1">Your message</label>
-            <textarea class="form-control" placeholder="Your message...." id="exampleFormControlTextarea1" rows="4"></textarea>
+            <textarea class="form-control" placeholder="Your message...." id="exampleFormControlTextarea1" rows="4" required></textarea>
           </div>
         </div>
         <p class="col-8 mt-3" id='contact_text'></p>
-        <input type="submit" class="btn btn-outline-dark my-3 me-3" value="Send"><input type="reset"  class="btn btn-outline-dark my-3" value="Clear"></br>
+        <input type="submit" class="btn btn-outline-dark my-3 me-3" value="Send"><input type="reset" class="btn btn-outline-dark my-3" value="Clear"></br>
       </form>
     </div>
   </div>
@@ -120,9 +121,9 @@ if (isset($_GET['incorrect'])) {
 <!--If is an error on the booking-->
 <?php
 if (isset($_GET['mail'])) {
-    if ($_GET['mail']  == 'no') {
-        echo "<script>document.getElementById('contact_text').innerHTML = 'Send!' </script>";
-    }
+  if ($_GET['mail']  == 'no') {
+    echo "<script>document.getElementById('contact_text').innerHTML = 'Send!' </script>";
+  }
 }
 ?>
 

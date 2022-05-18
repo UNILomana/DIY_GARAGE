@@ -20,7 +20,7 @@
 #booking-card-body {
     margin-top: 100px;
     width: 50%;
-    background-color: rgb(160, 7, 7);
+    background-color: rgb(161, 161, 161);
 }
 
 #register-icon {
@@ -64,6 +64,24 @@ u {
 
 #card_products {
     background-image: url("../Images/back_products.jpg");
+}
+
+#table_products {
+    width: 100%;
+    display: block;
+}
+
+thead {
+    display: inline-block;
+    width: auto;
+}
+
+#table_body {
+    height: 250px;
+    display: inline-block;
+    width: 100%;
+    overflow-y: scroll;
+    padding-bottom: 40px;
 }
 
 

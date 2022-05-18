@@ -119,46 +119,64 @@ if ($erregistroa["Profile_Img"] == NULL) {
     <div class="container mt-5 d-flex flex-column ">
         <h2>Products shop</h2>
         <p>This is the list of products we currently have in our shop. In order to purchase the following products, please <b>scroll down</b> to the bottom where you can choose the product and quantity. </br>
-        To view your purchases go to <b>your profile</b> where you can find <b>My Purchases</b>.
-    </p>
+            To view your purchases go to <b>your profile</b> where you can find <b>My Purchases</b>.
+        </p>
         <div class="row mt-5 d-flex justify-content-center">
-            <?php
-            $result = mysqli_query($link, "select * from products");
-            while ($erregistroa = mysqli_fetch_array($result)) {
-                $argazki_helbidea = $erregistroa["Product_picture"];
-                printf(
-                    "<div class= 'col-sm-3' name='products'>
-							<img src='$argazki_helbidea' width='150px' height='150px'></img>
-							<p>&nbsp;%s&nbsp;</p>
-							<p>&nbsp;%s&nbsp;€</p>
-					</div>",
-                    $erregistroa["Name"],
-                    $erregistroa["Price"]
-                );
-            };
-            ?>
-        </div>
 
-        <form method="POST" action="./PHP_Purchase.php">
-            <h1>Buy Product</h1>
-            <div class="form-group">
-                <?php
-                $result = mysqli_query($link, "select * from products");
-
-                echo '<select name="products">';
-                while ($erregistroa = mysqli_fetch_array($result)) {
-                    echo '<option value="' . $erregistroa['Product_Id'] . '">' . $erregistroa['Name'] . '</option>';
-                }
-                echo '</select></br>';
-                mysqli_free_result($result);
-                mysqli_close($link);
-                ?>
+            <div class="col-md-5 ">
+                <h2>Product List</h2>
+                <table id="table_products" class="table table-borderless">
+                    <thead>
+                        <tr>
+                            <th scope="col" >Name</th>
+                            <th scope="col" class="px-5">Price per unit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table_body">
+                        <?php
+                        $result = mysqli_query($link, "select * from products");
+                        while ($erregistroa = mysqli_fetch_array($result)) {
+                            $argazki_helbidea = $erregistroa["Product_picture"];
+                            printf(
+                                "<tr>
+                                    <td class='col-md-4'>&nbsp;%s&nbsp;</td>
+                                    <td class='col-md-4' >&nbsp;%s&nbsp;€</td>
+                                    <td class='col-md-4' >&nbsp;<img src='$argazki_helbidea' width='70px' height='70px'></img></td>
+                                <tr>",
+                                $erregistroa["Name"],
+                                $erregistroa["Price"]
+                            );
+                        };
+                        ?>
+                    </tbody>
+                </table>
             </div>
-            <input type="text" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required />
-            <input type="submit" value="Buy" name="getpurchase" />
-            <p id='status_button'></p>
-        </form>
+            <div class="col-md-5 mx-5">
+                <form method="POST" action="./PHP_Purchase.php">
+                    <h2>Buy Product</h2>
+                    <div class="form-group">
+                        <?php
+                        $result = mysqli_query($link, "select * from products");
+
+                        echo '<select class="col-md-6 mt-2" name="products">';
+                        while ($erregistroa = mysqli_fetch_array($result)) {
+                            echo '<option value="' . $erregistroa['Product_Id'] . '">' . $erregistroa['Name'] . '</option>';
+                        }
+                        echo '</select></br>';
+                        mysqli_free_result($result);
+                        mysqli_close($link);
+                        ?>
+                    </div>
+                    <input class="col-md-6 mt-4" type="number" pattern="[0-9]+" name="zenbatekoa" placeholder="Quantity" min="1" required /></br>
+                    <input class="btn btn-outline-secondary text-dark col-auto mt-3" type="submit" value="Make purchase" name="getpurchase" />
+                   
+                    <button class="btn btn-outline-secondary text-dark col-auto mt-3"><a style='text-decoration:none; color:black' href='./MyPurchases.php'>My Purchases</a></button></br>
+                    <p id='status_button'></p>
+                </form>
+            </div>
+        </div>
     </div>
+
 
     <!--FOOTER-->
     <div class="cstm-bg d-flex justify-content-around p-3">

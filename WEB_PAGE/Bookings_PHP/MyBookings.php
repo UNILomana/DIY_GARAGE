@@ -115,16 +115,16 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--MYBOOKINGS CARD-->
-    <div id='booking-card-body' class=" table-responsive-xl card col-6 mx-auto text-white">
+    <div id='booking-card-body' class=" table-responsive-xl card col-6 mx-auto">
         <div class="row card-body  mt-2">
-            <h5>Your booking list</h5>
+            <h2>Your booking list</h2>
             <?php
             $sesioa = $_SESSION['User_Id'];
             //include("../connect_db.php");
             $link = connectDataBase();
             $result = mysqli_query($link, "select * from bookings where User_Id = '$sesioa'");
             ?>
-            <table>
+            <table class="table table-bordered bg-light mt-3">
                 <tr>
                     <th scope="col">&nbsp;Booking_Id</th>
                     <th scope="col">&nbsp;Date</th>

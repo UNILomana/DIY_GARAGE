@@ -2,6 +2,7 @@
 //Control de sesion iniciada
 //Discomment the next line not showing the errors. No se mostrara ningun error
 //error_reporting(error_reporting() & ~E_NOTICE);
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -112,16 +113,26 @@ if ($erregistroa["Profile_Img"] == NULL) {
     </div>
 
     <!--BOOKING FORM-->
-    <div id='booking-card-body' class="card col-6 mx-auto text-white">
-        <h2>New Booking</h2>
-        <p>In this section you can choose the day and time you want to have your vehicle repaired. </br>
-        To view <b>your cabin bookings</b> go to your profile where you can find <b>My bookings.</b></p>
-        <div class="row card-body mt-2">
-            <form method="POST" action="./PHP_Bookings.php">
-                <!--id="newbooking" name="newbooking"-->
-                <div class="form-group">
+    <div id='booking-card-body' class="card col-6 mx-auto ">
+        <h2 class="mt-2 mx-3">New Booking</h2>
+        <p class="mt-2 mx-3">In this section you can choose the day and time you want to have your vehicle repaired. </br>
+            To view <b>your cabin bookings</b> go to your profile where you can find <b>My bookings.</b></p>
+        <div class="card-body mt-2 mx-3">
+            <form class="row g-3 align-items-center justify-content-center" method="POST" action="./PHP_Bookings.php">
+                <div class="col-md-6">
+                    <label class="form-label">Date:</label>
                     <input type="date" name="data" min="<?php echo date("Y-m-d"); ?>" required></br>
-                    <!--NOT PAST DATES-->
+                </div>
+                <div class="col-md-6">
+                    <label>Select your vehicle:</label>
+                    <div class="form-check">
+                        <input type="radio" name="vehicles" value="Cars" required> Car </input></br>
+                        <input type="radio" name="vehicles" value="Motorbikes"> Motorbike </input></br>
+                        <input type="radio" name="vehicles" value="Big vehicles"> Big vehicle </input></br>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Hour:</label>
                     <select name="ordua">
                         <option value="9:00">9:00</option>
                         <option value="10:00">10:00</option>
@@ -133,29 +144,20 @@ if ($erregistroa["Profile_Img"] == NULL) {
                         <option value="16:00">16:00</option>
                     </select>
                 </div>
-
-                <div class="form-group">
-                    <label>Select your vehicle:</label>
-                    <div class="form-check">
-                        <input type="radio" name="vehicles" value="Cars" required> Car </input></br>
-                        <input type="radio" name="vehicles" value="Motorbikes"> Motorbike </input></br>
-                        <input type="radio" name="vehicles" value="Big vehicles"> Big vehicle </input></br>
-                    </div>
-                </div>
-
-                <div class="form-group">
+                <div class="col-md-6">
                     <label>Do you need help?</label>
                     <div class="form-check">
                         <input type="radio" name="yes_no" value="yes"> Yes </input></br>
                         <input type="radio" name="yes_no" value="no"> No </input></br>
                     </div>
                 </div>
-
                 <p id='status_button'></p>
                 <!--Shows if saved-->
-                <input type="submit" value="Book" name="insert_book" />
+                <input class="btn btn-outline-secondary text-dark mx-5 col-auto " type="submit" value="Book" name="insert_book" />
+                <button class="btn btn-outline-secondary text-dark col-auto mt-3"><a style='text-decoration:none; color:black' href='./MyBookings.php'>My Bookings</a></button></br>
+       
             </form>
-        </div>
+            </div>
     </div>
 
     <!--FOOTER-->

@@ -38,7 +38,6 @@
 
 
     <!--LOGIN CARD-->
-
     <div id='card' class="ms-auto">
         <div id='card-body' class="card">
             <div class="card-body cscard-bg">
@@ -52,8 +51,9 @@
                     <input type="submit" name="sartu" class="mt-3 btn btn-secondary" value='Entry'>
                     <input type="reset" id="cancel" class="mt-3 btn btn-secondary" value="Cancel" />
                 </form>
-
-                <a class="btn btn-secondary mt-3" href="./Logins/register.php">Register</a>
+                <p class="mt-3"> Don´t have an account yet? </br>
+                    <a href="./Logins/register.php">Register now</a>
+                </p>
             </div>
         </div>
     </div>
@@ -74,13 +74,13 @@
             <!-- The slideshow/carousel -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./Images/garagecarousel.png" class="d-block w-70" style="height: 500px; width: 1000px;" alt="1">
+                    <img src="./Images/garagecarousel.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="out">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/ferrari.jpeg" class="d-block w-70" style="height: 500px; width: 1000px;" alt="2">
+                    <img src="./Images/carouseltest.png" class="d-block w-100" style="height: 500px; width: 1000px;" alt="in">
                 </div>
                 <div class="carousel-item">
-                    <img src="./Images/moto2.jpg " class="d-block w-70" style="height: 500px; width: 1000px;" alt="3">
+                    <img src="./Images/moto.jpg " class="d-block w-100" style="height: 500px; width: 1000px;" alt="moto">
                 </div>
             </div>
             <!-- Left and right controls/icons -->
@@ -89,13 +89,17 @@
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
+
             </button>
         </div>
-        <p class="mt-3">On this website you can make reservations, buy products for the car, and so you can change all kinds of components of the car without any problem. </br>
-            We offer you the place and the tools to do it and you do everything else.</br>
-            In case you need help, our experts will be on site to help and advise you.</p>
-    </div>
 
+        <div class="container mt-5 text-center">
+
+            <p class="mt-3">On this website you can make reservations, buy products for the car, and so you can change all kinds of components of the car without any problem. </br>
+                We offer you the place and the tools to do it and you do everything else.</br>
+                In case you need help, our experts will be on site to help and advise you.</p>
+        </div>
+    </div>
 
     <!--FOOTER-->
     <div class="cstm-bg d-flex justify-content-around p-3">
