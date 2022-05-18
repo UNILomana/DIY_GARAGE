@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   KEY `Garage_Id` (`Cabin_Id`),
   KEY `Vehicle_Type` (`Vehicle_Type`),
   KEY `Employee_Id` (`Employee_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=194 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `bookings`
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `cabins` (
   PRIMARY KEY (`Cabin_Id`),
   KEY `Type` (`Type`),
   KEY `Helper` (`Helper`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `cabins`
@@ -109,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `Password` varchar(30) NOT NULL,
   PRIMARY KEY (`Employee_Id`),
   KEY `Email` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `employees`
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `Stock` int NOT NULL,
   `Product_picture` varchar(150) NOT NULL,
   PRIMARY KEY (`Product_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `products`
@@ -173,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `purchase` (
   KEY `Product_Id` (`Product_Id`),
   KEY `Product_Id_2` (`Product_Id`),
   KEY `Product_Id_3` (`Product_Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `purchase`
@@ -233,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `Profile_Img` varchar(100) NOT NULL,
   PRIMARY KEY (`User_Id`),
   KEY `Email` (`Email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -256,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `vehicles` (
   `Type` varchar(30) NOT NULL,
   `Price_Hour` int NOT NULL,
   PRIMARY KEY (`Type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `vehicles`
