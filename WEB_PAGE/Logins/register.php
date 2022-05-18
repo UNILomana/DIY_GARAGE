@@ -28,7 +28,6 @@
 
 
     <!--REGISTER FORM-->
-
     <div id='register-card-body' class="col-6 mx-auto card">
         <div class="card-body row ">
             <h5 class="card-title">Register</h5>
@@ -58,7 +57,24 @@
         </div>
     </div>
 
+    
+    <!--FOOTER-->
+    <div class="cstm-bg d-flex justify-content-around mt-5 p-3">
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../Products_Unloged.php">Products</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="../contact_php/contact.php">Contact</a>
+        </div>
 
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" href="tel:123-456-7890"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="mailto:diygarage@gmail.com"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+        </div>
+
+        <div class="d-flex flex-column">
+            <a class="footer-hover text-decoration-none text-dark p-2" target=”_blank” href="https://www.instagram.com/"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" target=”_blank” href="https://www.facebook.com/"><i class="fa fa-facebook"></i> Facebook</a>
+        </div>
+    </div>
 
 
     <?php

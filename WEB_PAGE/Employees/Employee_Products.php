@@ -137,13 +137,13 @@ $result = mysqli_query($link, "select * from products");
         </div>
 
         <div class="d-flex flex-column">
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-phone"></i> 34-12345678</a>
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="tel:123-456-7890"><i class="fa fa-phone"></i> 34-12345678</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" href="mailto:diygarage@gmail.com"><i class="fa fa-envelope"></i> diygarage@gmail.com</a>
         </div>
 
         <div class="d-flex flex-column">
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-instagram"></i> Instagram</a>
-            <a class="footer-hover text-decoration-none text-dark p-2" href="#"><i class="fa fa-facebook"></i> Facebook</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" target=”_blank” href="https://www.instagram.com/"><i class="fa fa-instagram"></i> Instagram</a>
+            <a class="footer-hover text-decoration-none text-dark p-2" target=”_blank” href="https://www.facebook.com/"><i class="fa fa-facebook"></i> Facebook</a>
         </div>
     </div>
 </body>
