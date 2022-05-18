@@ -118,7 +118,7 @@ if (isset($_GET['incorrect'])) {
 }
 ?>
 
-<!--If is an error on the booking-->
+
 <?php
 if (isset($_GET['mail'])) {
   if ($_GET['mail']  == 'no') {
