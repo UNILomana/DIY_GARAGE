@@ -1,5 +1,9 @@
+#Metodo basikoak askotan erabiltzen direlako.
 import os.path
 import pickle
+import csv
+from csv import reader
+from datetime import date
 
 
 
@@ -28,39 +32,44 @@ class BasicMethods():
 
     @staticmethod
     def read_object(obj, filename):
-        inp = open(filename, 'rb')
-        objects = []
-        cont = 1
-        while cont == 1:
-            try:
-                objects.append(pickle.load(inp))
+        if os.path.exists(filename):
+            inp = open(filename, 'rb')
+            objects = []
+            cont = 1
+            while cont == 1:
+                try:
+                    objects.append(pickle.load(inp))
 
-            except EOFError:
+                except EOFError:
 
-                cont = 0
-        for objetua in objects:
-            print(objetua.id, objetua.name, objetua.surname)
+                    cont = 0
+            for objetua in objects:
+                print(objetua.id, objetua.name, objetua.surname)
 
-        print("End of file\n")
-        return objects
+            print("End of file\n")
+            return objects
+        else:
+            print("There aren't any employee")
 
-    @staticmethod
     def read_product(obj, filename):
-        inp = open(filename, 'rb')
-        objects = []
-        cont = 1
-        while cont == 1:
-            try:
-                objects.append(pickle.load(inp))
+        if os.path.exists(filename):
+            inp = open(filename, 'rb')
+            objects = []
+            cont = 1
+            while cont == 1:
+                try:
+                    objects.append(pickle.load(inp))
 
-            except EOFError:
+                except EOFError:
 
-                cont = 0
-        for product in objects:
-            print(product.id, product.name, product.price, product.stock)
+                    cont = 0
+            for product in objects:
+                print(" Product Id:" + product.id,  "Name: "+product.name,  "Price: " +product.price, "Stock: " +product.stock)
 
-        print("End of file\n")
-        return objects
+            print("End of file\n")
+            return objects
+        else:
+            print("There aren't any product")
 
     @staticmethod
     def read_user(obj, filename):
@@ -76,57 +85,114 @@ class BasicMethods():
 
                     cont = 0
             for objetua in objects:
-                print(objetua.id, objetua.name, objetua.surname, objetua.phone, objetua.email, objetua.password)
+                print("User Id: " +objetua.id, "Name: " +objetua.name, "Surname: " +objetua.surname, "Phone: " +objetua.phone, "Email: " +objetua.email, "Password: " +objetua.password)
 
             print("End of file\n")
         else:
             print("There aren't any users")
 
-    @staticmethod
-    def read_employee(obj, filename):
+    def delete_booking(obj, filename):
+        if os.path.exists(filename):
+            BasicMethods.read_Booking(obj, filename)
+            id = input("Enter the id of the booking: ")
+            if (id.isdigit()):
+                inp = open(filename, 'rb')
+                objects = []
+                cont = 1
+                while cont == 1:
+                    try:
+                        objects.append(pickle.load(inp))
+                    except EOFError:
+
+                        cont = 0
+                inp.close()
+                if os.path.exists(filename):
+                    os.remove(filename)
+                for objetua in objects:
+                    if int(objetua.Id) != int(id):
+                        BasicMethods.save_object2(objetua, filename)
+                print("end of file\n")
+            else:
+                print("Insert a correct value please.")
+        else:
+            print("There aren't any booking")
+
+    def read_Booking(obj, filename):
         if os.path.exists(filename):
             inp = open(filename, 'rb')
             objects = []
             cont = 1
+
             while cont == 1:
                 try:
                     objects.append(pickle.load(inp))
 
                 except EOFError:
-
                     cont = 0
-            for objetua in objects:
-                print(objetua.id, objetua.name, objetua.surname, objetua.phone, objetua.email, objetua.password)
+            for booking in objects:
+                print("Booking Id: " + booking.Id + "\n", " User Id: " + booking.User_Id + "\n",
+                      " Cabin Id: " + booking.Cabin_Id + "\n", " Date: " + booking.Date + "\n",
+                      " Hour: " + booking.Hour + "\n", " Vehicle Type: " + booking.Vehicle_Type + "\n",
+                      "Employee Help: " + booking.Employee_Help + "\n", "Employee Id: " + booking.Employee_Id + "\n",
+                      " Used Hours: " + booking.Use_Hours + "\n", " Price: " + booking.Price + "€\n")
 
             print("End of file\n")
+            return objects
         else:
-            print("There aren't any employees")
+            print("There aren't any booking")
 
     @staticmethod
     def delete_object(obj,filename):
         if os.path.exists(filename):
-            BasicMethods.read_user(obj,filename)
-            id = input("Enter the id: ")
-            inp = open(filename,'rb')
-            objects = []
-            cont = 1
-            while cont == 1:
-                try:
-                    objects.append(pickle.load(inp))
-                except EOFError:
-                    cont = 0
-            inp.close()
-            if os.path.exists(filename):
-                os.remove(filename)
-            for objetua in objects:
-                if int(objetua.id) != int(id):
-                   BasicMethods.save_object2(objetua,filename)
-            print("end of file\n")
+            BasicMethods.read_object(obj,filename)
+            id = input("Enter the id of the person: ")
+            if (id.isdigit()):
+                inp = open(filename,'rb')
+                objects = []
+                cont = 1
+                while cont == 1:
+                    try:
+                        objects.append(pickle.load(inp))
+                    except EOFError:
+
+                        cont = 0
+                inp.close()
+                if os.path.exists(filename):
+                    os.remove(filename)
+                for objetua in objects:
+                    if int(objetua.id) != int(id):
+                       BasicMethods.save_object2(objetua,filename)
+                print("end of file\n")
+            else:
+                print("Insert a correct value please")
         else:
-            print("There aren't any objects")
+            print("There aren't any Clients")
 
 
 
+    def delete_product(obj, filename):
+        if os.path.exists(filename):
+            BasicMethods.read_product(obj, filename)
+            id = input("Enter the id of the product: ")
+            if(id.isdigit()):
+                inp = open(filename, 'rb')
+                objects = []
+                cont = 1
+                while cont == 1:
+                    try:
+                        objects.append(pickle.load(inp))
+                    except EOFError:
 
-
+                        cont = 0
+                inp.close()
+                if os.path.exists(filename):
+                    os.remove(filename)
+                for objetua in objects:
+                    if int(objetua.id) != int(id):
+                        BasicMethods.save_object2(objetua, filename)
+                print("end of file\n")
+            else:
+                print("Insert a correct value please.")
+        else:
+            print("There aren't any product")
 

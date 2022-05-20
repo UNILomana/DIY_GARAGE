@@ -52,8 +52,8 @@ def Remove_User():
     while ans == 1:
         Basic.BasicMethods.delete_object(User,'user_data.txt')
 
-        print("Employee Delete Successfully ")
-        ans = int(input("Do you want to delete another student? (1/0)"))
+        print("User Delete Successfully ")
+        ans = int(input("Do you want to delete another user? (1/0)"))
 
 
 def Display_Users():

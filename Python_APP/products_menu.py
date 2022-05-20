@@ -27,7 +27,6 @@ def Add_Product():
     while ans == 1:
 
         p1 = Product("", "", "", "")
-
         p1.setId()
         p1.setName()
         p1.setPrice()
@@ -35,7 +34,7 @@ def Add_Product():
 
         Basic.BasicMethods.save_object(p1, 'products_data.txt')
         print("Product Added Successfully ")
-        ans = int(input("Do you want to add a new student? (1/0)"))
+        ans = int(input("Do you want to add a new product? (1/0)"))
         del p1
 
 # Function to Remove Employee with given Id
@@ -43,14 +42,12 @@ def Remove_Product():
     #irakurri listan gorde listatik elegidu eta borratu idatzi berriz artxiboan
     ans = 1
     while ans == 1:
-        Display_Products()
-        i = Basic.BasicMethods.askinteger('id')
-        Basic.BasicMethods.delete_object(int(i), 'products_data.txt')
+        Basic.BasicMethods.delete_product(Product,'products_data.txt')
 
-        print("Product Deleted Successfully ")
-        ans = int(input("Do you want to delete another student? (1/0)"))
-
+        print("Product Delete Successfully ")
+        ans = int(input("Do you want to delete another Product? (1/0)"))
 # Function to Display All Employees
+
 def Display_Products():
     Basic.BasicMethods.read_product(Product, 'products_data.txt')
 

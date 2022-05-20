@@ -2,6 +2,7 @@ from Employees import Employee
 import Basic
 
 
+
 def menu():
     print('\tEmployee management')
     print('\t================')
@@ -10,7 +11,7 @@ def menu():
     print('\tc) Delete an employee')
     print('\td) Main menu')
 
-    option= ''
+    option = ''
 
     while option != 'd':
         option = input('Enter an option: ').lower()
@@ -20,6 +21,8 @@ def menu():
             Add_Employ()
         if option == 'c':
             Remove_Employ()
+
+
 
 
 def Add_Employ():
@@ -48,7 +51,7 @@ def Remove_Employ():
     #irakurri listan gorde listatik elegidu eta borratu idatzi berriz artxiboan
     ans = 1
     while ans == 1:
-        Basic.BasicMethods.delete_object(Employee, 'employee_data.txt')
+        Basic.BasicMethods.delete_object(Employee,'employee_data.txt')
 
         print("Employee Delete Successfully ")
         ans = int(input("Do you want to delete another employee? (1/0)"))
@@ -56,8 +59,7 @@ def Remove_Employ():
 
 # Function to Display All Employees
 def Display_Employees():
-    Basic.BasicMethods.read_employee(Employee, 'employee_data.txt')
-
+    Basic.BasicMethods.read_object(Employee, 'employee_data.txt')
 
 def main_menu():
     from menu import menuGeneral
